@@ -1,5 +1,4 @@
 """knowledge_projects URL Configuration
-
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/4.1/topics/http/urls/
 Examples:
@@ -21,6 +20,8 @@ from core import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('',include('Auth.urls')),
     path('',include('core.urls'))
 ]
+
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
