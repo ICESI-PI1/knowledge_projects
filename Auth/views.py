@@ -14,5 +14,3 @@ def register(request):
     context = {'form':form}
     return render(request,'Auth/register.html',context)
 
-def home(request):
-    return render(request,'Auth/home.html')
