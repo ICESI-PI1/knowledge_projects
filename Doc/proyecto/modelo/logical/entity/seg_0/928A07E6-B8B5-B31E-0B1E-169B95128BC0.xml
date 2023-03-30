@@ -1,0 +1,95 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="928A07E6-B8B5-B31E-0B1E-169B95128BC0" name="Employee">
+<createdBy>samhe</createdBy>
+<createdTime>2023-03-20 16:39:41 UTC</createdTime>
+<ownerDesignName>modelo</ownerDesignName>
+<engineerTo>
+<item key="0D24B704-1289-D3CB-F827-FBCF11591900" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="fullname" id="3F6F21D1-623C-6496-E4A0-A8D1880B6349">
+<createdBy>samhe</createdBy>
+<createdTime>2023-03-20 16:41:54 UTC</createdTime>
+<ownerDesignName>modelo</ownerDesignName>
+<engineerTo>
+<item key="0D24B704-1289-D3CB-F827-FBCF11591900" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT040</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id" id="547383EE-4796-7E62-8E70-2B5B1BE38A93">
+<createdBy>samhe</createdBy>
+<createdTime>2023-03-20 16:43:05 UTC</createdTime>
+<ownerDesignName>modelo</ownerDesignName>
+<engineerTo>
+<item key="0D24B704-1289-D3CB-F827-FBCF11591900" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>10 CHAR</dataTypeSize>
+<ownDataTypeParameters>10 CHAR,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="picture" id="58833546-7999-7B71-0A49-12471FABE425">
+<createdBy>samhe</createdBy>
+<createdTime>2023-03-20 16:43:41 UTC</createdTime>
+<ownerDesignName>modelo</ownerDesignName>
+<engineerTo>
+<item key="0D24B704-1289-D3CB-F827-FBCF11591900" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT010</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="birthDate" id="DFDBAE17-43A0-2C60-A324-5CB1B9FE2B1D">
+<createdBy>samhe</createdBy>
+<createdTime>2023-03-20 16:44:09 UTC</createdTime>
+<ownerDesignName>modelo</ownerDesignName>
+<engineerTo>
+<item key="0D24B704-1289-D3CB-F827-FBCF11591900" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="role" id="01B81845-D2C9-0E74-DA39-8F37D5B75EB8">
+<createdBy>samhe</createdBy>
+<createdTime>2023-03-20 16:44:42 UTC</createdTime>
+<ownerDesignName>modelo</ownerDesignName>
+<engineerTo>
+<item key="0D24B704-1289-D3CB-F827-FBCF11591900" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>A3A3C77D-0366-9768-FF89-1C25E56881C8</logicalDatatype>
+<dataTypeSize>30 CHAR</dataTypeSize>
+<ownDataTypeParameters>30 CHAR,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="CD893C68-D03B-D734-193B-EDF47C2A7213" name="Employee PK">
+<createdBy>samhe</createdBy>
+<createdTime>2023-03-20 16:43:40 UTC</createdTime>
+<ownerDesignName>modelo</ownerDesignName>
+<engineerTo>
+<item key="0D24B704-1289-D3CB-F827-FBCF11591900" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>547383EE-4796-7E62-8E70-2B5B1BE38A93</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

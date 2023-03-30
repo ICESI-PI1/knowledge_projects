@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="314F2C97-9294-5E73-D8FF-515E90E2019D" containerWithKeyObject="5A9E1918-DE3B-CA9F-06B5-0C059DED9E91" localFKIndex="4D1850A3-7745-F8ED-ED47-34B24C96C5F2" name="Log_Binnacle_FK">
+<createdBy>samhe</createdBy>
+<createdTime>2023-03-20 17:34:11 UTC</createdTime>
+<generatorID>68278331-3964-AA9D-8D82-A3CF004D5F96</generatorID>
+<ownerDesignName>modelo</ownerDesignName>
+<referredTableLongName>Binnacle</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>A698E4CA-FE50-3D52-95D0-AD884BEFDA17</referredTableID>
+<keyObject>4116F351-DC4A-A9F2-1BEA-AC8B56FB6BCB</keyObject>
+<referredKeyID>4116F351-DC4A-A9F2-1BEA-AC8B56FB6BCB</referredKeyID>
+<mandatory>false</mandatory>
+<refColNames>binnacleId</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

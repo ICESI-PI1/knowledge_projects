@@ -1,0 +1,83 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="EBA97E1A-2170-BD8F-C79A-88BE21A11405" name="Employee">
+<createdBy>samhe</createdBy>
+<createdTime>2023-03-20 17:34:11 UTC</createdTime>
+<generatorID>928A07E6-B8B5-B31E-0B1E-169B95128BC0</generatorID>
+<ownerDesignName>modelo</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="fullname" id="FFD07FBB-8983-DDBD-1EC3-2A09FCA7B933">
+<createdBy>samhe</createdBy>
+<createdTime>2023-03-20 17:34:11 UTC</createdTime>
+<generatorID>3F6F21D1-623C-6496-E4A0-A8D1880B6349</generatorID>
+<ownerDesignName>modelo</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT040</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="id" id="BB75F921-081E-68B2-4D88-6285CC8A180B">
+<createdBy>samhe</createdBy>
+<createdTime>2023-03-20 17:34:11 UTC</createdTime>
+<generatorID>547383EE-4796-7E62-8E70-2B5B1BE38A93</generatorID>
+<ownerDesignName>modelo</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>10 CHAR</dataTypeSize>
+<ownDataTypeParameters>10 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="picture" id="A2574610-3B2E-716F-5464-F98B9C020283">
+<createdBy>samhe</createdBy>
+<createdTime>2023-03-20 17:34:11 UTC</createdTime>
+<generatorID>58833546-7999-7B71-0A49-12471FABE425</generatorID>
+<ownerDesignName>modelo</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT010</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="birthDate" id="CC0C01F3-AF1F-FD38-A275-FFB4892BE56F">
+<createdBy>samhe</createdBy>
+<createdTime>2023-03-20 17:34:11 UTC</createdTime>
+<generatorID>DFDBAE17-43A0-2C60-A324-5CB1B9FE2B1D</generatorID>
+<ownerDesignName>modelo</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="role" id="78861469-BD7E-9B6A-8250-D21C50B7CAAC">
+<createdBy>samhe</createdBy>
+<createdTime>2023-03-20 17:34:11 UTC</createdTime>
+<generatorID>01B81845-D2C9-0E74-DA39-8F37D5B75EB8</generatorID>
+<ownerDesignName>modelo</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>A3A3C77D-0366-9768-FF89-1C25E56881C8</logicalDatatype>
+<dataTypeSize>30 CHAR</dataTypeSize>
+<ownDataTypeParameters>30 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="D062DFD8-825F-FB7B-6178-92DC0DA75D0D" name="Employee_PK">
+<createdBy>samhe</createdBy>
+<createdTime>2023-03-20 17:34:11 UTC</createdTime>
+<generatorID>CD893C68-D03B-D734-193B-EDF47C2A7213</generatorID>
+<ownerDesignName>modelo</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="BB75F921-081E-68B2-4D88-6285CC8A180B"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

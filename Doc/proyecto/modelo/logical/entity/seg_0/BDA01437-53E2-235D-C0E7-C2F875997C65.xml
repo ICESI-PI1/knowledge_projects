@@ -1,0 +1,61 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="BDA01437-53E2-235D-C0E7-C2F875997C65" name="Binnacle">
+<createdBy>samhe</createdBy>
+<createdTime>2023-03-20 17:03:10 UTC</createdTime>
+<ownerDesignName>modelo</ownerDesignName>
+<engineerTo>
+<item key="0D24B704-1289-D3CB-F827-FBCF11591900" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="binnacleId" id="079839E1-B4F2-380F-5A0C-225986BEA1F3">
+<createdBy>samhe</createdBy>
+<createdTime>2023-03-20 17:21:10 UTC</createdTime>
+<ownerDesignName>modelo</ownerDesignName>
+<engineerTo>
+<item key="0D24B704-1289-D3CB-F827-FBCF11591900" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>5</dataTypePrecision>
+<ownDataTypeParameters>,5,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="projectId" id="61497039-1D11-08E8-42AC-596DEDE14C91">
+<createdBy>samhe</createdBy>
+<createdTime>2023-03-20 17:21:39 UTC</createdTime>
+<generatorID>C56DA9E3-73CB-EC6B-C428-B76949A49170</generatorID>
+<ownerDesignName>modelo</ownerDesignName>
+<engineerTo>
+<item key="0D24B704-1289-D3CB-F827-FBCF11591900" value="true"/>
+</engineerTo>
+<referedAttribute>6A0E1EA7-617F-006E-B4DC-8569049636F0</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT025</logicalDatatype>
+<dataTypeSize>5 CHAR</dataTypeSize>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="EF9F446B-FABE-0251-F7E1-6A8189399D32" name="Binnacle PK">
+<createdBy>samhe</createdBy>
+<createdTime>2023-03-20 17:21:33 UTC</createdTime>
+<ownerDesignName>modelo</ownerDesignName>
+<engineerTo>
+<item key="0D24B704-1289-D3CB-F827-FBCF11591900" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>079839E1-B4F2-380F-5A0C-225986BEA1F3</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

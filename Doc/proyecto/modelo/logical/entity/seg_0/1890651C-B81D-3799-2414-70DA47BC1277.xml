@@ -1,0 +1,116 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="1890651C-B81D-3799-2414-70DA47BC1277" name="Donation">
+<createdBy>samhe</createdBy>
+<createdTime>2023-03-20 16:54:17 UTC</createdTime>
+<ownerDesignName>modelo</ownerDesignName>
+<engineerTo>
+<item key="0D24B704-1289-D3CB-F827-FBCF11591900" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="resourcesType" id="D48B6A10-88A4-41D1-D2CD-DD34DA1688CF">
+<createdBy>samhe</createdBy>
+<createdTime>2023-03-20 16:57:06 UTC</createdTime>
+<ownerDesignName>modelo</ownerDesignName>
+<engineerTo>
+<item key="0D24B704-1289-D3CB-F827-FBCF11591900" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT040</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="amount" id="6CD38AC4-C6DA-3B8B-9F97-BB6D127872FD">
+<createdBy>samhe</createdBy>
+<createdTime>2023-03-20 16:57:35 UTC</createdTime>
+<ownerDesignName>modelo</ownerDesignName>
+<engineerTo>
+<item key="0D24B704-1289-D3CB-F827-FBCF11591900" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,10,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="description" id="2BAA16CF-514F-75FF-13C5-016EF4C404C7">
+<createdBy>samhe</createdBy>
+<createdTime>2023-03-20 16:58:34 UTC</createdTime>
+<ownerDesignName>modelo</ownerDesignName>
+<engineerTo>
+<item key="0D24B704-1289-D3CB-F827-FBCF11591900" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT040</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="donationId" id="858301E2-BBEB-BEC7-ABF5-5378798A66A6">
+<createdBy>samhe</createdBy>
+<createdTime>2023-03-20 17:26:37 UTC</createdTime>
+<ownerDesignName>modelo</ownerDesignName>
+<engineerTo>
+<item key="0D24B704-1289-D3CB-F827-FBCF11591900" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>5</dataTypePrecision>
+<ownDataTypeParameters>,5,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="nit" id="3FC7B77D-0695-F186-AF66-7E4FF9B27EC5">
+<createdBy>samhe</createdBy>
+<createdTime>2023-03-20 17:26:52 UTC</createdTime>
+<generatorID>200CD813-A87A-1033-0364-B1C9FABED11D</generatorID>
+<ownerDesignName>modelo</ownerDesignName>
+<engineerTo>
+<item key="0D24B704-1289-D3CB-F827-FBCF11591900" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<referedAttribute>B9154DB3-438D-8642-42AD-7620B4B16075</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT025</logicalDatatype>
+<dataTypeSize>11 CHAR</dataTypeSize>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="projectId" id="28BA61DA-1BAC-C21E-6668-B1ADCA75444B">
+<createdBy>samhe</createdBy>
+<createdTime>2023-03-20 17:28:51 UTC</createdTime>
+<generatorID>13E92DCE-9F43-B169-1B36-CA99721E925B</generatorID>
+<ownerDesignName>modelo</ownerDesignName>
+<engineerTo>
+<item key="0D24B704-1289-D3CB-F827-FBCF11591900" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<referedAttribute>6A0E1EA7-617F-006E-B4DC-8569049636F0</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT025</logicalDatatype>
+<dataTypeSize>5 CHAR</dataTypeSize>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="8248DC57-8D63-86D0-E864-D4D069053421" name="Donation PK">
+<createdBy>samhe</createdBy>
+<createdTime>2023-03-20 17:26:47 UTC</createdTime>
+<ownerDesignName>modelo</ownerDesignName>
+<engineerTo>
+<item key="0D24B704-1289-D3CB-F827-FBCF11591900" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>858301E2-BBEB-BEC7-ABF5-5378798A66A6</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>
