@@ -72,3 +72,18 @@ class Employee(models.Model):
     fullName = models.TextField()
     picture = models.ImageField()
     birthDate = models.DateField()
+
+
+
+class Card(models.Model):
+    title = models.CharField(max_length=150)
+    slug=models.SlugField(unique=True)
+    description=models.TextField()
+    investment= models.DecimalField(decimal_places=2,max_digits=10)
+    investorNum=models.IntegerField()
+    organization=models.TextField()
+    img=models.FileField(upload_to="pic/%y/")
+    def __str__(self):
+        return self.title
+    class Meta :
+        ordering=('-id',)
