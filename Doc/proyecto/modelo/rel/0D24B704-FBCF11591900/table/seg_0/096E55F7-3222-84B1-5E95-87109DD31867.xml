@@ -1,0 +1,203 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="096E55F7-3222-84B1-5E95-87109DD31867" name="Project">
+<createdBy>samhe</createdBy>
+<createdTime>2023-03-20 17:34:11 UTC</createdTime>
+<generatorID>F019EB6E-2280-4093-656B-2D253D400FA5</generatorID>
+<ownerDesignName>modelo</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="name" id="5D30D02B-0206-0DD8-F0C2-F6238F70821D">
+<createdBy>samhe</createdBy>
+<createdTime>2023-03-20 17:34:11 UTC</createdTime>
+<generatorID>D955DF22-6366-D04D-7BB8-BF1654DDD6D7</generatorID>
+<ownerDesignName>modelo</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30 CHAR</dataTypeSize>
+<ownDataTypeParameters>30 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="description" id="009AEF15-E607-1F30-EC71-731D52F623DC">
+<createdBy>samhe</createdBy>
+<createdTime>2023-03-20 17:34:11 UTC</createdTime>
+<generatorID>DE16FDC1-114D-0366-EE53-7A82F710FC7B</generatorID>
+<ownerDesignName>modelo</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT040</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="result" id="2221A9DC-AAB7-66F2-7B43-28E016AC54C2">
+<createdBy>samhe</createdBy>
+<createdTime>2023-03-20 17:34:11 UTC</createdTime>
+<generatorID>8F90490E-7108-C384-5D86-CD2E0515C362</generatorID>
+<ownerDesignName>modelo</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT040</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="scope" id="AEF84631-C4B4-3B91-E21E-4BCBACE89687">
+<createdBy>samhe</createdBy>
+<createdTime>2023-03-20 17:34:11 UTC</createdTime>
+<generatorID>ED6DB7FB-7374-26B4-7DAD-D20C69EA5209</generatorID>
+<ownerDesignName>modelo</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT040</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="workPlan" id="EA2A8906-FD9D-2975-933D-02C476EA44AD">
+<createdBy>samhe</createdBy>
+<createdTime>2023-03-20 17:34:11 UTC</createdTime>
+<generatorID>E5A948D2-06D5-7573-6E71-DDA796C6AE44</generatorID>
+<ownerDesignName>modelo</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT040</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="budget" id="78C4E0DC-2F17-07AA-0C2E-64E5C173AC1A">
+<createdBy>samhe</createdBy>
+<createdTime>2023-03-20 17:34:11 UTC</createdTime>
+<generatorID>DCBC0599-77DC-E30E-8851-A1D3CECB2625</generatorID>
+<ownerDesignName>modelo</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,10,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="humanCapital" id="994CE42B-394E-15B3-8A61-5508C102BB0B">
+<createdBy>samhe</createdBy>
+<createdTime>2023-03-20 17:34:11 UTC</createdTime>
+<generatorID>E7029202-2A42-8A8E-AC1E-8902EDC64526</generatorID>
+<ownerDesignName>modelo</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT040</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="state" id="1E148DFA-0816-3318-1E4F-EAF957376A3F">
+<createdBy>samhe</createdBy>
+<createdTime>2023-03-20 17:34:11 UTC</createdTime>
+<generatorID>D12A50E6-FB14-8540-108D-1FCB67298BBD</generatorID>
+<ownerDesignName>modelo</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20 CHAR</dataTypeSize>
+<ownDataTypeParameters>20 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="projectId" id="48F466ED-6E47-1AA6-B7B6-0ECF51A70C1E">
+<createdBy>samhe</createdBy>
+<createdTime>2023-03-20 17:34:11 UTC</createdTime>
+<generatorID>6A0E1EA7-617F-006E-B4DC-8569049636F0</generatorID>
+<ownerDesignName>modelo</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT025</logicalDatatype>
+<dataTypeSize>5 CHAR</dataTypeSize>
+<ownDataTypeParameters>5 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="goal" id="6DA4767D-07EC-CFD9-27A1-2C7F65199BD1">
+<createdBy>samhe</createdBy>
+<createdTime>2023-03-20 17:34:11 UTC</createdTime>
+<generatorID>83AB48CD-4A5A-B605-A7BE-16AB0CBB8B82</generatorID>
+<ownerDesignName>modelo</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT040</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="assignedResources" id="826ECE45-28E7-45D1-0E18-8E9896C2B9FA">
+<createdBy>samhe</createdBy>
+<createdTime>2023-03-20 17:34:11 UTC</createdTime>
+<generatorID>FE1F0F7E-07B4-D74D-9385-5CC768A3C0B1</generatorID>
+<ownerDesignName>modelo</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT040</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="category" id="BAD70FA4-891C-35D6-CE56-2FE135DB2BBD">
+<createdBy>samhe</createdBy>
+<createdTime>2023-03-20 17:34:11 UTC</createdTime>
+<generatorID>082AB5C3-BD94-8E43-8570-48AB4B4A531B</generatorID>
+<ownerDesignName>modelo</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30 CHAR</dataTypeSize>
+<ownDataTypeParameters>30 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="convocatoryNumber" id="106A838A-EC27-7934-4B47-F66820510043">
+<createdBy>samhe</createdBy>
+<createdTime>2023-03-20 17:34:11 UTC</createdTime>
+<generatorID>0ECC749C-5B7F-83E3-D716-626433828C29</generatorID>
+<ownerDesignName>modelo</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>3</dataTypePrecision>
+<ownDataTypeParameters>,3,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Organization_nit" id="95E411A4-5B2A-CA73-ED55-6FF89A2E82CF">
+<createdBy>samhe</createdBy>
+<createdTime>2023-03-20 17:34:11 UTC</createdTime>
+<generatorID>64759E29-9D82-EDF4-9CE2-A56E377E8586</generatorID>
+<ownerDesignName>modelo</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT025</logicalDatatype>
+<dataTypeSize>11 CHAR</dataTypeSize>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="703FCB62-DD75-9431-B756-A19017708982" referredColumn="2E803A32-AE82-49CD-6F71-0A5E71889F19"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="273F0FC5-D09F-0237-1CCC-1BD068D0D76A" name="Project_PK">
+<createdBy>samhe</createdBy>
+<createdTime>2023-03-20 17:34:11 UTC</createdTime>
+<generatorID>091E5C76-59D2-8293-222F-A228B9CECA13</generatorID>
+<ownerDesignName>modelo</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="48F466ED-6E47-1AA6-B7B6-0ECF51A70C1E"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="98AE2B08-23F7-5054-6C5F-754C1F03BEAA" name="Project_Organization_FK">
+<createdBy>samhe</createdBy>
+<createdTime>2023-03-20 17:34:11 UTC</createdTime>
+<generatorID>2B72CEC9-E8CF-CA76-AE49-61C517D3206C</generatorID>
+<ownerDesignName>modelo</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="95E411A4-5B2A-CA73-ED55-6FF89A2E82CF"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

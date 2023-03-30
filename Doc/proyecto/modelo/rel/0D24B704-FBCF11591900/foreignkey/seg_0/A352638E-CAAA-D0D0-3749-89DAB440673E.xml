@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="A352638E-CAAA-D0D0-3749-89DAB440673E" containerWithKeyObject="3584E3C9-F6AF-58E0-8456-9C47A258AAF4" localFKIndex="5249BCBB-C0E3-6855-76C7-2E400F0DCE96" name="Donation_Project_FK">
+<createdBy>samhe</createdBy>
+<createdTime>2023-03-20 17:34:11 UTC</createdTime>
+<generatorID>13E92DCE-9F43-B169-1B36-CA99721E925B</generatorID>
+<ownerDesignName>modelo</ownerDesignName>
+<referredTableLongName>Project</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>096E55F7-3222-84B1-5E95-87109DD31867</referredTableID>
+<keyObject>273F0FC5-D09F-0237-1CCC-1BD068D0D76A</keyObject>
+<referredKeyID>273F0FC5-D09F-0237-1CCC-1BD068D0D76A</referredKeyID>
+<mandatory>false</mandatory>
+<refColNames>projectId</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

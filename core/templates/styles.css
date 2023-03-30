@@ -1,0 +1,22 @@
+.container1, .container2 {
+    width: 50%;
+    height: 200px;
+  }
+
+  .container1 {
+    float: left;
+  }
+  
+  .container2 {
+    float: left;
+  }
+
+card-text{
+    opacity: 0.5;
+  }
+
+#image{
+    width: 20px;
+    height: 20px;
+    opacity: 0.5;
+  }
