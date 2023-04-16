@@ -1,15 +1,40 @@
 from django.db import models
+from django.contrib.auth.models import AbstractBaseUser,BaseUserManager
+from django.contrib.auth.hashers import make_password,check_password
+from django.conf import settings
 
-# Create your models here.
-class Client(models.Model):
+class ClientManager(BaseUserManager):
+    def create_user(self,nit, password = None):
+
+        
+        if not nit:
+            raise ValueError('Theres is no a nit')
+        user = self.model(nit=nit)
+        user.set_password(password)
+        user.save(using=self._db)
+        return user
+        
+
+class Client(AbstractBaseUser):
     #Primary keiy
     nit = models.CharField(primary_key=True,max_length=11)
-
-    name = models.CharField(max_length=30)
+    name = models.CharField(max_length=30,null=False)
     phoneNumber = models.CharField(max_length=20)
-    adress = models.CharField(max_length=10)
+    adress = models.CharField(max_length=20)
     representativeName = models.TextField()
-    phoneNumberRepresentative = models.CharField(max_length=10)
+    phoneNumberRepresentative = models.CharField(max_length=20)
+
+    is_active = models.BooleanField(default=True)
+    is_admin = models.BooleanField(default=False)
+
+    USERNAME_FIELD = 'nit'
+    manager = ClientManager() 
+    
+    def set_password(self, password):
+        self.password = make_password(password)
+
+    def check_password(self, password):
+        return check_password(password, self.password)
     
 
 class Project(models.Model):
@@ -74,7 +99,7 @@ class Employee(models.Model):
     birthDate = models.DateField()
 
 
-
+# Create your models here.
 class Card(models.Model):
     title = models.CharField(max_length=150)
     slug=models.SlugField(unique=True)
@@ -87,3 +112,6 @@ class Card(models.Model):
         return self.title
     class Meta :
         ordering=('-id',)
+    
+
+

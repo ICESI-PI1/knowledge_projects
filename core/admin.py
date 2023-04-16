@@ -7,5 +7,4 @@ admin.site.register(Client)
 admin.site.register(Project)
 admin.site.register(Employee)
 admin.site.register(Rol)
-
 admin.site.register(Card)
