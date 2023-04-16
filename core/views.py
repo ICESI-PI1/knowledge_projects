@@ -6,6 +6,6 @@ from .models import Card
 # Create your views here.
 
 
-def index(request):
+def home(request):
     obj = Card.objects.all()
     return render(request,'index.html',{'card':obj})
