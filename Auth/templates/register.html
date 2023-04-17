@@ -1,9 +1,10 @@
 {% extends 'layouts/base.html' %}
 
 {% block content%}
+<section class="vh-100 gradient-custom">
+  <div class="container py-5 h-100"> 
+    <div class="row d-flex justify-content-center align-items-center h-100">
 
-<div class="container">
-    <div class="row">
         <h1>Registro</h1>
         <div class="col-md-6">
             
@@ -46,10 +47,17 @@
                 </div>
             </div>
                 <center>
-                    <button type="submit" class="btn btn-primary">Save</button>
+                    <button type="submit" class="btn btn-primary" style="background-color:#087F8C;color:white">Crear cuenta</button>
                 </center> 
             </form>
+
+            <div class="d-flex justify-content-center">
+              <p class="mb-0">Ya tienes cuenta? <a href="{% url 'login' %}" style="color:#087F8C" class="text-black-20 fw-bold">Inicia sesión</a>
+              </p>
+            </div>
         </div>
     </div>
-</div
+  </div
+
+</section>
 {% endblock %}
