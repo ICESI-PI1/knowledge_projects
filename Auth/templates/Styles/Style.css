@@ -1,0 +1,47 @@
+
+#container{
+float: left;
+width: 100%;
+}
+header{
+    background: #FFBF004D;
+    height: 30px;
+    width: 100%;
+    margin: 0px;
+    text-align: left;
+    line-height: 150%;
+    padding: 3px;
+    align-items: right;
+}
+
+button{
+    background: #087F8C;
+    position:static;
+    width: 96px;
+    height: 26px;
+    float: right;
+    color: white;
+}
+
+section{
+    float: left;
+    width: 50%;
+    border: 1px solid black;
+}
+
+aside{
+    float: left;
+    width: 49.7%;
+    border: 1px solid black;
+}
+p{
+    font-family: 'DM Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 135%;
+    /* or 28px */
+
+
+    color: #000000;
+}
