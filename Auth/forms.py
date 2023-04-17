@@ -1,6 +1,7 @@
 from django import forms
 from core.models import Client
 
+
 class ClientForm(forms.ModelForm):
     password_confirmation = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'form-control mb-3', 'placeholder': 'Confirmar contraseña'}))
     class Meta:
