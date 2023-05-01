@@ -11,17 +11,25 @@
           </h3>
           <form method="post">
             {% csrf_token %}
-            <div class= "form-group">
-              <label class="form-label" style="color: #011627">NIT</label>
-              <input name = "nit" class="form-control form-control-lg" />
-                
+
+            
+            <div class="form-group">
+              <label class="form-label" for="form2Example22">Nombre de usuario:</label>
+              
+              {{ form.username }}
             </div>
 
-            <div class="form-outline form-white mb-4">
-              <label class="form-label" for="typePasswordX" style="color: #011627">Contraseña</label>
-              <input name = "password" type="password" id="typePasswordX" class="form-control form-control-lg" />
+            
+
+            <div class="form-outline mb-4">
+              <label class="form-label" for="form2Example22">Password:</label>
+
+              {{ form.password }}
+              
             </div>
 
+            
+            
             <div class="d-grid gap-2">
               <button class="btn btn-info btn-lg btn-block" type="submit" style="background-color:#087F8C;color:white">Iniciar sesión</button>
             </div>
