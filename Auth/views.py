@@ -11,7 +11,6 @@ from django.contrib.auth.views import LoginView
 
 
 # Create your views here.
-
 class User_login_view(LoginView):
     form_class = User_login_form
     template_name = 'login.html'
@@ -45,4 +44,30 @@ class Client_register_view(CreateView):
 
         return super().form_valid(form)
 
+
+
+
+def user_login(request):
+
+    if(request.method == 'POST'):
+        nit = request.POST['nit']
+        password = request.POST['password']
+        user = authenticate(request, nit=nit, password=password)
+ 
+        if user is not None:
+            print('none')
+            login(request, user)
+            return redirect('core:home')
+        else:
+            print('is none')
+            return render(request,'login.html')
+
+    else:
+        return render(request,'login.html')
+    
+def detailed_info(request):
+    return render(request,'detailedinfo.html')
+
+def bitacora(request):
+    return render(request,'bitacora.html')
 
