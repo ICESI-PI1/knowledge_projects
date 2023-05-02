@@ -1,51 +1,51 @@
+from django.forms.models import BaseModelForm
+from django.http import HttpResponse
 from django.shortcuts import render,redirect
 from django.contrib.auth import authenticate, login 
-from core.models import Client
-from . forms import ClientForm
+from .forms import User_login_form,Client_register_form
+from django.views.generic import CreateView
+from .models import User
+from django.urls import reverse_lazy
+from django.contrib.auth.views import LoginView
+
+
 
 # Create your views here.
+class User_login_view(LoginView):
+    form_class = User_login_form
+    template_name = 'login.html'
 
-def register(request):
-    if (request.method == 'POST'):
-        form = ClientForm(request.POST)
+    success_url = 'cristian'
 
-        if(request.POST['password_confirmation'] ==request.POST['password_confirmation']):
-            """ 
-            clien_data = request.POST.dict()
-            clien_data.pop('password_confirmation')
-            clien_data.pop('csrfmiddlewaretoken')
-            client = Client(**clien_data)
-            client.save() """
-            # Recuperar los datos del formulario enviado por el usuario
-            nit = request.POST.get('nit')
-            name = request.POST.get('name')
-            phoneNumber = request.POST.get('phoneNumber')
-            adress = request.POST.get('adress')
-            representativeName = request.POST.get('representativeName')
-            phoneNumberRepresentative = request.POST.get('phoneNumberRepresentative')
-            password = request.POST.get('password')
 
-            # Crear un objeto de cliente con los datos proporcionados
-            client = Client(nit=nit, name=name, phoneNumber=phoneNumber, adress=adress, representativeName=representativeName, phoneNumberRepresentative=phoneNumberRepresentative)
-        
-            # Establecer la contraseña del cliente utilizando el método set_password definido en el modelo Client
-            client.set_password(password)
 
-            # Guardar el objeto de cliente en la base de datos
-            client.save()
-            print('llega')
-            return redirect('core:home')
-            
+
+class Client_register_view(CreateView):
+    
+    model = User
+    form_class = Client_register_form
+    template_name = 'register.html'
+    success_url = reverse_lazy('core:home')
+
+
+    def form_valid(self, form):
+        # Crear el usuaraio
+        user = User.objects.create_user(
+            username=form.cleaned_data['username'],
+            password=form.cleaned_data['password'],
+            is_client=True
+        )
+
+        client = form.save(commit=False)
+        client.user = user
+        client.save()
+
         
-        
-        return render(request, 'register.html', {
-            'form':ClientForm
-        })
-    else:
-        
-        return render(request, 'register.html', {
-            'form': ClientForm
-        })
+
+        return super().form_valid(form)
+
+
+
 
 def user_login(request):
 
@@ -70,3 +70,4 @@ def detailed_info(request):
 
 def bitacora(request):
     return render(request,'bitacora.html')
+
