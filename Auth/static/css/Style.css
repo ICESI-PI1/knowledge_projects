@@ -12,6 +12,7 @@ header{
     text-align: left;
     line-height: 300%;
     padding: 5px;
+    
 }
 
 .header-center{
@@ -31,11 +32,12 @@ header{
     padding-top: 15px;
 }
 .text-conteiner{
+
     padding-right: 20px;
     font-family: 'DM Sans';
     font-style: normal;
     font-weight: 400;
-    font-size: 20.5px;
+    font-size: 30px;
     line-height: 135%;
     /* or 28px */
 
@@ -46,7 +48,6 @@ header{
 .img-container {
     text-align: center;
     width: 500px; height: 300px;
-    border: 5px solid darkblue;
     display: flex;
     margin: 20px;
   }
@@ -68,7 +69,7 @@ p{
     font-family: 'DM Sans';
     font-style: normal;
     font-weight: 400;
-    font-size: 15px;
+    font-size: 18px;
     line-height: 135%;
     /* or 28px */
 
@@ -87,8 +88,13 @@ p{
     height: 20%;
     float: left;
     margin-left: 150px;
+    margin-bottom: 20px;
+    border-radius: 20px;
+    box-shadow: 0px 0px 5px 1px gray;
 }
 .header-bit-cointeiner{
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
     text-align: left;
     float: left;
     width: 100%;
@@ -97,4 +103,15 @@ p{
     height: 20%;
     margin-top: 0px;
     margin-bottom: 20px;
+}
+.colored-h{
+    color: #087F8C;
+}
+.big-text{
+    font-family: 'DM Sans';
+    font-size: 30px;
+}
+.title{
+    font-family: 'DM Sans';
+    font-size: 25px;
 }
