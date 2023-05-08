@@ -9,15 +9,14 @@
   <body>
 
 
-
+   
 <div class="contenedor">
     <header>
       &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b class="title">Conoce a fondo tu proyecto</b>
-      
-      <a href="{% url 'bitacora' %}" class="...">
+      <a href="{% url 'core:binnacle' %}" class="...">
         <button class="knwo_button" >Donar</button></a>
     </header>
-
+    {%for x in project%}
     <section class="know_section">
         <div id="carouselExampleIndicators" class="carousel slide">
             <div class="carousel-indicators">
@@ -27,7 +26,7 @@
             </div>
             <div class="carousel-inner" style="border-radius: 20px;">
               <div class="carousel-item active">
-                <img src="/media/pic/Detailed_Info/pan1.jpg" class="d-block w-100" alt="...">
+                <img src="{{x.img.url}}" class="d-block w-100" alt="...">
               </div>
               <div class="carousel-item">
                 <img src="/media/pic/Detailed_Info/pan2.jpg" class="d-block w-100" alt="...">
@@ -53,14 +52,7 @@
         <BR></BR>
         <div class="text-conteiner">
             <p>
-                Donec feugiat nisi a tempor condimentum. Ut ut tincidunt eros. Curabitur consequat sollicitudin fermentum. Quisque vitae interdum elit,
-                quis euismod justo. Donec rhoncus tempor ex, ut pellentesque odio placerat ac. Quisque in dignissim metus. 
-                    
-                Etiam eget varius est. Nulla eu tortor eu magna sollicitudin lobortis. Praesent interdum vulputate suscipit. Etiam vitae pellentesque
-                Donec feugiat nisi a tempor condimentum. Ut ut tincidunt eros. Curabitur consequat sollicitudin fermentum. Quisque vitae interdum elit,
-                quis euismod justo. Donec rhoncus tempor ex, ut pellentesque odio placerat ac. Quisque in dignissim metus. 
-                    
-                Etiam eget varius est. Nulla eu tortor eu magna sollicitudin lobortis. Praesent interdum vulputate suscipit. Etiam vitae pellentesque
+              {{x.description}}
             </p>    
             <p>
               Donec feugiat nisi a tempor condimentum. Ut ut tincidunt eros. Curabitur consequat sollicitudin fermentum. Quisque vitae interdum elit,
@@ -71,13 +63,13 @@
         </section>
     <aside>
         <h4 class="colored-h">Gastronomia</h4>
-        <h3>Panes que bendicion</h3>
+        <h3>{{x.title}}</h3>
         <br>
        <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod est eu enim pulvinar dictum. Sed ac pulvinar arcu. Proin tempus metus dolor, nec accumsan purus tempor vel. 
 
 Vivamus in pretium ante, eu mollis mauris. Mauris non efficitur tortor. Cras et lorem malesuada, pellentesque tellus ac, aliquet urna. Nullam eleifend consectetur.</p>
 
-<p>Prpuesto por <B class="big-text">Norha M.</B></p>
+<p>Prpuesto por <B class="big-text">{{x.organization}}</B></p>
 <br>
 <br>
 
@@ -104,6 +96,7 @@ Progreso&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;Inversores
 </p>
     </aside>
 </div>
+{%endfor%}
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 </html>
