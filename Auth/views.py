@@ -64,10 +64,4 @@ def user_login(request):
 
     else:
         return render(request,'login.html')
-    
-def detailed_info(request):
-    return render(request,'detailedinfo.html')
-
-def bitacora(request):
-    return render(request,'bitacora.html')
 
