@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="{% static 'navbar.css'%}">
     <link rel="stylesheet" href="{% static 'home_view_style.css'%}">
     <link rel="stylesheet" href="{% static 'toggler.css'%}">
-
+<body>
     <nav id="navbar">
         <!-- <img src="logo-db.png" alt="" width="55"> -->
         <span class="menu-icon" id="toggler">
@@ -32,27 +32,30 @@
         </span>
 
         <div id="nav-left">
-            <a href="#">Home</a>
-            <a href="#">Galería</a>
+            <a href={% url 'core:home' %}>Home</a>
+            <a href={% url 'core:categories' %}>Galería</a>
             <a href="#">Convocatorias</a>
             <a href="#">Sobre nosotros</a>
         </div>
-            <div id="nav-right">
-                {% if username == None %}
-                    <a href="#">Registrarse</a>
-                    <a href="{% url 'login' %}">Iniciar sesión</a>
-                {% else %}
-                    <a href="#">{{username}}</a>
-                {% endif %}
-            </div>
+  
+        <div id="nav-right">
+            {% if username == None %}
+                <a href={% url 'register' %}>Registrarse</a>
+                <a href={% url 'login' %}>Iniciar sesión</a>
+            {% else %}
+                <a href="#">{{username}}</a>
+            {% endif %}
+        </div>
+  
+  
         <section class="dropdown">
             <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Galería</a></li>
-                <li><a href="#">Convocatorias</a></li>
-                <li><a href="#">Sobre nosotros</a></li>
+              <li><a href={% url 'core:home' %}>Home</a></li>
+              <li><a href={% url 'core:categories' %}>Galería</a></li>
+              <li><a href="#">Convocatorias</a></li>
+              <li><a href="#">Sobre nosotros</a></li>
             </ul>
-        </section>    
+        </section>      
     </nav>
 
     <div id="hero">
@@ -82,15 +85,15 @@
 
     <div id="introduction">
         <div id="intro-text">
-            <div class= "d-flex flex-row mb-2 align-items-center">
-                <img src="{% static 'founder.png'%}" class="me-4 class="img-fluid alt="" width="100px">
+            <div class= "d-flex flex-row mb-4 align-items-center">
+                <img src="{% static 'founder.png'%}" class="me-4 class="img-fluid alt="" width="80px">
                 <div id="epa" class="text-white" >
                     <h4>Andrés Valencia</h4>
                     <p>Director creativo</p>
                 </div>
             </div>
 
-            <h2 class="text-white">El mejor lugar para poner en marcha su proyecto</h2>
+            <h3 class="text-white">El mejor lugar para poner en marcha su proyecto</h3>
             <p class="text-white">
                 Knowledge Projects hace parte de DreamsBank. Nuestro objetivo es
                 contribuir a que el mundo funcione mejor y cambiar la vida de las personas a través

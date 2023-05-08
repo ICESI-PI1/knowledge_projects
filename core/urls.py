@@ -7,6 +7,7 @@ app_name = 'core'
 urlpatterns = [
     path('', views.Home_view.as_view(), name='home'),
     path('home/', views.Home_view.as_view(), name='home'),
+    path('categories/', views.Categories_view.as_view(), name='categories'),
 ]
 
 urlpatterns += staticfiles_urlpatterns()
