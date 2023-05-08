@@ -6,7 +6,8 @@ class State(models.Model):
     description = models.TextField()
 
 class Category(models.Model):
-    category_name = models.CharField(max_length=30)
+    category_name = models.TextField(max_length=30)
+    icon_src = models.TextField(max_length=30)
     description = models.TextField()
 
 class Project(models.Model):
