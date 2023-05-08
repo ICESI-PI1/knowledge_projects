@@ -1,19 +1,33 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
-from Auth.decorators import client_required,employee_required
 from django.views import View
-
-from .models import Card
+from Auth.decorators import client_required,employee_required
+from django.views import Viewfrom
+from core.models import Category
 
 # Create your views here.
 
 @login_required
 @client_required
-def home(request):
-    obj = Card.objects.all()
-    return render(request,'index.html',{'card':obj})
+class Home_view(View):   
+    def get(self, request):
+        
+        username = None
+        if request.user.is_authenticated:
+            username = request.user.username
+            context = {"username" : 'Hola, ' + username.capitalize(),}
+            return HttpResponse(render(request,'home_view.html',context))
+        
+        return HttpResponse(render(request,'home_view.html'))
 
+class Categories_view(View):   
+    def get(self, request):
+        data = Category.objects.all()
+        context={
+        'data': data
+        }
+        return HttpResponse(render(request,'categories_view.html',context))
 class detailed_info(View):
     def get(self,request):
         obj = Card.objects.all()
@@ -25,3 +39,6 @@ class detailed_info(View):
 class binnacle(View):
     def get(self,request):
       return render(request,'binnacle.html')
+def home(request):
+    obj = Card.objects.all()
+    return render(request,'index.html',{'card':obj})
