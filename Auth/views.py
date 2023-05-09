@@ -46,7 +46,6 @@ class Client_register_view(CreateView):
 
 
 
-
 def user_login(request):
 
     if(request.method == 'POST'):

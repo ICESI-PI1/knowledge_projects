@@ -20,7 +20,7 @@ class Project(models.Model):
     work_plan = models.TextField()
     budget = models.DecimalField(max_digits=10,decimal_places=0)
     goal = models.TextField()
-
+    
     
     state =models.ForeignKey(State,on_delete=models.CASCADE)
     category = models.ForeignKey(Category,on_delete=models.CASCADE)
