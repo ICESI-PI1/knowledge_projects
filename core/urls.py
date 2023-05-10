@@ -11,6 +11,8 @@ urlpatterns = [
     path('categories/', views.Categories_view.as_view(), name='categories'),
     path('detailedinfo/', detailed_info.as_view(), name='detailedinfo'),
     path('binnacle/', binnacle.as_view(), name='binnacle'),
+    path('ehome/', views.Home_view_employee.as_view(), name='employee_home'),
+
 ]
 
 urlpatterns += staticfiles_urlpatterns()

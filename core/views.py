@@ -3,13 +3,10 @@ from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.views import View
 from Auth.decorators import client_required,employee_required
-from django.views import Viewfrom
 from core.models import Category
 
 # Create your views here.
 
-@login_required
-@client_required
 class Home_view(View):   
     def get(self, request):
         
@@ -39,6 +36,10 @@ class detailed_info(View):
 class binnacle(View):
     def get(self,request):
       return render(request,'binnacle.html')
-def home(request):
-    obj = Card.objects.all()
-    return render(request,'index.html',{'card':obj})
+
+
+
+class Home_view_employee(View):   
+    def get(self, request):
+        
+        return HttpResponse(render(request,'employee_home_view.html'))

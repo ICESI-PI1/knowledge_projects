@@ -5,9 +5,5 @@ from Auth import views
  
 urlpatterns = [
     path('register/',Client_register_view.as_view(),name='register'),
-    path('',User_login_view.as_view(),name='login'),
     path('login/',User_login_view.as_view(),name='login'),
-    path('detailedinfo/', views.detailed_info, name='detailedinfo'),
-    path('bitacora/', views.bitacora, name='bitacora'),
-
 ] 
