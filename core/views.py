@@ -26,13 +26,14 @@ class Categories_view(View):
         'data': data
         }
         return HttpResponse(render(request,'categories_view.html',context))
+    
 class detailed_info(View):
     def get(self,request):
         obj = Card.objects.all()
         card_id= self.request.GET.get("lang")
         if card_id:
             obj= obj.filter(id=card_id)
-        return HttpResponse(render(request,'detailedinfo.html',{'project':obj,}))
+        return HttpResponse(render(request,'detailedinfo.html',{'card':obj,}))
 
 class binnacle(View):
     def get(self,request):
