@@ -1,6 +1,6 @@
 from django.contrib import admin
 from .models import State,Category,Project,Convocatory
-from .models import Binnacle,Log,Card
+from .models import Binnacle,Log
 
 
 # Register your models here.
@@ -10,4 +10,3 @@ admin.site.register(Project)
 admin.site.register(Convocatory)
 admin.site.register(Binnacle)
 admin.site.register(Log)
-admin.site.register(Card)
