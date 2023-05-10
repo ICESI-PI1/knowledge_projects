@@ -8,7 +8,6 @@ from .models import Card
 
 # Create your views here.
 
-
 class Home_view(View):   
     def get(self, request):
         
@@ -40,6 +39,11 @@ class binnacle(View):
     def get(self,request):
       return render(request,'binnacle.html')
 
+
+class Home_view_employee(View):   
+    def get(self, request):
+        return HttpResponse(render(request,'employee_home_view.html'))
+
 class Gallery(View):
     def get(self,request):
         obj = Card.objects.all()
@@ -67,3 +71,4 @@ class Inscription(View):
         if card_id:
             obj= obj.filter(id=card_id)
         return HttpResponse(render(request,'inscription.html',{'card':obj, 'card1':obj1})) 
+

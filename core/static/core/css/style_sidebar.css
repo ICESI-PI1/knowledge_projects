@@ -1,0 +1,62 @@
+:root{
+    --primary:#ffd862;
+    --secondary: #087F8C;
+}
+body{
+    background: #eee;
+}
+
+#side_nav{
+    background: var(--primary);
+    min-width: 250px;
+    max-width: 250px;
+    transition: all 0.2s;
+}
+.content{
+    min-height: 100vh;
+    width: 100%;
+}
+
+hr.h-color{
+    background: var(--secondary);
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 0;
+}
+
+#logo_image{
+    height: 90px;
+    width: 220px;
+}
+
+.sidebar li.active{
+    height: 30px;
+    width: auto;
+    height: auto;
+    background-color: #087F8C;
+    border-radius: 8px;
+}
+.sidebar li.active a, .sidebar li.active a:hover{
+    color:white;
+}
+.sidebar li a{
+    color:var(--secondary)  ;
+}
+a{
+    color: var(--secondary)
+}
+
+@media(max-width: 767px){
+    #side_nav{
+        margin-left: -250px;
+        position: fixed;
+        min-height: 100vh;
+        z-index: 1;
+    }
+    #side_nav.active{
+        margin-left: 0;
+    }
+}

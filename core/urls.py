@@ -1,4 +1,4 @@
-from django.urls import include, path
+from django.urls import path
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from core import views
 from core.views import detailed_info
@@ -15,6 +15,7 @@ urlpatterns = [
     path('categories/', views.Categories_view.as_view(), name='categories'),
     path('detailedinfo/', detailed_info.as_view(), name='detailedinfo'),
     path('binnacle/', binnacle.as_view(), name='binnacle'),
+    path('ehome/', views.Home_view_employee.as_view(), name='employee_home'),
     path('gallery/', Gallery.as_view(), name ='gallery'),
     path('project/', Project.as_view(), name ='project'),
     path('convocatory/', Convocatory.as_view(), name='convocatory'),
