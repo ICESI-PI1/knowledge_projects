@@ -1,0 +1,27 @@
+{% extends "layouts/core/base_employee_view.html" %}
+{% block content%}
+<div class="row">
+    <h1>Categorías</h1>
+    <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4"></div>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Descripción</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for c in categories %}
+                        <tr>
+                            <td>{{ c.category_name }}</td>
+                            <td>{{ c.description }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+
+                </table>
+            </div>
+</div>
+    
+{% endblock %}
