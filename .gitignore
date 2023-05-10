@@ -1,4 +1,5 @@
+
 Lib/
 venv/
-_pycache_/
+__pycache__
 db.sqlite3
