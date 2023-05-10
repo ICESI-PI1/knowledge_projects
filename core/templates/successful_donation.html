@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet" />
+        <link href="{% static 'donation_style.css' %}" rel="stylesheet" />
+        <title>Donación exitosa</title>
+    </head>
+    <body>
+        {%for x in card%}
+        <div class="imgBackground" ></div>
+        <img class="imgBackground" src="{{x.img.url}}" alt="Imagen">
+        <div class="fn2 ">
+            
+            <div class="form2 container">
+                <h3>Se han transferido los recursos a</h3>
+                <h2 class="green">{{x.title}}</h2>
+
+                <div class="group">
+                    En nombre de {{x.title}}, queremos agradecer sinceramente su generosa donación. Su apoyo financiero nos ayuda a continuar trabajando en nuestra misión y nos acerca un poco más a lograr nuestros objetivos.
+                    
+                </div>
+                <div class="group">                    
+                    ¡Gracias por confiar en nosotros!
+                </div>                          
+
+                    
+                    <a  class="primary-btn" href="{% url 'core:gallery' %}?lang={{card.id}}">Regresar</a>
+                
+            </div>
+            
+        
+        </div>
+        {%endfor%}
+    </body>
+</html>

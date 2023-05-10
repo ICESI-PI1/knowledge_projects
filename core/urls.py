@@ -7,6 +7,8 @@ from core.views import Project
 from core.views import Gallery
 from core.views import Convocatory
 from core.views import Inscription
+from core.views import Donation_methods
+from core.views import Successful_donation
 app_name = 'core'
 
 urlpatterns = [
@@ -19,6 +21,8 @@ urlpatterns = [
     path('project/', Project.as_view(), name ='project'),
     path('convocatory/', Convocatory.as_view(), name='convocatory'),
     path('inscription/', Inscription.as_view(), name='inscription'),
+    path('donation_methods/', Donation_methods.as_view(), name='donation_methods'),
+    path('successful_donation/', Successful_donation.as_view(), name='successful_donation'),
 ]
 
 urlpatterns += staticfiles_urlpatterns()
