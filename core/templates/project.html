@@ -117,9 +117,9 @@
         </div>
         
         <div class="info">
-          <h4 style="font-family: 'DM Sans'; color: #087F8C ;">{{qs.slug}}</h4>
-          <h1 style="font-family: 'DM Sans'; color: black ; margin-top:1rem;">{{qs.title}}</h1>
-          <p style="margin-top:2rem;">{{qs.description}}</p>
+          <h4 style="font-family: 'DM Sans'; color: #087F8C ;">{{qs.category.category_name}}</h4>
+          <h1 style="font-family: 'DM Sans'; color: black ; margin-top:1rem;">{{qs.projec_name}}</h1>
+          <p style="margin-top:2rem;">{{qs.project_description}}</p>
 
           <div class="progress" style="margin-top:4rem;">
             <div class="progress-bar" role="progressbar" aria-label="Basic example" style="width: 55%" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>
@@ -164,11 +164,11 @@
                 <img src="{{x.img.url}}" class="card-img-top" alt="..." style="height: 10rem;">
                 <div class="card-body">
                     <div class="container" style="margin-left: -2rem;" >
-                      <button class="button button1" >{{x.slug}}</button>
+                      <button class="button button1" >{{x.category.category_name}}</button>
                     </div>
-                  <h5 class="card-title">{{x.title}}</h5>
+                  <h5 class="card-title">{{x.projec_name}}</h5>
     
-                  <p class="card-text">{{x.description}}</p>
+                  <p class="card-text">{{x.project_description}}</p>
                   <div class="container2" >
                     <a class="button button1"  href="{% url 'core:project' %}?lang={{x.id}}">Conocer más</a>
                   </div>

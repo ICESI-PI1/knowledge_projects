@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.views import View
 from Auth.decorators import client_required,employee_required
 from core.models import Category
-from .models import Card
+from core.models import Project
 
 # Create your views here.
 
@@ -29,7 +29,7 @@ class Categories_view(View):
     
 class detailed_info(View):
     def get(self,request):
-        obj = Card.objects.all()
+        obj = Project.objects.all()
         card_id= self.request.GET.get("lang")
         if card_id:
             obj= obj.filter(id=card_id)
@@ -46,13 +46,13 @@ class Home_view_employee(View):
 
 class Gallery(View):
     def get(self,request):
-        obj = Card.objects.all()
+        obj = Project.objects.all()
         return HttpResponse(render(request,'gallery.html',{'card':obj}))
     
-class Project(View):
+class Project_view(View):
     def get(self,request):
-        obj = Card.objects.all()
-        obj1 = Card.objects.all()
+        obj = Project.objects.all()
+        obj1 = Project.objects.all()
         card_id= self.request.GET.get("lang")
         if card_id:
             obj= obj.filter(id=card_id)
@@ -60,13 +60,13 @@ class Project(View):
     
 class Convocatory(View):
     def get(self, request):
-        obj = Card.objects.all()
+        obj = Project.objects.all()
         return HttpResponse(render(request,'convocatory.html',{'card':obj}))
     
 class Inscription(View):
      def get(self,request):
-        obj = Card.objects.all()
-        obj1 = Card.objects.all()
+        obj = Project.objects.all()
+        obj1 = Project.objects.all()
         card_id= self.request.GET.get("lang")
         if card_id:
             obj= obj.filter(id=card_id)

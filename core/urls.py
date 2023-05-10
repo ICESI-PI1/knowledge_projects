@@ -3,7 +3,7 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from core import views
 from core.views import detailed_info
 from core.views import binnacle
-from core.views import Project
+from core.views import Project_view
 from core.views import Gallery
 from core.views import Convocatory
 from core.views import Inscription
@@ -17,7 +17,7 @@ urlpatterns = [
     path('binnacle/', binnacle.as_view(), name='binnacle'),
     path('ehome/', views.Home_view_employee.as_view(), name='employee_home'),
     path('gallery/', Gallery.as_view(), name ='gallery'),
-    path('project/', Project.as_view(), name ='project'),
+    path('project/', Project_view.as_view(), name ='project'),
     path('convocatory/', Convocatory.as_view(), name='convocatory'),
     path('inscription/', Inscription.as_view(), name='inscription'),
 ]
