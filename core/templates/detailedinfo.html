@@ -16,7 +16,7 @@
       <a href="{% url 'core:binnacle' %}" class="...">
         <button class="knwo_button" >Donar</button></a>
     </header>
-    {%for x in project%}
+    {%for x in card%}
     <section class="know_section">
         <div id="carouselExampleIndicators" class="carousel slide">
             <div class="carousel-indicators">
@@ -52,7 +52,7 @@
         <BR></BR>
         <div class="text-conteiner">
             <p>
-              {{x.description}}
+              {{x.project_description}}
             </p>    
             <p>
               Donec feugiat nisi a tempor condimentum. Ut ut tincidunt eros. Curabitur consequat sollicitudin fermentum. Quisque vitae interdum elit,
@@ -63,13 +63,13 @@
         </section>
     <aside>
         <h4 class="colored-h">Gastronomia</h4>
-        <h3>{{x.title}}</h3>
+        <h3>{{x.projec_name}}</h3>
         <br>
        <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod est eu enim pulvinar dictum. Sed ac pulvinar arcu. Proin tempus metus dolor, nec accumsan purus tempor vel. 
 
 Vivamus in pretium ante, eu mollis mauris. Mauris non efficitur tortor. Cras et lorem malesuada, pellentesque tellus ac, aliquet urna. Nullam eleifend consectetur.</p>
 
-<p>Prpuesto por <B class="big-text">{{x.organization}}</B></p>
+<p>Prpuesto por <B class="big-text">Nadie</B></p>
 <br>
 <br>
 
