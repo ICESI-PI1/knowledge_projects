@@ -176,3 +176,21 @@ class Edit_category(View):
             'form': form,
         }
         return render(request, 'employee_views/edit_category.html', context)
+
+class Donation_methods(View):
+    def get(self,request):
+        obj = Card.objects.all()
+        card_id= self.request.GET.get("lang")
+        if card_id:
+            obj= obj.filter(id=card_id)
+        return HttpResponse(render(request,'donation_methods.html',{'card':obj}))
+    
+class Successful_donation(View):
+    def get(self,request):
+        obj = Card.objects.all()
+        card_id= self.request.GET.get("lang")
+        if card_id:
+            obj= obj.filter(id=card_id)
+
+        return HttpResponse(render(request,'successful_donation.html',{'card':obj}))
+        

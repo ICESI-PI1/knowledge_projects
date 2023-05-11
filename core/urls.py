@@ -7,6 +7,8 @@ from core.views import Project_view
 from core.views import Gallery
 from core.views import Convocatory
 from core.views import Inscription
+from core.views import Donation_methods
+from core.views import Successful_donation
 app_name = 'core'
 base_url_employee = 'ehome/'
 
@@ -21,8 +23,11 @@ urlpatterns = [
     path('project/', Project_view.as_view(), name ='project'),
     path('convocatory/', Convocatory.as_view(), name='convocatory'),
     path('inscription/', Inscription.as_view(), name='inscription'),
-    path(base_url_employee+'categories/',views.Employee_categories.as_view(),name='ecategories'),
+    path('donation_methods/', Donation_methods.as_view(), name='donation_methods'),
+    path('successful_donation/', Successful_donation.as_view(), name='successful_donation'),
+    path('ehome/categories/',views.Employee_categories.as_view(),name='ecategories'),
     path('ehome/projects/',views.Employee_projects.as_view(),name='eprojects'),
+    path(base_url_employee+'categories/',views.Employee_categories.as_view(),name='ecategories'),
     path(base_url_employee+'convocatories/',views.Employee_convocatories.as_view(),name='econvocatories'),
     path(base_url_employee+'clients/',views.Employee_clients.as_view(),name='eclients'),
     path(base_url_employee+'tools/',views.Employee_tools.as_view(),name='etools'),
