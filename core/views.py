@@ -41,7 +41,14 @@ class binnacle(View):
 
 class Gallery(View):
     def get(self,request):
+<<<<<<< refs/remotes/origin/Project_views
         obj = Card.objects.all()
+=======
+        obj = Project.objects.all()
+        category_id= self.request.GET.get("lang")
+        if category_id:
+            obj= obj.filter(category = category_id)
+>>>>>>> local
         return HttpResponse(render(request,'gallery.html',{'card':obj}))
     
 class Project(View):
@@ -49,9 +56,12 @@ class Project(View):
         obj = Card.objects.all()
         obj1 = Card.objects.all()
         card_id= self.request.GET.get("lang")
+        p = Project.objects.get(project_id = card_id)
         if card_id:
-            obj= obj.filter(id=card_id)
+            obj= obj.filter(project_id=card_id)
+            obj1=obj1.filter(category = p.category.category_id)
         return HttpResponse(render(request,'project.html',{'card':obj, 'card1':obj1})) 
+<<<<<<< refs/remotes/origin/Project_views
     
 class Convocatory(View):
     def get(self, request):
@@ -62,6 +72,20 @@ class Inscription(View):
      def get(self,request):
         obj = Card.objects.all()
         obj1 = Card.objects.all()
+=======
+
+class Donation_methods(View):
+    def get(self,request):
+        obj = Project.objects.all()
+        card_id= self.request.GET.get("lang")
+        if card_id:
+            obj= obj.filter(id=card_id)
+        return HttpResponse(render(request,'donation_methods.html',{'card':obj}))
+    
+class Successful_donation(View):
+    def get(self,request):
+        obj = Project.objects.all()
+>>>>>>> local
         card_id= self.request.GET.get("lang")
         if card_id:
             obj= obj.filter(id=card_id)

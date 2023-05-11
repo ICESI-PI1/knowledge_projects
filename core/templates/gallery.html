@@ -56,11 +56,15 @@
                 <div class="container" style="margin-left: -2rem;" >
                   <button class="button button1" >{{x.slug}}</button>
                 </div>
+<<<<<<< refs/remotes/origin/Project_views
               <h5 class="card-title">{{x.title}}</h5>
+=======
+              <h5 class="card-title">{{x.project_name}}</h5>
+>>>>>>> local
 
               <p class="card-text">{{x.description}}</p>
               <div class="container2" >
-                <a class="button button1"  href="{% url 'core:project' %}?lang={{x.id}}">Conocer más</a>
+                <a class="button button1"  href="{% url 'core:project' %}?lang={{x.project_id}}">Conocer más</a>
               </div>
             </div>
           </div>

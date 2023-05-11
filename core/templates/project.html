@@ -140,7 +140,12 @@
           <div class="flex-container2">
 
             <button class="button button1">Donar</button>
+<<<<<<< refs/remotes/origin/Project_views
             <button class="button button2" style="margin-left: 2rem;" >Información detallada</button>
+=======
+            <a href="{% url 'core:detailedinfo' %}" class="..." href="{% url 'core:detailedinfo' %}?lang={{x.project_id}}"><button class="button button2" style="margin-left: 2rem;" >Información detallada</button>
+            </a>
+>>>>>>> local
 
           </div>
         </div>
@@ -169,7 +174,7 @@
     
                   <p class="card-text">{{x.description}}</p>
                   <div class="container2" >
-                    <a class="button button1"  href="{% url 'core:project' %}?lang={{x.id}}">Conocer más</a>
+                    <a class="button button1"  href="{% url 'core:project' %}?lang={{x.project_id}}">Conocer más</a>
                   </div>
                 </div>
               </div>

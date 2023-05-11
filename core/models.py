@@ -10,6 +10,12 @@ class Category(models.Model):
     icon_src = models.TextField(max_length=30)
     description = models.TextField()
 
+class Convocatory(models.Model):
+    #Primary key
+    convocatory_id = models.CharField(primary_key=True, max_length=5)
+    start_date = models.DateField()
+    closing_date = models.DateField()
+
 class Project(models.Model):
     #Primary key
     project_id = models.CharField(primary_key=True,max_length=5)
@@ -25,17 +31,15 @@ class Project(models.Model):
     
     state =models.ForeignKey(State,on_delete=models.CASCADE)
     category = models.ForeignKey(Category,on_delete=models.CASCADE)
-
-      
-class Convocatory(models.Model):
-    #Primary key
-    convocatoryId = models.CharField(max_length=5)
-
-    start_date = models.DateField()
-    closing_date = models.DateField()
-
-    #Foreign key
-    project = models.ForeignKey(Project,models.CASCADE)
+<<<<<<< refs/remotes/origin/Project_views
+=======
+    img=models.FileField(upload_to="pic/%y/",default="")
+    convocatory = models.ForeignKey(Convocatory, on_delete=models.CASCADE, null=True, blank=True)
+    def __str__(self):
+        return self.project_name
+    class Meta :
+        ordering=('-project_id',)
+>>>>>>> local
 
 class Binnacle(models.Model):
     #Primary key
