@@ -24,6 +24,11 @@ urlpatterns = [
     path('inscription/', Inscription.as_view(), name='inscription'),
     path('donation_methods/', Donation_methods.as_view(), name='donation_methods'),
     path('successful_donation/', Successful_donation.as_view(), name='successful_donation'),
+    path('ehome/categories/',views.Employee_categories.as_view(),name='ecategories'),
+    path('ehome/projects/',views.Employee_projects.as_view(),name='eprojects'),
+    path('ehome/convocatories/',views.Employee_convocatories.as_view(),name='econvocatories'),
+    path('ehome/clients/',views.Employee_clients.as_view(),name='eclients'),
+    path('ehome/tools/',views.Employee_tools.as_view(),name='etools'),
 ]
 
 urlpatterns += staticfiles_urlpatterns()

@@ -1,8 +1,8 @@
 from django.shortcuts import render,redirect
-from django.contrib.auth import authenticate, login 
+from django.contrib.auth import authenticate, login, logout
 from .forms import User_login_form,Client_register_form
 from django.views.generic import CreateView
-from .models import User
+from .models import User,Client
 from django.urls import reverse_lazy,reverse
 from django.contrib.auth.views import LoginView
 
@@ -38,20 +38,29 @@ class Client_register_view(CreateView):
 
 
     def form_valid(self, form):
-        # Crear el usuaraio
-        user = User.objects.create_user(
-            username=form.cleaned_data['username'],
-            password=form.cleaned_data['password'],
-            is_client=True
+        user = User()
+        user.username = form.cleaned_data['username']
+        user.password = form.cleaned_data['password']
+        user.is_client = True  
+        user.is_employee = False  
+        user.save()
+   
+        client = Client.objects.create(
+            user=user,
+            name=form.cleaned_data['name'],
+            phone_number=form.cleaned_data['phone_number'],
+            address=form.cleaned_data['address'],
+            representative_name=form.cleaned_data['representative_name'],
+            phone_number_representative=form.cleaned_data['phone_number_representative']
         )
 
-        client = form.save(commit=False)
-        client.user = user
-        client.save()
-
         
+        order = form.save(commit=False) 
+        order.user = user 
+        order.save() 
 
         return super().form_valid(form)
+
 
 
 
@@ -74,3 +83,6 @@ def user_login(request):
     else:
         return render(request,'login.html')
 
+def logout_request(request):
+    logout(request)
+    return redirect('core:home')
