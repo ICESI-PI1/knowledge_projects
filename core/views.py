@@ -1,10 +1,11 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.views import View
 from Auth.decorators import client_required,employee_required
 from core.models import Category
 from core.models import Project
+from .forms import Edit_category_form
 
 # Create your views here.
 
@@ -53,7 +54,7 @@ class Employee_categories(View):
             'active': 'categories',
             'categories':Category.objects.all
         }
-        return HttpResponse(render(request,'categories_ehome.html',context))
+        return HttpResponse(render(request,'employee_views/categories_ehome.html',context))
     
 class Employee_projects(View):   
     def get(self, request):
@@ -112,6 +113,69 @@ class Inscription(View):
             obj= obj.filter(id=card_id)
         return HttpResponse(render(request,'inscription.html',{'card':obj, 'card1':obj1})) 
 
+class Delete_category(View):
+    def deleteCategory(request,category_id):
+        category = Category.objects.get(category_id=category_id)
+        category.delete()
+
+        return redirect('core:ecategories')
+
+class Save_Category(View):
+    def get(self,request):
+
+
+        context={
+            'title' : 'Guardar Categoría',
+            'active': 'categories',
+            'form': Edit_category_form(),
+        }
+        return HttpResponse(render(request,'employee_views/edit_category.html',context))
+    
+    def post(self, request):
+        form = Edit_category_form(request.POST)
+        if form.is_valid():
+            form.save()  # Guardar la categoría en la base de datos
+            return redirect('core:ecategories')  # Redirigir a la vista deseada después de guardar
+        
+
+        # Si el formulario no es válido, volver a renderizar el formulario con los errores
+        context = {
+            'title': 'Guardar Categoría',
+            'active': 'categories',
+            'form': form,
+        }
+        return render(request, 'employee_views/edit_category.html', context)
+    
+        
+
+
+
+    
+class Edit_category(View):
+    def get(self,request,category_id):
+        category = Category.objects.get(category_id=category_id)
+
+        context={
+            'title' : 'Editar Categoría',
+            'category':category,
+            'active': 'categories',
+            'form': Edit_category_form(instance=category),
+        }
+        return HttpResponse(render(request,'employee_views/edit_category.html',context))
+    
+    def post(self, request, category_id):
+        category = Category.objects.get(category_id=category_id)
+        form = Edit_category_form(request.POST, instance=category)
+        if form.is_valid():
+            form.save()
+            return redirect('core:ecategories')  
+
+        context = {
+            'category': category,
+            'active': 'categories',
+            'form': form,
+        }
+        return render(request, 'employee_views/edit_category.html', context)
 
 class Donation_methods(View):
     def get(self,request):
@@ -130,4 +194,3 @@ class Successful_donation(View):
 
         return HttpResponse(render(request,'successful_donation.html',{'card':obj}))
         
-
