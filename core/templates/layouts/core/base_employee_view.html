@@ -14,26 +14,29 @@
 
 
 
-    <title>Hello, world!</title>
+    <title>Employee Home</title>
   </head>
   <body>
     <div class="main-container d-flex d-flex">
       <div class="sidebar" id="side_nav">
         <div class="header-box px-2 pt-3 pb-4 d-flex justify-content-between">
+          
           <h1 class="fs-4"><img src="/media/pic/admin_view/STR_Certification-1024x254.png" id="logo_image"
             alt="logo"></h1>
             <button class="btn d-md-none d-block close-btn "><i class="bi bi-list"></i></i></button>
         </div>
         <ul class="list-unstyled px-2">
-          <li class="active"><a href="#" class="text-decoration-none px-3 py-2 d-block"><i class="bi bi-list"></i>Tablero</a></li>
-          <li class=""><a href="#" class="text-decoration-none px-3 py-2 d-block"><i class="bi bi-box-seam-fill"></i>Proyectos</a></li>
-          <li class=""><a href="#" class="text-decoration-none px-3 py-2 d-block"><i class="bi bi-calendar-check-fill"></i>Convocatorias</a></li>
-          <li class=""><a href="#" class="text-decoration-none px-3 py-2 d-block"><i class="bi bi-people-fill"></i>Clientes</a></li>
+          <li class="{% if active == 'dashboard' %}active{% endif %}"><a href="{% url 'core:employee_home' %}" class="text-decoration-none px-3 py-2 d-block"><i class="bi bi-list"></i>Tablero</a></li>
+          <li class="{% if active == 'categories' %}active{% endif %}"><a href="{% url 'core:ecategories' %}" class="text-decoration-none px-3 py-2 d-block"><i class="bi bi-tags-fill"></i>Categorías</a></li>
+          <li class="{% if active == 'projects' %}active{% endif %}"><a href="{% url 'core:eprojects' %}" class="text-decoration-none px-3 py-2 d-block"><i class="bi bi-box-seam-fill"></i>Proyectos</a></li>
+          
+          <li class="{% if active == 'convocatories' %}active{% endif %}"><a href="{% url 'core:econvocatories' %}" class="text-decoration-none px-3 py-2 d-block"><i class="bi bi-calendar-check-fill"></i>Convocatorias</a></li>
+          <li class="{% if active == 'clients' %}active{% endif %}"><a href="{% url 'core:eclients' %}" class="text-decoration-none px-3 py-2 d-block"><i class="bi bi-people-fill"></i>Clientes</a></li>
 
         </ul>
         <hr class="h-color mx-2">
         <ul class="list-unstyled px-2">
-          <li class=""><a href="#" class="text-decoration-none px-3 py-2 d-block"><i class="bi bi-gear-fill"></i>Configuración</a></li>
+          <li class="{% if active == 'tools' %}active{% endif %}"><a href="{% url 'core:etools' %}" class="text-decoration-none px-3 py-2 d-block"><i class="bi bi-gear-fill"></i>Configuración</a></li>
         </ul>
         
       </div>

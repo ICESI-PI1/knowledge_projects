@@ -20,6 +20,11 @@ urlpatterns = [
     path('project/', Project_view.as_view(), name ='project'),
     path('convocatory/', Convocatory.as_view(), name='convocatory'),
     path('inscription/', Inscription.as_view(), name='inscription'),
+    path('ehome/categories/',views.Employee_categories.as_view(),name='ecategories'),
+    path('ehome/projects/',views.Employee_projects.as_view(),name='eprojects'),
+    path('ehome/convocatories/',views.Employee_convocatories.as_view(),name='econvocatories'),
+    path('ehome/clients/',views.Employee_clients.as_view(),name='eclients'),
+    path('ehome/tools/',views.Employee_tools.as_view(),name='etools'),
 ]
 
 urlpatterns += staticfiles_urlpatterns()

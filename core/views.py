@@ -42,8 +42,48 @@ class binnacle(View):
 
 class Home_view_employee(View):   
     def get(self, request):
-        return HttpResponse(render(request,'employee_home_view.html'))
+        context={
+            'active': 'dashboard'
+        }
+        return HttpResponse(render(request,'employee_home_view.html',context))
+    
+class Employee_categories(View):   
+    def get(self, request):
+        context={
+            'active': 'categories',
+            'categories':Category.objects.all
+        }
+        return HttpResponse(render(request,'categories_ehome.html',context))
+    
+class Employee_projects(View):   
+    def get(self, request):
+        context={
+            'active': 'projects',
+        }
+        return HttpResponse(render(request,'projects_ehome.html',context))
+    
 
+class Employee_convocatories(View):   
+    def get(self, request):
+        context={
+            'active': 'convocatories',
+        }
+        return HttpResponse(render(request,'convocatories_ehome.html',context))
+    
+class Employee_clients(View):   
+    def get(self, request):
+        context={
+            'active': 'clients',
+        }
+        return HttpResponse(render(request,'clients_ehome.html',context))
+    
+class Employee_tools(View):   
+    def get(self, request):
+        context={
+            'active': 'tools',
+        }
+        return HttpResponse(render(request,'tools_ehome.html',context))
+    
 class Gallery(View):
     def get(self,request):
         obj = Project.objects.all()
