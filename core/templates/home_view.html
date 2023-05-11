@@ -40,8 +40,8 @@
   
         <div id="nav-right">
             {% if username == None %}
-                <a href={% url 'register' %}>Registrarse</a>
-                <a href={% url 'login' %}>Iniciar sesión</a>
+                <a href={% url 'auth:register' %}>Registrarse</a>
+                <a href={% url 'auth:login' %}>Iniciar sesión</a>
             {% else %}
                 <a href="#">{{username}}</a>
             {% endif %}

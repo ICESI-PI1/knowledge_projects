@@ -9,7 +9,7 @@ class State(models.Model):
         return self.state_name
 
 class Category(models.Model):
-    category_id=models.CharField(primary_key=True,max_length=5)
+    category_id=models.AutoField(primary_key=True)
     category_name = models.TextField(max_length=30)
     icon_src = models.TextField(max_length=30)
     description = models.TextField()

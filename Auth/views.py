@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect
-from django.contrib.auth import authenticate, login 
+from django.contrib.auth import authenticate, login,logout 
 from .forms import User_login_form,Client_register_form
 from django.views.generic import CreateView
 from .models import User,Client
@@ -83,3 +83,6 @@ def user_login(request):
     else:
         return render(request,'login.html')
 
+def logout_request(request):
+    logout(request)
+    return redirect('core:home')
