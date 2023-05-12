@@ -14,10 +14,10 @@
             
             <div class="form2 container">
                 <h3>Se han transferido los recursos a</h3>
-                <h2 class="green">{{x.title}}</h2>
+                <h2 class="green">{{x.project_name}}</h2>
 
                 <div class="group">
-                    En nombre de {{x.title}}, queremos agradecer sinceramente su generosa donación. Su apoyo financiero nos ayuda a continuar trabajando en nuestra misión y nos acerca un poco más a lograr nuestros objetivos.
+                    En nombre de {{x.project_name}}, queremos agradecer sinceramente su generosa donación. Su apoyo financiero nos ayuda a continuar trabajando en nuestra misión y nos acerca un poco más a lograr nuestros objetivos.
                     
                 </div>
                 <div class="group">                    
@@ -25,7 +25,7 @@
                 </div>                          
 
                     
-                    <a  class="primary-btn" href="{% url 'core:gallery' %}?lang={{card.id}}">Regresar</a>
+                    <a  class="primary-btn" href="{% url 'core:gallery' %}">Regresar</a>
                 
             </div>
             
