@@ -16,28 +16,19 @@
         <br>
         <h4 class="colored-h">BITACORA</h4>
         <br>
-        <h1>Panes que bendicion</h1>
+        {%for x in card%}
+        {% if forloop.first %}
+        <h1>{{x.projec_name}}</h1>
+        
         <br>
-        <div class="bit-conteiner">
+        <div class="bit-conteiner">{% endif %}
 
             <div class="header-bit-cointeiner">  <h3>&nbsp;&nbsp;16/07/22</h3></div><br>
-            <p class="text-conteiner-bit">Donec feugiat nisi a tempor condimentum. Ut ut tincidunt eros. Curabitur consequat sollicitudin fermentum. Quisque vitae interdum elit, quis euismod justo.
-                Donec feugiat nisi a tempor condimentum. Ut ut tincidunt eros. Curabitur consequat sollicitudin fermentum. Quisque vitae interdum elit, quis euismod justo.</p> 
+            <p class="text-conteiner-bit">{{x.description}}</p> 
                 <br>
         </div>
       
-        <div class="bit-conteiner">
-
-            <div class="header-bit-cointeiner">  <h3>&nbsp;&nbsp;16/07/22</h3></div><br>
-            <p class="text-conteiner-bit">Donec feugiat nisi a tempor condimentum. Ut ut tincidunt eros. Curabitur consequat sollicitudin fermentum. Quisque vitae interdum elit, quis euismod justo.
-                Donec feugiat nisi a tempor condimentum. Ut ut tincidunt eros. Curabitur consequat sollicitudin fermentum. Quisque vitae interdum elit, quis euismod justo.</p> <br>
-        </div>
-        <div class="bit-conteiner">
-
-            <div class="header-bit-cointeiner">  <h3>&nbsp;&nbsp;16/07/22</h3></div><br>
-            <p class="text-conteiner-bit">Donec feugiat nisi a tempor condimentum. Ut ut tincidunt eros. Curabitur consequat sollicitudin fermentum. Quisque vitae interdum elit, quis euismod justo.
-                Donec feugiat nisi a tempor condimentum. Ut ut tincidunt eros. Curabitur consequat sollicitudin fermentum. Quisque vitae interdum elit, quis euismod justo.</p> <br>
-        </div>
+        {%endfor%}
     </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>

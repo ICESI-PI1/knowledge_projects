@@ -1,0 +1,38 @@
+{% extends "layouts/core/base_employee_view.html" %}
+{% block content%}
+<h4>Categorías</h4>
+<a href="save">
+<button class="btn btn-succes" style="background-color:#087F8C;color:white">Guardar</button>
+</a>
+
+
+<div class="row">
+
+    <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4"></div>
+            <div class="table-responsive">
+                
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Descripción</th>
+                            <th colspan="">Opciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for c in categories %}
+                        <tr>
+                            <td>{{ c.category_id }}</td>
+                            <td>{{ c.category_name }}</td>
+                            <td>{{ c.description }}</td>
+                            <td><a href="edit/{{c.category_id}}" class="btn btn-info">Editar</a></td>
+                            <td><a href="delete/{{c.category_id}}" class="btn btn-danger">Borrar</a></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+
+                </table>
+            </div>
+</div>
+    
+{% endblock %}
