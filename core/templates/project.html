@@ -151,6 +151,10 @@
 
       </section>
 
+      {% if not card1 %}
+        <div style="margin-top: 3rem;"> <h3 ><center><strong>No hay proyectos similares</strong></center></h3></div>
+      {%else%}
+
       <section class="d-flex flex-column" style="padding: 0% 6%; margin-top: 3rem;">
         <h3><strong>Proyectos Similares</strong></h3>
        
@@ -171,5 +175,6 @@
         </div>
 
       </section>
-    
+
+    {% endif %}
 {% endblock %}
