@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import authenticate, login,logout 
 from .forms import User_login_form,Client_register_form
 from django.views.generic import CreateView
 from .models import User,Client

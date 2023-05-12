@@ -9,12 +9,18 @@ class State(models.Model):
         return self.state_name
 
 class Category(models.Model):
-    category_id=models.CharField(primary_key=True,max_length=5)
+    category_id=models.AutoField(primary_key=True)
     category_name = models.TextField(max_length=30)
     icon_src = models.TextField(max_length=30)
     description = models.TextField()
     def __str__(self):
         return self.category_name
+    
+class Convocatory(models.Model):
+    #Primary key
+    convocatory_id = models.CharField(primary_key=True,max_length=5)
+    start_date = models.DateField()
+    closing_date = models.DateField()
 
 class Project(models.Model):
     #Primary key
@@ -29,21 +35,11 @@ class Project(models.Model):
     state =models.ForeignKey(State,on_delete=models.CASCADE)
     category = models.ForeignKey(Category,on_delete=models.CASCADE)
     img=models.FileField(upload_to="pic/%y/",default="")
+    convocatory = models.ForeignKey(Convocatory,on_delete=models.CASCADE, blank=True, null = True)
     def __str__(self):
         return self.project_name
     class Meta :
         ordering=('-project_id',)
-
-      
-class Convocatory(models.Model):
-    #Primary key
-    convocatoryId = models.CharField(max_length=5)
-
-    start_date = models.DateField()
-    closing_date = models.DateField()
-
-    #Foreign key
-    project = models.ForeignKey(Project,models.CASCADE)
 
 class Binnacle(models.Model):
     #Primary key

@@ -2,31 +2,31 @@
 
 {% block content%}
 <section class="vh-100 gradient-custom">
-  <div class="container py-5 h-100"> 
-    <div class="row d-flex justify-content-center align-items-center h-100">
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
 
-        <h1>Registro</h1>
-        <div class="col-md-6">
-            
-            <form method="post">              
-                {% csrf_token %}
-                
-                <div class="form-group">
-                    <label for="{{ form.nit.id_for_label }}">Nit:</label>
-                    {{ form.username }}
-                </div>
-                <div class="form-group">
-                    <label for="{{ form.name.id_for_label }}">Nombre:</label>
-                    {{ form.name }}
-                </div>
-                <div class="form-group">
-                    <label for="{{ form.phoneNumber.id_for_label }}">Telefono:</label>
-                    {{ form.phone_number }}
-                </div>
-                <div class="form-group">
-                    <label for="{{ form.adress.id_for_label }}">Dirección:</label>
-                    {{ form.address }}
-                </div>
+            <h1>Registro</h1>
+            <div class="col-md-6">
+
+                <form method="post">
+                    {% csrf_token %}
+
+                    <div class="form-group">
+                        <label for="{{ form.nit.id_for_label }}">Nit:</label>
+                        {{ form.username }}
+                    </div>
+                    <div class="form-group">
+                        <label for="{{ form.name.id_for_label }}">Nombre:</label>
+                        {{ form.name }}
+                    </div>
+                    <div class="form-group">
+                        <label for="{{ form.phoneNumber.id_for_label }}">Telefono:</label>
+                        {{ form.phone_number }}
+                    </div>
+                    <div class="form-group">
+                        <label for="{{ form.adress.id_for_label }}">Dirección:</label>
+                        {{ form.address }}
+                    </div>
             </div>
             <div class="col-md-6">
                 <div class="form-group">
@@ -44,21 +44,21 @@
                 <div class="form-group">
                     <label for="{{ form.password_confirmation.id_for_label }}">Confirmar contraseña:</label>
                     {{ form.password_confirmation }}
-                    
+
                 </div>
             </div>
-                <center>
-                    <button type="submit" class="btn btn-primary" style="background-color:#087F8C;color:white">Crear cuenta</button>
-                </center> 
+            <center>
+                <button type="submit" class="btn btn-primary" style="background-color:#087F8C;color:white">Crear
+                    cuenta</button>
+            </center>
             </form>
 
             <div class="d-flex justify-content-center">
-              <p class="mb-0">Ya tienes cuenta? <a href="{% url 'login' %}" style="color:#087F8C" class="text-black-20 fw-bold">Inicia sesión</a>
-              </p>
+                <p class="mb-0">Ya tienes cuenta? <a href="{% url 'auth:login' %}" style="color:#087F8C"
+                        class="text-black-20 fw-bold">Inicia sesión</a>
+                </p>
             </div>
         </div>
     </div>
-  </div
-
-</section>
-{% endblock %}
+    </div </section>
+    {% endblock %}
