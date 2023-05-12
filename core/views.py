@@ -101,6 +101,7 @@ class Project_view(View):
         if card_id:
             obj= obj.filter(project_id=card_id)
             obj1=obj1.filter(category = p.category.category_id)
+            obj1=obj1.exclude(project_id= card_id)
         return HttpResponse(render(request,'project.html',{'card':obj, 'card1':obj1}))     
 
 class Delete_category(View):
