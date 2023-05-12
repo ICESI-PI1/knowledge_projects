@@ -1,0 +1,50 @@
+{% extends "layouts/core/base_employee_view.html" %}
+{% block content%}
+<section >
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+
+            <div id="alert-container">
+
+            </div>
+            <h2>{{title}}</h2>
+            <form method="post">
+                
+                <div class="row">
+                    <div class="col-md-6 mb-4">
+                        {% csrf_token %}
+
+
+                        {% if title == 'Editar Estado' %}
+
+                            <div class="form-group">                        
+                                <label>Id de estado:</label>
+                                <input type="" class="form-control mb-3" id="id_state_id" value="{{ state.state_id }}"readonly>
+                        
+                            </div>
+
+
+                        {% endif %}
+                        <div class="form-group">
+                            <label for="">Nombre:</label>
+                            {{ form.state_name }}
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-4 align-self-start">
+                        <div class="form-group">
+                            <label for="">Descripción:</label>
+                            {{ form.description }}
+                        </div>
+                    </div>
+                </div>
+
+                <center>
+                    <button type="submit" class="btn btn-succes" style="background-color:#087F8C;color:white">Guardar</button>
+                </center>
+            </form>
+        </div>
+
+    </div>
+</section>
+
+{% endblock %}

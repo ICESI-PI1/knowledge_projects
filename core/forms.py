@@ -1,6 +1,6 @@
 from django import forms
 
-from .models import Category
+from .models import Category,State
 
 
 class Edit_category_form(forms.ModelForm):
@@ -14,5 +14,18 @@ class Edit_category_form(forms.ModelForm):
         widgets = {
             'category_name':forms.TextInput(attrs={'class': 'form-control mb-3', 'placeholder': 'Nombre:'}),
             'icon_src':forms.TextInput(attrs={'class': 'form-control mb-3', 'placeholder': 'Ruta icono:'}),
+            'description':forms.TextInput(attrs={'class': 'form-control mb-3', 'placeholder': 'Descripción:'}),
+        }
+
+
+class State_form(forms.ModelForm):
+    class Meta :
+        model = State
+        fields = [
+            'state_name',
+            'description',
+        ]
+        widgets = {
+            'state_name':forms.TextInput(attrs={'class': 'form-control mb-3', 'placeholder': 'Nombre:'}),
             'description':forms.TextInput(attrs={'class': 'form-control mb-3', 'placeholder': 'Descripción:'}),
         }
