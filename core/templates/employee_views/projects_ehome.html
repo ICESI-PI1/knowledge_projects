@@ -1,0 +1,43 @@
+{% extends "layouts/core/base_employee_view.html" %}
+{% block content%}
+<h4>Añadir Proyecto</h4>
+<a href="save">
+    <button class="btn btn-succes" style="background-color:#087F8C;color:white">Añadir</button>
+    </a>
+    
+    <div class="row">
+        <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4"></div>
+            <div>
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Nombre</th>
+                                <th>Presupuesto</th>
+                                <th>Category</th>
+                                <th>Estado</th>
+                                <th colspan="3">Opciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for p in projects %}
+                            <tr>
+                                budget
+                                <td>{{ p.project_id }}</td>
+                                <td>{{ p.project_name }}</td>
+                                <td>{{ p.budget }}</td>
+                                <td>{{ p.category }}</td>
+                                <td>{{ p.state }}</td>
+                                
+                                <td><a href="edit/{{p.project_id}}" class="btn btn-info">Editar</a></td>
+                                <td><a href="delete/{{p.project_id}}" class="btn btn-danger">Borrar</a></td>
+                                <td><a href="#" class="btn">Ver mas...</a><td></td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+    </div>
+{% endblock %}

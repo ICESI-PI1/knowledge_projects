@@ -28,12 +28,15 @@ urlpatterns = [
     path(base_url_employee+'clients/',views.Employee_clients.as_view(),name='eclients'),
     path(base_url_employee+'tools/',views.Employee_tools.as_view(),name='etools'),
     path(base_url_employee+'categories/edit/<category_id>',views.Edit_category.as_view(),name='edit_category_ehome'),
-    path(base_url_employee+'categories/delete/<category_id>',views.Delete_category.deleteCategory,name='delete_category_ehome'),
+    path(base_url_employee+'categories/delete/<category_id>',views.Delete_category.delete_category,name='delete_category_ehome'),
     path(base_url_employee+'categories/save',views.Save_Category.as_view(),name='save_category_ehome'),
     path(base_url_employee+'states/',views.Employee_states.as_view(),name='estates'),
     path(base_url_employee+'states/edit/<state_id>',views.Edit_state.as_view(),name='edit_state_ehome'),
     path(base_url_employee+'states/delete/<state_id>',views.Delete_state.delete_state,name='delete_state_ehome'),
     path(base_url_employee+'states/save',views.Save_state.as_view(),name='save_state_ehome'),
+    path(base_url_employee+'projects/edit/<project_id>',views.Edit_project.as_view(),name='edit_project_ehome'),
+    path(base_url_employee+'projects/save',views.Save_project.as_view(),name='save_project_ehome'),
+    path(base_url_employee+'projects/delete/<project_id>',views.Delete_project.delete_project,name='delete_project_ehome'),
     
 ]
 
