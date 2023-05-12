@@ -9,11 +9,11 @@
         <title>Realizar donación</title>
     </head>
     <body>
-        {%for x in card%}
+        {%for x in project%}
         <div class="fn">                        
             <div class="form d-flex flex-column container">
                 <h3>Estás a punto de donar a</h3>
-                <h2 class="green">{{x.title}}</h2>
+                <h2 class="green">{{x.project_name}}</h2>
     
                 <div class="group">
                     Tipo de donación
@@ -43,7 +43,7 @@
                     <input class="input" type="text" placeholder="Escribe aquí...">
                 </div>
                 
-                <a  class="primary-btn" href="{% url 'core:successful_donation' %}?lang={{card.id}}">Realizar donación</a>
+                <a  class="primary-btn" href="{% url 'core:successful_donation' %}?lang={{project.id}}">Realizar donación</a>
                 
                 
             </div> 
