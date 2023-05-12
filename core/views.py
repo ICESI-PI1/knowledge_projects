@@ -179,7 +179,7 @@ class Edit_category(View):
 
 class Donation_methods(View):
     def get(self,request):
-        obj = Card.objects.all()
+        obj = Project.objects.all()
         card_id= self.request.GET.get("lang")
         if card_id:
             obj= obj.filter(id=card_id)
@@ -187,7 +187,7 @@ class Donation_methods(View):
     
 class Successful_donation(View):
     def get(self,request):
-        obj = Card.objects.all()
+        obj = Project.objects.all()
         card_id= self.request.GET.get("lang")
         if card_id:
             obj= obj.filter(id=card_id)
