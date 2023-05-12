@@ -130,12 +130,6 @@ nav a:hover {
 }
 
 @media screen and (max-width: 940px) {
-  nav {
-    position:relative;  
-    padding-left: 0.8rem;
-    padding-right: 0.8rem;
-  }
-
   #toggler {
     display: flex;
   }

@@ -85,13 +85,12 @@
   height: fit-content;
   background-color: #087F8C;
 }
-/* outline-offset: -1px;
-outline: auto;
-outline-color: var(--color1);
-border: var(--color1); */
-
 
 @media screen and (max-width: 940px) {
+  #home-container {
+    padding-top: 80px;
+  }
+
   #hero {
     display: flex;
     flex-direction: column ;
@@ -148,6 +147,10 @@ border: var(--color1); */
 
   #p-image {
     width: 100%;
+  }
+
+  #body-container {
+    padding-top: 80px;
   }
 }
 

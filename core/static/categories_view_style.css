@@ -8,11 +8,11 @@
   position: relative;
   display: flex;
   flex-direction: row;
-  width: 104px;
-  height: 104px;
+  min-width: 98px;
+  min-height: 98px;
   justify-content: center;
   align-items: center;
-  border-radius: 52px;
+  border-radius: 49px;
 }
 
 /* .secondary-btn {
@@ -27,15 +27,14 @@
   border: none;
 } */
 
-.card-c {
-  height: 100%;
+p {
+  font-size: 16px;
 }
 
 #grid {
   gap: 2rem;
   justify-content: center;
   width: 100%;
-  padding: 0% 6%;
   display: grid;
   grid-template-columns: repeat(auto-fit, 18rem);
 }

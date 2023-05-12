@@ -12,9 +12,16 @@ body {
   gap: 2rem;
   justify-content: center;
   width: 100%;
-  padding: 0% 6%;
   display: grid;
-  grid-template-columns: repeat(auto-fit, 18rem);
+  grid-template-columns: repeat(auto-fit, 20rem);
+}
+
+#grid-l {
+  gap: 2rem;
+  justify-content: flex-start;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 20rem);
 }
 
 .card-image {
@@ -26,15 +33,14 @@ body {
 
 .card-g {
   width: 20rem;
-  height: 25rem;
-  margin-top: 2rem;
+  height: 26rem;
   border-radius: 16px;
 }
 
 .category-tag {
   color: var(--color1);
   background: rgba(8, 127, 140, 0.1);
-  padding: 0.2rem 0rem;
+  padding: 0.2rem 0.5rem;
   width: fit-content;
   border-radius: 100px;
 }

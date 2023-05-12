@@ -114,3 +114,13 @@ p {
     box-shadow: none;
     border: none;
 }
+
+#body-container {
+    padding-top: 110px;
+}
+
+@media screen and (max-width: 940px) {
+    #body-container {
+        padding-top: 0px;
+    }    
+}
