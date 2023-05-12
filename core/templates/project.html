@@ -118,7 +118,7 @@
         
         <div class="info">
           <h4 style="font-family: 'DM Sans'; color: #087F8C ;">{{qs.category.category_name}}</h4>
-          <h1 style="font-family: 'DM Sans'; color: black ; margin-top:1rem;">{{qs.projec_name}}</h1>
+          <h1 style="font-family: 'DM Sans'; color: black ; margin-top:1rem;">{{qs.project_name}}</h1>
           <p style="margin-top:2rem;">{{qs.project_description}}</p>
 
           <div class="progress" style="margin-top:4rem;">
@@ -140,12 +140,8 @@
           <div class="flex-container2">
 
 
-            <a class="button button1" href="{% url 'core:donation_methods' %}?lang={{qs.id}}">Donar</a>
-            <button class="button button2" style="margin-left: 2rem;" >Información detallada</button>
-
-            <button class="button button1">Donar</button>
-            <a href="{% url 'core:detailedinfo' %}" class="..." href="{% url 'core:detailedinfo' %}?lang={{x.id}}"><button class="button button2" style="margin-left: 2rem;" >Información detallada</button>
-            </a>
+            <a class="button button1" href="{% url 'core:donation_methods' %}?lang={{qs.project_id}}">Donar</a>
+            <a class="button button2" href="{% url 'core:detailedinfo' %}?lang={{qs.project_id}}">Información detallada</a>
 
 
           </div>
@@ -175,7 +171,7 @@
     
                   <p class="card-text">{{x.project_description}}</p>
                   <div class="container2" >
-                    <a class="button button1"  href="{% url 'core:project' %}?lang={{x.id}}">Conocer más</a>
+                    <a class="button button1"  href="{% url 'core:project' %}?lang={{x.project_id}}"">Conocer más</a>
                   </div>
                 </div>
               </div>
