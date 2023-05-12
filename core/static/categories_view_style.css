@@ -1,50 +1,34 @@
 :root {
-    --color1: #087F8C;
-    --color2: #FFBF00;
-  }
+  --color1: #087F8C;
+  --color2: #FFBF00;
+}
   
 .circle {
-    background-color: rgba(255, 191, 0, 0.15);
-    position: relative;
-    display: flex;
-    flex-direction: row;
-    width: 104px;
-    height: 104px;
-    justify-content: center;
-    align-items: center;
-    border-radius: 52px;
+  background-color: rgba(255, 191, 0, 0.15);
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  width: 104px;
+  height: 104px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 52px;
 }
 
-.secondary-btn {
-    font-family: 'DM Sans', sans-serif;
-    color: var(--color1);
-    padding: 0.6rem 1.5rem;
-    background-color: rgba(8,127,140,0.15);
-    border-radius: 1rem;
-    box-shadow: none;
-  
-    box-shadow: none;
-    border: none;
-  }
+/* .secondary-btn {
+  font-family: 'DM Sans', sans-serif;
+  color: var(--color1);
+  padding: 0.6rem 1.5rem;
+  background-color: rgba(8,127,140,0.15);
+  border-radius: 1rem;
+  box-shadow: none;
 
-  
-button {
-  font-size: 17px;
-  transition: 200ms;
-  font-weight: bold;
-  cursor: pointer;
-}
-  
+  box-shadow: none;
+  border: none;
+} */
+
 .card-c {
   height: 100%;
-}
-
-button:hover {
-  filter: brightness(1.2);
-}
-
-button:active {
-  scale: 0.95;
 }
 
 #grid {

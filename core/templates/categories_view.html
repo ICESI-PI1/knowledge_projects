@@ -8,21 +8,21 @@
 
 {% block content %}
     <div class="d-flex flex-column align-items-center ps-4 pe-4">
-        <h4>Categorías</h4>
-            <h2 class="mb-5 "><center>Innovación en todos los campos</center></h2>
+        <h4 class="c1">Categorías</h4>
+        <h2 class="mb-5 cblack"><strong>Innovación en todos los campos</strong></h2>
             <div id="grid">
                 {% for x in data %}
                     <div class="card " style="width: 18rem;">
                         <div class="card-c d-flex flex-column align-items-center p-4">
-                            <div class="circle mb-3">
-                                <i class="fa-solid {% autoescape off %}{{ x.icon_src }}{% endautoescape %}" style="font-size:50px;color:#FFBF00"></i>
-                            </div>
+                        <div class="circle mb-3">
+                            <i class="fa-solid {% autoescape off %}{{ x.icon_src }}{% endautoescape %}" style="font-size:50px;color:#FFBF00"></i>
+                        </div>
         
-                            <h5 class="card-title">{{x.category_name}}</h5>
-                            <p class="card-text mb-5">{{x.description}}</p>
+                        <h5 class="card-title">{{x.category_name}}</h5>
+                        <p class="card-text mb-5">{{x.description}}</p>
                         </div>
                         <button class="secondary-btn m-4">Conocer más</button>
-                </div>
+                    </div>
                 {% endfor %}
         </div>
     </div> 
