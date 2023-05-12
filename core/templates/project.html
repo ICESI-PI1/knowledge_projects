@@ -150,39 +150,41 @@
         
 
       </section>
+      {% if not card1 %}
+        <div> <h1 >No hay proyectos similares</h1></div>
+      {%else%}
+        <section class="flex-container3" >
+          <div class="container"> <h1 >Proyectos Similares</h1></div>
+        
 
-      <section class="flex-container3" >
-        <div class="container"> <h1 >Proyectos Similares</h1></div>
-       
-
-        <div class="container" style="margin-top: 1.5rem;">
-            {%for x in card1%}
-            {% if forloop.first %}
-            <div class="row mx-auto"> 
-              {% endif %}
-              <div class="col-lg-4 col-md-4 col-12">
-            <div class="card" style="width: 18rem; height: 43rem; margin-top: 2rem;">
-                <img src="{{x.img.url}}" class="card-img-top" alt="..." style="height: 10rem;">
-                <div class="card-body">
-                    <div class="container" style="margin-left: -2rem;" >
-                      <button class="button button1" >{{x.category.category_name}}</button>
+          <div class="container" style="margin-top: 1.5rem;">
+              {%for x in card1%}
+              {% if forloop.first %}
+              <div class="row mx-auto"> 
+                {% endif %}
+                <div class="col-lg-4 col-md-4 col-12">
+              <div class="card" style="width: 18rem; height: 43rem; margin-top: 2rem;">
+                  <img src="{{x.img.url}}" class="card-img-top" alt="..." style="height: 10rem;">
+                  <div class="card-body">
+                      <div class="container" style="margin-left: -2rem;" >
+                        <button class="button button1" >{{x.category.category_name}}</button>
+                      </div>
+                    <h5 class="card-title">{{x.projec_name}}</h5>
+      
+                    <p class="card-text">{{x.project_description}}</p>
+                    <div class="container2" >
+                      <a class="button button1"  href="{% url 'core:project' %}?lang={{x.project_id}}"">Conocer más</a>
                     </div>
-                  <h5 class="card-title">{{x.projec_name}}</h5>
-    
-                  <p class="card-text">{{x.project_description}}</p>
-                  <div class="container2" >
-                    <a class="button button1"  href="{% url 'core:project' %}?lang={{x.project_id}}"">Conocer más</a>
                   </div>
                 </div>
               </div>
-            </div>
-            {% if forloop.counter|divisibleby:3 %}
-            </div><div class="row mx-auto mt-2">{% endif %}{% if forloop.last%}</div> {% endif%}
-              {%endfor%}
-        </div> 
+              {% if forloop.counter|divisibleby:3 %}
+              </div><div class="row mx-auto mt-2">{% endif %}{% if forloop.last%}</div> {% endif%}
+                {%endfor%}
+          </div> 
 
-
-      </section>
+        </section>
+      {% endif %}
     
 </body>
 </html>
