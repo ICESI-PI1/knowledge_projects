@@ -86,12 +86,20 @@
   <p>
   {{x.work_plan}}
   </p>
+  {% if not x.convocatory %}
+    <div> <h1 >No hay convocatorias para este proyecto</h1></div>
+  {%else%}
     <h3>Convocatorias</h3>
-  <p>
-    <B class="big-text">{{x.category_name}}</B><br>
-    {{x.start_date}} <br>
-    {{x.descriptions}}
-  </p>
+    <p>
+      <B class="big-text">La convocatoria para el proyecto inicia:</B><br>
+      {{x.convocatory.start_date}} </br>
+      <B class="big-text">Y finaliza:</B>
+      <br>{{x.convocatory.closing_date}}</br>
+      <B class="big-text">¿Qué esperas para inscribirte?
+      </B><br>
+    <a class="button button1" href="{% url 'core:convocatory' %}?lang={{x.project_id}}">Inscripción</a>
+    </p>
+  {%endif%}  
       </aside>
   </div>
   {%endfor%}
