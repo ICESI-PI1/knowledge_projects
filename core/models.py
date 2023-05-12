@@ -2,7 +2,7 @@ from django.db import models
 
 
 class State(models.Model):
-    state_id=models.CharField(primary_key=True,max_length=5)
+    state_id=models.AutoField(primary_key=True)
     state_name = models.CharField(max_length=30)
     description = models.TextField()
     def __str__(self):
@@ -16,6 +16,7 @@ class Category(models.Model):
     def __str__(self):
         return self.category_name
     
+
 class Convocatory(models.Model):
     #Primary key
     convocatory_id = models.CharField(primary_key=True,max_length=5)
