@@ -2,9 +2,8 @@ from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.views import View
-from Auth.decorators import client_required,employee_required
 from core.models import Category,Project,State
-from .forms import Edit_category_form,State_form
+from .forms import Edit_category_form,State_form,Project_form
 
 # Create your views here.
 
@@ -47,20 +46,9 @@ class Home_view_employee(View):
         }
         return HttpResponse(render(request,'employee_home_view.html',context))
     
-class Employee_categories(View):   
-    def get(self, request):
-        context={
-            'active': 'categories',
-            'categories':Category.objects.all
-        }
-        return HttpResponse(render(request,'employee_views/categories_ehome.html',context))
+
     
-class Employee_projects(View):   
-    def get(self, request):
-        context={
-            'active': 'projects',
-        }
-        return HttpResponse(render(request,'projects_ehome.html',context))
+
     
 
 class Employee_convocatories(View):   
@@ -91,7 +79,7 @@ class Gallery(View):
         if category_id:
             obj= obj.filter(category = category_id)
         return HttpResponse(render(request,'gallery.html',{'card':obj}))
-    
+     
 class Project_view(View):
     def get(self,request):
         obj = Project.objects.all()
@@ -102,14 +90,18 @@ class Project_view(View):
             obj= obj.filter(project_id=card_id)
             obj1=obj1.filter(category = p.category.category_id)
             obj1=obj1.exclude(project_id= card_id)
-        return HttpResponse(render(request,'project.html',{'card':obj, 'card1':obj1}))     
+        return HttpResponse(render(request,'project.html',{'card':obj, 'card1':obj1})) 
 
-class Delete_category(View):
-    def deleteCategory(request,category_id):
-        category = Category.objects.get(category_id=category_id)
-        category.delete()
 
-        return redirect('core:ecategories')
+#Category CRUD
+
+class Employee_categories(View):   
+    def get(self, request):
+        context={
+            'active': 'categories',
+            'categories':Category.objects.all
+        }
+        return HttpResponse(render(request,'employee_views/categories_ehome.html',context))
 
 class Save_Category(View):
     def get(self,request):
@@ -125,19 +117,15 @@ class Save_Category(View):
     def post(self, request):
         form = Edit_category_form(request.POST)
         if form.is_valid():
-            form.save()  # Guardar la categoría en la base de datos
-            return redirect('core:ecategories')  # Redirigir a la vista deseada después de guardar
+            form.save()  
+            return redirect('core:ecategories')  #
         
-
-        # Si el formulario no es válido, volver a renderizar el formulario con los errores
         context = {
             'title': 'Guardar Categoría',
             'active': 'categories',
             'form': form,
         }
         return render(request, 'employee_views/edit_category.html', context)
-    
-    
     
 class Edit_category(View):
     def get(self,request,category_id):
@@ -151,6 +139,100 @@ class Edit_category(View):
         }
         return HttpResponse(render(request,'employee_views/edit_category.html',context))
     
+    def post(self, request, category_id):
+        category = Category.objects.get(category_id=category_id)
+        form = Edit_category_form(request.POST, instance=category)
+        if form.is_valid():
+            form.save()
+            return redirect('core:ecategories')  
+
+        context = {
+            'category': category,
+            'active': 'categories',
+            'form': form,
+        }
+        return render(request, 'employee_views/edit_category.html', context)
+    
+
+class Delete_category(View):
+    def delete_category(request,category_id):
+        category = Category.objects.get(category_id=category_id)
+        category.delete()
+
+        return redirect('core:ecategories')
+    
+#Project CRUD
+class Employee_projects(View):   
+    def get(self, request):
+        context={
+            'active': 'projects',
+            'projects':Project.objects.all
+        }
+        return HttpResponse(render(request,'employee_views/projects_ehome.html',context))
+
+    
+class Save_project(View):
+    def get(self,request):
+
+
+        context={
+            'title' : 'Guardar Proyecto',
+            'active': 'projects',
+            'form': Project_form(),
+
+        }
+        return HttpResponse(render(request,'employee_views/crud_project_ehome.html',context))
+    
+    def post(self, request):
+        form = Project_form(request.POST,request.FILES)
+
+        if form.is_valid():
+            form.save()  
+            return redirect('core:eprojects')  
+    
+        context = {
+            'title': 'Guardar Proyecto',
+            'active': 'projects',
+            'form': form,
+            'states':State.objects.all
+        }
+        return render(request, 'employee_views/crud_project_ehome.html', context)
+
+class Edit_project(View):
+    def get(self,request,project_id):
+        print('entra get')
+        project = Project.objects.get(project_id=project_id)
+
+        context={
+            'title' : 'Editar Proyecto',
+            'project':project,
+            'active': 'categories',
+            'form': Project_form(instance=project),
+        }
+        return HttpResponse(render(request,'employee_views/crud_project_ehome.html',context))
+    
+    def post(self, request, project_id):
+        project = Project.objects.get(project_id=project_id)
+        form = Project_form(request.POST, instance=project)
+        if form.is_valid():
+            form.save()
+            return redirect('core:eprojects')  
+
+        context = {
+            'project': project,
+            'active': 'projects',
+            'form': form,
+        }
+        return render(request, 'employee_views/crud_project_ehome.html', context)
+
+class Delete_project(View):
+    def delete_project(request,project_id):
+        project = Project.objects.get(project_id=project_id)
+        project.delete()
+
+        return redirect('core:eprojects')
+
+#State CRUD
 class Employee_states(View):   
     def get(self, request):
         context={
@@ -158,6 +240,28 @@ class Employee_states(View):
             'states':State.objects.all
         }
         return HttpResponse(render(request,'employee_views/states_ehome.html',context))
+    
+class Save_state(View):
+    def get(self,request):
+        context={
+            'title' : 'Guardar Estado',
+            'active': 'states',
+            'form': State_form,
+        }
+        return HttpResponse(render(request,'employee_views/crud_states_ehome.html',context))
+    
+    def post(self, request):
+        form = State_form(request.POST)
+        if form.is_valid():
+            form.save()  
+            return redirect('core:estates')  
+        
+        context = {
+            'title': 'Guardar Estado',
+            'active': 'states',
+            'form': form,
+        }
+        return render(request, 'employee_views/crud_states_ehome.html', context)
     
 class Edit_state(View):
     def get(self,request,state_id):
@@ -192,27 +296,7 @@ class Delete_state(View):
 
         return redirect('core:estates')
     
-class Save_state(View):
-    def get(self,request):
-        context={
-            'title' : 'Guardar Estado',
-            'active': 'states',
-            'form': State_form,
-        }
-        return HttpResponse(render(request,'employee_views/crud_states_ehome.html',context))
-    
-    def post(self, request):
-        form = State_form(request.POST)
-        if form.is_valid():
-            form.save()  
-            return redirect('core:estates')  
-        
-        context = {
-            'title': 'Guardar Estado',
-            'active': 'states',
-            'form': form,
-        }
-        return render(request, 'employee_views/crud_states_ehome.html', context)
+
     
 
 

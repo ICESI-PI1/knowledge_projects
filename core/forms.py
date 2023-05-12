@@ -1,6 +1,6 @@
 from django import forms
 
-from .models import Category,State
+from .models import Category,State,Project
 
 
 class Edit_category_form(forms.ModelForm):
@@ -28,4 +28,35 @@ class State_form(forms.ModelForm):
         widgets = {
             'state_name':forms.TextInput(attrs={'class': 'form-control mb-3', 'placeholder': 'Nombre:'}),
             'description':forms.TextInput(attrs={'class': 'form-control mb-3', 'placeholder': 'Descripción:'}),
+        }
+
+
+class Project_form(forms.ModelForm):
+    class Meta :
+        model = Project
+        fields = [
+            'project_name',
+            'project_description',
+            'result',
+            'scope',
+            'work_plan',
+            'budget',
+            'goal',
+            'img',
+            'state',
+            'category',
+        ]
+        widgets = {
+
+            'project_name':forms.TextInput(attrs={'class': 'form-control mb-3', 'placeholder': 'Nombre:'}),
+            'project_description':forms.TextInput(attrs={'class': 'form-control mb-3', 'placeholder': 'Descripción:'}),
+            'result':forms.TextInput(attrs={'class': 'form-control mb-3', 'placeholder': 'Resultado:'}),
+            'scope':forms.TextInput(attrs={'class': 'form-control mb-3', 'placeholder': 'Objetivo:'}),
+            'work_plan':forms.TextInput(attrs={'class': 'form-control mb-3', 'placeholder': 'Plan de trabajo:'}),
+            'budget':forms.NumberInput(attrs={'class': 'form-control mb-3', 'placeholder': 'Presupuesto:'}),
+            'goal':forms.TextInput(attrs={'class': 'form-control mb-3', 'placeholder': 'Meta:'}),
+            'img':forms.FileInput(attrs={'class': 'form-control mb-3', 'placeholder': 'Imagen:'}),
+            'state': forms.Select(attrs={'class': ''}),
+            'category': forms.Select(attrs={'class': ''}),
+            
         }

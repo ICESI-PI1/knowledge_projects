@@ -25,7 +25,7 @@ class Convocatory(models.Model):
 
 class Project(models.Model):
     #Primary key
-    project_id = models.CharField(primary_key=True,max_length=5)
+    project_id = models.AutoField(primary_key=True)
     project_name = models.CharField(max_length=50)
     project_description = models.TextField()
     result = models.TextField()
