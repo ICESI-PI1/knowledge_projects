@@ -1,0 +1,54 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet" />
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+        <link href="{% static 'donation_style.css' %}" rel="stylesheet" />
+        <title>Realizar donación</title>
+    </head>
+    <body>
+        {%for x in card%}
+        <div class="fn">                        
+            <div class="form d-flex flex-column container">
+                <h3>Estás a punto de inscribirte como beneficiario a</h3>
+                <h2 class="green">{{x.project_name}}</h2>
+    
+                <div class="group">
+                    Tipo de donación
+                    <select class="input">
+                        <option disabled selected="">Seleccione el tipo de donación</option>
+                        <option>Recursos económicos</option>
+                        <option>Mano de obra</option>
+                    </select>
+                </div>                
+                
+                <div class="group">
+                    Número de tarjeta
+                    <input class="input" type="text" placeholder="Escribe aquí...">
+                </div>
+                
+                <div class="group">
+                    Fecha de vencimiento
+                    <input class="input" type="input" placeholder="Escribe aquí...">
+                </div>
+                <div class="group">
+                    CVV
+                    <input class="input" type="text" placeholder="Escribe aquí...">
+                </div>
+                
+                <div class="group">
+                    Cantidad a donar
+                    <input class="input" type="text" placeholder="Escribe aquí...">
+                </div>
+                
+                <a  class="primary-btn" href="{% url 'core:successful_donation' %}?lang={{card.id}}">Realizar donación</a>
+                
+                
+            </div> 
+            <img class="img" src="{{x.img.url}}" alt="Imagen">
+        </div>
+        {%endfor%}
+    </body>
+</html>

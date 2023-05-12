@@ -7,6 +7,7 @@ from core.views import Project_view
 from core.views import Gallery
 from core.views import Donation_methods
 from core.views import Successful_donation
+from core.views import Convocatory_inscription
 app_name = 'core'
 base_url_employee = 'ehome/'
 
@@ -34,6 +35,7 @@ urlpatterns = [
     path(base_url_employee+'states/edit/<state_id>',views.Edit_state.as_view(),name='edit_state_ehome'),
     path(base_url_employee+'states/delete/<state_id>',views.Delete_state.delete_state,name='delete_state_ehome'),
     path(base_url_employee+'states/save',views.Save_state.as_view(),name='save_state_ehome'),
+    path('convocatory',Convocatory_inscription.as_view(),name='convocatory'),
     
 ]
 
