@@ -12,7 +12,7 @@
         {%for x in card%}
         <div class="fn">                        
             <div class="form d-flex flex-column container">
-                <h3>Estás a punto de donar a</h3>
+                <h3>Estás a punto de inscribirte como beneficiario a</h3>
                 <h2 class="green">{{x.project_name}}</h2>
     
                 <div class="group">
@@ -43,7 +43,7 @@
                     <input class="input" type="text" placeholder="Escribe aquí...">
                 </div>
                 
-                <a  class="primary-btn" href="{% url 'core:successful_donation' %}?lang={{x.project_id}}">Realizar donación</a>
+                <a  class="primary-btn" href="{% url 'core:successful_donation' %}?lang={{card.id}}">Realizar donación</a>
                 
                 
             </div> 

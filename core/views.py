@@ -89,9 +89,9 @@ class Project_view(View):
         if card_id:
             obj= obj.filter(project_id=card_id)
             obj1=obj1.filter(category = p.category.category_id)
+            obj1=obj1.exclude(project_id= card_id)
         return HttpResponse(render(request,'project.html',{'card':obj, 'card1':obj1})) 
-    
-    
+
 
 #Category CRUD
 
@@ -316,4 +316,11 @@ class Successful_donation(View):
             obj= obj.filter(project_id=card_id)
 
         return HttpResponse(render(request,'successful_donation.html',{'card':obj}))
-        
+
+class Convocatory_inscription(View):
+    def get(self,request):
+        obj = Project.objects.all()
+        card_id= self.request.GET.get("lang")
+        if card_id:
+            obj= obj.filter(project_id=card_id)
+        return HttpResponse(render(request,'convocatory_inscription.html',{'card':obj}))
