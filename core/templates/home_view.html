@@ -25,7 +25,7 @@
     <nav id="navbar">
         <!-- <img src="logo-db.png" alt="" width="55"> -->
         <span class="menu-icon" id="toggler">
-            <input class="menu-icon__cheeckbox" type="checkbox" />
+            <input id="inn" class="menu-icon__cheeckbox" type="checkbox" />
             <div>
                 <span></span>
                 <span></span>
@@ -50,9 +50,9 @@
   
         <section class="dropdown">
             <ul>
-                <a href={% url 'core:home' %}>Home</a>
-                <a href={% url 'core:gallery' %}>Galería</a>
-                <a href={% url 'core:categories' %}>Categorías</a>
+                <li><a href={% url 'core:home' %}>Home</a></li>
+                <li><a href={% url 'core:gallery' %}>Galería</a></li>
+                <li><a href={% url 'core:categories' %}>Categorías</a></li>
             </ul>
         </section>      
     </nav>

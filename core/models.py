@@ -1,6 +1,8 @@
 from django.db import models
 from Auth.models import User
 
+
+
 class State(models.Model):
     state_id=models.AutoField(primary_key=True)
     state_name = models.CharField(max_length=30)
@@ -69,6 +71,5 @@ class Donation(models.Model):
     amount = models.DecimalField(max_digits=10,decimal_places=0)
     user = models.ForeignKey(User,on_delete=models.CASCADE)
     project = models.ForeignKey(Project,on_delete=models.CASCADE)
-
 
 

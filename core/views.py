@@ -3,14 +3,15 @@ from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.views import View
 from core.models import Category,Project,State,Convocatory,Donation
-from .forms import Edit_category_form,State_form,Project_form,Convocatory_form
+from .forms import Edit_category_form,State_form,Project_form,Convocatory_form,,Donation_form
 from Auth.models import Client
+from django.urls import reverse_lazy,reverse
+
 
 # Create your views here.
 
 class Home_view(View):   
     def get(self, request):
-        
         username = None
         if request.user.is_authenticated:
             username = request.user.username
@@ -367,16 +368,36 @@ class Delete_state(View):
         return redirect('core:estates')
     
 
-    
-
-
 class Donation_methods(View):
     def get(self,request):
         obj = Project.objects.all()
         card_id= self.request.GET.get("lang")
-        if card_id:
-            obj= obj.filter(project_id=card_id)
-        return HttpResponse(render(request,'donation_methods.html',{'card':obj}))
+        obj = obj.filter(project_id=card_id)
+        context={
+            'form': Donation_form,
+            'card': obj
+        }
+        return HttpResponse(render(request,'donation_methods.html',context))
+    
+    def post(self, request):
+        obj = Project.objects.all()
+        card_id= self.request.GET.get("lang")
+        obj = obj.get(project_id=card_id)
+        form = Donation_form(request.POST)
+        if form.is_valid():
+            donation = Donation()
+            donation.payment_method = form.cleaned_data['payment_method']
+            donation.amount = form.cleaned_data['amount']
+            donation.user = request.user
+            donation.project = obj
+            donation.save()
+            return redirect('core:successful_donation')  
+        context={
+            'form': Donation_form,
+            'card': obj
+        }
+        return render(request, 'donation_methods.html', context)
+    
     
 class Successful_donation(View):
     def get(self,request):

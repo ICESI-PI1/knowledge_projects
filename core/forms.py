@@ -1,6 +1,6 @@
 from django import forms
+from .models import Category,State,Project,Convocatory,Donation
 
-from .models import Category,State,Project,Convocatory
 
 
 class Edit_category_form(forms.ModelForm):
@@ -59,8 +59,22 @@ class Project_form(forms.ModelForm):
             'img':forms.FileInput(attrs={'class': 'form-control mb-1', 'placeholder': 'Imagen:'}),
             'state': forms.Select(attrs={'class': ''}),
             'category': forms.Select(attrs={'class': ''}),
-            'convocatory': forms.Select(attrs={'class': 'form-control mb-1', 'placeholder': 'Convocatoria:'})
+            'convocatory': forms.Select(attrs={'class': 'form-control mb-1', 'placeholder': 'Convocatoria:'}),
+            
         }
+
+class Donation_form(forms.ModelForm):
+  class Meta :
+        model = Donation
+        fields = [
+            'payment_method',
+            'amount',
+        ]
+        widgets = {
+            'payment_method':forms.TextInput(attrs={'class': 'form-control mb-3', 'placeholder': 'Método de pago:'}),
+            'amount':forms.NumberInput(attrs={'class': 'form-control mb-3', 'placeholder': 'Monto:'}),
+        }
+
 
 
 class Convocatory_form(forms.ModelForm):
@@ -77,4 +91,3 @@ class Convocatory_form(forms.ModelForm):
             'closing_date': forms.DateInput(attrs={'type': 'date','class': 'form-control ', 'placeholder': 'Fecha Fin:'}),
         }
 
-        

@@ -1,3 +1,3 @@
 # knowledge_projects
 
-Use Second_sprint_milestone branch for review of second sprint
+Después de `git pull origin main` ejecutar `python manage.py makemigrations` y luego `python manage.py migrate`
