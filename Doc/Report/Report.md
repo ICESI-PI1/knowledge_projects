@@ -110,6 +110,11 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 # 3.**Dailys**
 
+## Enlace al jira: 
+
+
+https://mastersofsoftware.atlassian.net/jira/software/projects/KP/boards/3/backlog
+
 
 ### Juan David Bahamon
 
