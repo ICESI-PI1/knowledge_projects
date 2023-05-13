@@ -1,5 +1,6 @@
 from django.db import models
-from Auth.models import User 
+from Auth.models import User
+
 
 
 class State(models.Model):

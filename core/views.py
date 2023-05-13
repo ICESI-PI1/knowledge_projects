@@ -3,7 +3,8 @@ from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.views import View
 from core.models import Category,Project,State,Convocatory,Donation
-from .forms import Edit_category_form,State_form,Project_form,Convocatory_form,Donation_form
+from .forms import Edit_category_form,State_form,Project_form,Convocatory_form,,Donation_form
+from Auth.models import Client
 from django.urls import reverse_lazy,reverse
 
 
@@ -42,10 +43,21 @@ class binnacle(View):
 
 class Home_view_employee(View):   
     def get(self, request):
+        n_projects =Project.objects.count()
+        n_donations =Donation.objects.count()
+        n_convocatories =Convocatory.objects.count()
+        n_clients = Client.objects.count()
+
         context={
-            'active': 'dashboard'
+            'active': 'dashboard',
+            'n_projects':n_projects,
+            'n_donations':n_donations,
+            'n_convocatories':n_convocatories,
+            'n_clients':n_clients,
+
+
         }
-        return HttpResponse(render(request,'employee_home_view.html',context))
+        return HttpResponse(render(request,'employee_views/employee_home_view.html',context))
     
     
 class Employee_clients(View):   
@@ -148,7 +160,6 @@ class Delete_convocatory(View):
     def delete_convocatory(request,convocatory_id):
         convocatory = Convocatory.objects.get(convocatory_id=convocatory_id)
         convocatory.delete()
-
         return redirect('core:econvocatories')
 
 #Category CRUD
@@ -176,7 +187,7 @@ class Save_Category(View):
         form = Edit_category_form(request.POST)
         if form.is_valid():
             form.save()  
-            return redirect('core:ecategories')  #
+            return redirect('core:ecategories')  
         
         context = {
             'title': 'Guardar Categoría',
