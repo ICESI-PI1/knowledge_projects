@@ -10,11 +10,65 @@
 
  # 1. **Páginas web. (Capturas pantallas)**
 
+## Paginas web admin:
 
+**Tablero**
 
-  
+[![Tablero.jpg](https://i.postimg.cc/GpN6PN2p/Tablero.jpg)](https://postimg.cc/xkvsn6Lr)
 
+**Categorías**
 
+ [![Categorias.jpg](https://i.postimg.cc/nV10pgJQ/Categorias.jpg)](https://postimg.cc/Dm8qcCm2)
+ 
+ **Estados**
+ 
+ [![Estados.jpg](https://i.postimg.cc/TY4jPXHh/Estados.jpg)](https://postimg.cc/dLGZWgFK)
+ 
+ **Proyectos**
+ 
+ [![Proyectos.jpg](https://i.postimg.cc/V6f0R7H3/Proyectos.jpg)](https://postimg.cc/WDy4p7Vn)
+ 
+ ## Paginas web cliente:
+ 
+ **Galería**
+ 
+ [![imagen-2023-05-12-234307317.png](https://i.postimg.cc/vTzpFmQP/imagen-2023-05-12-234307317.png)](https://postimg.cc/0Kzt7PKm)
+ 
+ **Categoría**
+ 
+ [![Categorias-Cliente.jpg](https://i.postimg.cc/WbTpJDCH/Categorias-Cliente.jpg)](https://postimg.cc/Dmp39z2r)
+ 
+ **Inicio**
+ 
+ [![Home.png](https://i.postimg.cc/QxyPZwQJ/Home.png)](https://postimg.cc/0b7ZptHz)
+ 
+ [![inicio.png](https://i.postimg.cc/2jH9nMKN/inicio.png)](https://postimg.cc/6TvhXjKM)
+ 
+ **Login**
+ 
+ [![Login.png](https://i.postimg.cc/PqhQgQRM/Login.png)](https://postimg.cc/tsS6PWy1)
+ 
+ **Registro**
+ 
+ [![imagen-2023-05-12-232914967.png](https://i.postimg.cc/pXfZqS0d/imagen-2023-05-12-232914967.png)](https://postimg.cc/GHpGpXn0)
+ 
+ **Proyecto**
+ 
+ [![imagen-2023-05-12-235112803.png](https://i.postimg.cc/SRksqV9m/imagen-2023-05-12-235112803.png)](https://postimg.cc/34f7FX9q)
+ 
+ **Información detallada del proyecto**
+ 
+ [![imagen-2023-05-12-233950592.png](https://i.postimg.cc/8CmcYh2M/imagen-2023-05-12-233950592.png)](https://postimg.cc/p9yPhnXL)
+ 
+ **Realizar donación **
+ 
+ [![imagen-2023-05-12-234053570.png](https://i.postimg.cc/bYWy3CZ4/imagen-2023-05-12-234053570.png)](https://postimg.cc/dDRc09m9)
+ 
+ **Donación exitosa**
+ 
+ [![imagen-2023-05-12-234146748.png](https://i.postimg.cc/4xBNbJVQ/imagen-2023-05-12-234146748.png)](https://postimg.cc/684XBxH8)
+ 
+ 
 
 ## Enlace al figma: 
 
@@ -22,15 +76,37 @@
 https://www.figma.com/file/FpqRJSp3uekyJLl5tLrSY6/Knowledge-Project?node-id=0-1&t=Ya69SOgKgMTTVEKJ-0
 
 
-# 2. **Incorporación pruebas unitarias y de coverage.**
+# 2. **Incorporación pruebas unitarias y de integración.**
 
 
-* Python manage.py test 
+* Python manage.py test
 
+[![test.png](https://i.postimg.cc/Dfdt9SDn/test.png)](https://postimg.cc/5jy7v2bR)
 
 
 * Para los coverage test, primero se realizó el comando python -m coverage run manage.py y luego python -m coverage report
 
+[![coverage.png](https://i.postimg.cc/d0M0WWD5/coverage.png)](https://postimg.cc/DSgF0PrG)
+
+* Base de datos alterna
+
+Para realizar pruebas automáticas utilizando una base de datos alterna debemos en settings.py utilizar las siguientes lineas de codigo:
+
+[![imagen-2023-05-12-235303915.png](https://i.postimg.cc/CLd08WSW/imagen-2023-05-12-235303915.png)](https://postimg.cc/vcRCF21z)
+
+Tambien podemos especificar una base de datos para las pruebas, por ejemplo: 
+
+[![imagen-2023-05-12-235350441.png](https://i.postimg.cc/L4QKmNLv/imagen-2023-05-12-235350441.png)](https://postimg.cc/vDnSz7P6)
+
+y luego:
+
+[![imagen-2023-05-12-235515159.png](https://i.postimg.cc/9FPkrbqv/imagen-2023-05-12-235515159.png)](https://postimg.cc/xcC5ZK5R)
+
+De esta forma, al utilizar *manage.py test* los test haran uso de la base de datos **’test’**.
+Django admite varios motores de base de datos, como PostgreSQL, MySQL, SQLite, etc. 
+La línea 'ENGINE': 'django.db.backends.postgresql' es donde se especifica el motor de base de datos que se utilizará.
+
+https://docs.djangoproject.com/en/4.2/ref/settings/
 
 # 3.**Dailys**
 
