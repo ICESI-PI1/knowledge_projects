@@ -16,12 +16,6 @@ class User(AbstractUser):
             return super().save(*args, **kwargs)
        
         
-    
-
-
-    
-
-
 class Client(models.Model):
     user = models.OneToOneField(User,on_delete=models.CASCADE,primary_key=True,related_name='Client')
 

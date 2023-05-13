@@ -1,5 +1,5 @@
 from django.db import models
-
+from Auth.models import User
 
 class State(models.Model):
     state_id=models.AutoField(primary_key=True)
@@ -62,6 +62,13 @@ class Log(models.Model):
  
     #Foreing Key
     binnacle_id = models.ForeignKey(Binnacle,models.CASCADE)
+
+class Donation(models.Model):
+    donation_id= models.AutoField(primary_key=True)
+    payment_method = models.CharField(max_length=50)
+    amount = models.DecimalField(max_digits=10,decimal_places=0)
+    user = models.ForeignKey(User,on_delete=models.CASCADE)
+    project = models.ForeignKey(Project,on_delete=models.CASCADE)
 
 
 

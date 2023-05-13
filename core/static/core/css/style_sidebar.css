@@ -3,10 +3,12 @@
     --secondary: #087F8C;
 }
 body{
+    overflow: hidden;
     background: #eee;
 }
 
 #side_nav{
+
     background: var(--primary);
     min-width: 250px;
     max-width: 250px;
