@@ -12,40 +12,47 @@
         {%for x in card%}
         <div class="fn">                        
             <div class="form d-flex flex-column container">
-                <h3>Estás a punto de donar a</h3>
-                <h2 class="green">{{x.project_name}}</h2>
-    
-                <div class="group">
-                    Tipo de donación
-                    <select class="input">
-                        <option disabled selected="">Seleccione el tipo de donación</option>
-                        <option>Recursos económicos</option>
-                        <option>Mano de obra</option>
-                    </select>
-                </div>                
-                
-                <div class="group">
-                    Número de tarjeta
-                    <input class="input" type="text" placeholder="Escribe aquí...">
-                </div>
-                
-                <div class="group">
-                    Fecha de vencimiento
-                    <input class="input" type="input" placeholder="Escribe aquí...">
-                </div>
-                <div class="group">
-                    CVV
-                    <input class="input" type="text" placeholder="Escribe aquí...">
-                </div>
-                
-                <div class="group">
-                    Cantidad a donar
-                    <input class="input" type="text" placeholder="Escribe aquí...">
-                </div>
-                
-                <a  class="primary-btn" href="{% url 'core:successful_donation' %}?lang={{x.project_id}}">Realizar donación</a>
-                
-                
+                <form method="post">
+                    {% csrf_token %}
+                    <h3>Estás a punto de donar a</h3>
+                    <h2 class="green">{{x.project_name}}</h2>
+        
+                    <div class="group">
+                        Tipo de donación
+                        <select class="input">
+                            <option disabled selected="">Seleccione el tipo de donación</option>
+                            <option>Recursos económicos</option>
+                            <option>Mano de obra</option>
+                        </select>
+                    </div>      
+                              
+                    <div class="form-group">
+                        <label for="{{ form.payment_method.id_for_label }}">Metodo de pago:</label>
+                        {{ form.payment_method}}
+                    </div>
+                    <div class="form-group">
+                        <label for="{{ form.amount.id_for_label }}">Monto a donar:</label>
+                        {{ form.amount }}
+                    </div>
+
+                    <div class="group">
+                        Número de tarjeta
+                        <input class="input" type="text" placeholder="Escribe aquí...">
+                    </div>
+                    
+                    <div class="group">
+                        Fecha de vencimiento
+                        <input class="input" type="input" placeholder="Escribe aquí...">
+                    </div>
+                    <div class="group">
+                        CVV
+                        <input class="input" type="text" placeholder="Escribe aquí...">
+                    </div>
+                    
+                    <a  class="primary-btn" type="submit" href="{% url 'core:successful_donation' %}?lang={{x.project_id}}">Realizar donación</a>
+                    <button type="submit" class="btn btn-primary" style="background-color:#087F8C;color:white">Realizar donación</button>
+                    <!---->
+                </form>
             </div> 
             <img class="img" src="{{x.img.url}}" alt="Imagen">
         </div>
