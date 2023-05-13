@@ -20,9 +20,12 @@ class Category(models.Model):
 
 class Convocatory(models.Model):
     #Primary key
-    convocatory_id = models.CharField(primary_key=True,max_length=5)
+    convocatory_id = models.AutoField(primary_key=True)
+    convocatory_name = models.CharField(max_length=30)
     start_date = models.DateField()
     closing_date = models.DateField()
+    def __str__(self):
+        return self.convocatory_name
 
 class Project(models.Model):
     #Primary key
@@ -37,7 +40,7 @@ class Project(models.Model):
     state =models.ForeignKey(State,on_delete=models.CASCADE)
     category = models.ForeignKey(Category,on_delete=models.CASCADE)
     img=models.FileField(upload_to="pic/%y/",default="")
-    convocatory = models.ForeignKey(Convocatory,on_delete=models.CASCADE, blank=True, null = True)
+    convocatory = models.ForeignKey(Convocatory,on_delete=models.SET_NULL, blank=True, null = True)
     def __str__(self):
         return self.project_name
     class Meta :
