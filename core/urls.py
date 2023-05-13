@@ -39,6 +39,9 @@ urlpatterns = [
     path(base_url_employee+'projects/save',views.Save_project.as_view(),name='save_project_ehome'),
     path(base_url_employee+'projects/delete/<project_id>',views.Delete_project.delete_project,name='delete_project_ehome'),
     path('convocatory',Convocatory_inscription.as_view(),name='convocatory'),
+    path(base_url_employee+'convocatories/save',views.Save_convocatories.as_view(),name='save_convocatory_ehome'),
+    path(base_url_employee+'convocatories/edit/<convocatory_id>',views.Edit_convocatory.as_view(),name='edit_convocatory_ehome'),
+    path(base_url_employee+'convocatories/delete/<convocatory_id>',views.Delete_convocatory.delete_convocatory,name='delete_convocatory_ehome'),
     
 ]
 
