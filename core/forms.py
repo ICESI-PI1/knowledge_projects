@@ -1,6 +1,6 @@
 from django import forms
 
-from .models import Category,State,Project
+from .models import Category,State,Project,Convocatory
 
 
 class Edit_category_form(forms.ModelForm):
@@ -45,18 +45,36 @@ class Project_form(forms.ModelForm):
             'img',
             'state',
             'category',
+            'convocatory',
         ]
         widgets = {
 
-            'project_name':forms.TextInput(attrs={'class': 'form-control mb-3', 'placeholder': 'Nombre:'}),
-            'project_description':forms.TextInput(attrs={'class': 'form-control mb-3', 'placeholder': 'Descripción:'}),
-            'result':forms.TextInput(attrs={'class': 'form-control mb-3', 'placeholder': 'Resultado:'}),
-            'scope':forms.TextInput(attrs={'class': 'form-control mb-3', 'placeholder': 'Objetivo:'}),
-            'work_plan':forms.TextInput(attrs={'class': 'form-control mb-3', 'placeholder': 'Plan de trabajo:'}),
-            'budget':forms.NumberInput(attrs={'class': 'form-control mb-3', 'placeholder': 'Presupuesto:'}),
-            'goal':forms.TextInput(attrs={'class': 'form-control mb-3', 'placeholder': 'Meta:'}),
-            'img':forms.FileInput(attrs={'class': 'form-control mb-3', 'placeholder': 'Imagen:'}),
+            'project_name':forms.TextInput(attrs={'class': 'form-control mb-1', 'placeholder': 'Nombre:'}),
+            'project_description':forms.TextInput(attrs={'class': 'form-control mb-1', 'placeholder': 'Descripción:'}),
+            'result':forms.TextInput(attrs={'class': 'form-control mb-1', 'placeholder': 'Resultado:'}),
+            'scope':forms.TextInput(attrs={'class': 'form-control mb-1', 'placeholder': 'Objetivo:'}),
+            'work_plan':forms.TextInput(attrs={'class': 'form-control mb-1', 'placeholder': 'Plan de trabajo:'}),
+            'budget':forms.NumberInput(attrs={'class': 'form-control mb-1', 'placeholder': 'Presupuesto:'}),
+            'goal':forms.TextInput(attrs={'class': 'form-control mb-1', 'placeholder': 'Meta:'}),
+            'img':forms.FileInput(attrs={'class': 'form-control mb-1', 'placeholder': 'Imagen:'}),
             'state': forms.Select(attrs={'class': ''}),
             'category': forms.Select(attrs={'class': ''}),
-            
+            'convocatory': forms.Select(attrs={'class': 'form-control mb-1', 'placeholder': 'Convocatoria:'})
         }
+
+
+class Convocatory_form(forms.ModelForm):
+    class Meta :
+        model = Convocatory
+        fields = [
+            'convocatory_name',
+            'start_date',
+            'closing_date',
+        ]
+        widgets = {
+            'convocatory_name':forms.TextInput(attrs={'size': 30,'class': 'form-control', 'placeholder': 'Nombre:'}),
+            'start_date': forms.DateInput(attrs={'type': 'date','class': 'form-control', 'placeholder': 'Fecha inicio:'}),
+            'closing_date': forms.DateInput(attrs={'type': 'date','class': 'form-control ', 'placeholder': 'Fecha Fin:'}),
+        }
+
+        

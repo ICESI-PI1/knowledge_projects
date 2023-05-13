@@ -2,8 +2,8 @@ from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.views import View
-from core.models import Category,Project,State
-from .forms import Edit_category_form,State_form,Project_form
+from core.models import Category,Project,State,Convocatory
+from .forms import Edit_category_form,State_form,Project_form,Convocatory_form
 
 # Create your views here.
 
@@ -46,17 +46,6 @@ class Home_view_employee(View):
         }
         return HttpResponse(render(request,'employee_home_view.html',context))
     
-
-    
-
-    
-
-class Employee_convocatories(View):   
-    def get(self, request):
-        context={
-            'active': 'convocatories',
-        }
-        return HttpResponse(render(request,'convocatories_ehome.html',context))
     
 class Employee_clients(View):   
     def get(self, request):
@@ -92,6 +81,74 @@ class Project_view(View):
             obj1=obj1.exclude(project_id= card_id)
         return HttpResponse(render(request,'project.html',{'card':obj, 'card1':obj1})) 
 
+#Convocatory CRUD
+    
+
+class Employee_convocatories(View):   
+    def get(self, request):
+        context={
+            'convocatories': Convocatory.objects.all, 
+            'active': 'convocatories',
+        }
+        return HttpResponse(render(request,'employee_views/convocatories_ehome.html',context))
+    
+class Save_convocatories(View):
+    def get(self,request):
+
+
+        context={
+            'title' : 'Guardar convocatoria',
+            'active': 'convocatories',
+            'form': Convocatory_form(),
+        }
+        return HttpResponse(render(request,'employee_views/crud_convocatory_ehome.html',context))
+    
+    def post(self, request):
+        form = Convocatory_form(request.POST)
+        if form.is_valid():
+            form.save()  
+            return redirect('core:econvocatories')  
+        
+        context = {
+            'title': 'Guardar Convocatoria',
+            'active': 'convocatories',
+            'form': form,
+        }
+        return render(request, 'employee_views/crud_convocatory_ehome.html', context)
+    
+class Edit_convocatory(View):
+    def get(self,request,convocatory_id):
+        convocatory = Convocatory.objects.get(convocatory_id=convocatory_id)
+
+        context={
+            'title' : 'Editar Convocatoria',
+            'convocatory':convocatory,
+            'active': 'categories',
+            'form': Convocatory_form(instance=convocatory),
+        }
+        return HttpResponse(render(request,'employee_views/crud_convocatory_ehome.html',context))
+    
+    def post(self, request, convocatory_id):
+        convocatory = Convocatory.objects.get(convocatory_id=convocatory_id)
+        form = Convocatory_form(request.POST, instance=convocatory)
+        if form.is_valid():
+            form.save()
+            return redirect('core:econvocatories')  
+
+        context = {
+            'convocatory': convocatory,
+            'active': 'categories',
+            'form': form,
+        }
+        return render(request, 'employee_views/crud_convocatory_ehome.html', context)
+    
+
+class Delete_convocatory(View):
+    def delete_convocatory(request,convocatory_id):
+        convocatory = Convocatory.objects.get(convocatory_id=convocatory_id)
+        convocatory.delete()
+
+        return redirect('core:econvocatories')
 
 #Category CRUD
 
@@ -126,6 +183,8 @@ class Save_Category(View):
             'form': form,
         }
         return render(request, 'employee_views/edit_category.html', context)
+
+
     
 class Edit_category(View):
     def get(self,request,category_id):
