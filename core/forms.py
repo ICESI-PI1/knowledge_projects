@@ -1,5 +1,5 @@
 from django import forms
-from .models import Category,State,Project,Convocatory,Donation
+from .models import Category,State,Project,Convocatory,Donation, Suggestion
 
 
 
@@ -91,3 +91,18 @@ class Convocatory_form(forms.ModelForm):
             'closing_date': forms.DateInput(attrs={'type': 'date','class': 'form-control ', 'placeholder': 'Fecha Fin:'}),
         }
 
+class Suggestion_form(forms.ModelForm):
+     class Meta :
+        model = Suggestion
+        fields = [
+            'suggestion_name',
+            'suggestion_description',
+            'suggestion_work_plan',
+            'suggestion_budget',
+        ]
+        widgets = {
+            'suggestion_name':forms.TextInput(attrs={'class': 'form-control mb-1', 'placeholder': 'Nombre'}),
+            'suggestion_description':forms.TextInput(attrs={'class': 'form-control mb-1', 'placeholder': 'Descripción'}),
+            'suggestion_work_plan':forms.TextInput(attrs={'class': 'form-control mb-1', 'placeholder': 'Plan de trabajo'}),
+            'suggestion_budget':forms.NumberInput(attrs={'class': 'form-control mb-1', 'placeholder': 'Presupuesto'}),
+        }
