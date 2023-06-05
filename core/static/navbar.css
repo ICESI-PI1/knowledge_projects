@@ -29,7 +29,6 @@ a {
 }
 
 nav {
-  padding-left: 1rem;
   font-size: 16px;
   position:fixed;  
   z-index:1;
@@ -55,10 +54,10 @@ nav > span {
   flex-direction: column;
   justify-items: end;
   position: relative;
-  margin: 0 2% 0 0;
 }
 
 section.dropdown {
+  padding: 0rem 2rem;
   position: absolute;
   z-index: 1;
   background: white;

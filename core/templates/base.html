@@ -2,61 +2,59 @@
 {% load static %}
 
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Knowledge Projects</title>
 
-    <link rel="stylesheet" href="{% static 'navbar.css'%}">
-    <link rel="stylesheet" href="{% static 'toggler.css'%}">
-    <link rel="stylesheet" href="{% static 'base.css'%}">
-    <link rel="stylesheet" href="{% static 'spacing.css' %}">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Knowledge Projects</title>
 
-    {% block htmlhead %}
+  <link rel="stylesheet" href="{% static 'navbar.css'%}">
+  <link rel="stylesheet" href="{% static 'toggler.css'%}">
+  <link rel="stylesheet" href="{% static 'base.css'%}">
+  <link rel="stylesheet" href="{% static 'spacing.css' %}">
 
-    {% endblock htmlhead %}
-  </head>
-  
-  <body style="margin-bottom: 2rem; padding: 0rem 3%;">
-    <script>
-      
-    </script>
-    <nav id="navbar">
-      <!-- <img src="logo-db.png" alt="" width="55"> -->
-      <span class="menu-icon" id="toggler">
-          <input id="inn" class="menu-icon__cheeckbox" type="checkbox" />
-          <div>
-              <span></span>
-              <span></span>
-          </div>
-      </span>
+  {% block htmlhead %}
 
-      <div id="nav-left">
-          <a href={% url 'core:home' %}>Home</a>
-          <a href={% url 'core:gallery' %}>Galería</a>  
-          <a href={% url 'core:categories' %}>Categorías</a>
-          <a href={% url 'core:suggestions' %}>Sugerir Proyecto</a>
+  {% endblock htmlhead %}
+</head>
+
+<body style="margin-bottom: 2rem;">
+  <nav id="navbar">
+    <!-- <img src="logo-db.png" alt="" width="55"> -->
+    <span class="menu-icon" id="toggler">
+      <input id="inn" class="menu-icon__cheeckbox" type="checkbox" />
+      <div>
+        <span></span>
+        <span></span>
       </div>
+    </span>
 
-      <div id="nav-right">
-          {% if username == None %}
-              <a href={% url 'auth:register' %}>Registrarse</a>
-              <a href={% url 'auth:login' %}>Iniciar sesión</a>
-          {% else %}
-              <a href="#">{{username}}</a>
-              <a href={% url 'core:home' %}>Cerrar sesion</a>
-          {% endif %}
-      </div>
+    <div id="nav-left">
+      <a href={% url 'core:home' %}>Home</a>
+      <a href={% url 'core:gallery' %}>Galería</a>
+      <a href={% url 'core:categories' %}>Categorías</a>
+      <a href={% url 'core:suggestions' %}>Sugerir Proyecto</a>
+    </div>
 
-      <section class="dropdown">
-          <ul>
-            <li><a href={% url 'core:home' %}>Home</a></li>
-            <li><a href={% url 'core:gallery' %}>Galería</a></li>
-            <li><a href={% url 'core:categories' %}>Categorías</a></li>
-            <li><a href={% url 'core:suggestions' %}>Sugerir Proyecto</a></li>
-          </ul>
-      </section>      
+    <div id="nav-right">
+      {% if username == None %}
+      <a href={% url 'auth:register' %}>Registrarse</a>
+      <a href={% url 'auth:login' %}>Iniciar sesión</a>
+      {% else %}
+      <a href="#">{{username}}</a>
+      <a href={% url 'core:home' %}>Cerrar sesion</a>
+      {% endif %}
+    </div>
+
+    <section class="dropdown">
+      <ul>
+        <li><a href={% url 'core:home' %}>Home</a></li>
+        <li><a href={% url 'core:gallery' %}>Galería</a></li>
+        <li><a href={% url 'core:categories' %}>Categorías</a></li>
+        <li><a href={% url 'core:suggestions' %}>Sugerir Proyecto</a></li>
+      </ul>
+    </section>
   </nav>
 
   <div id="body-container">
@@ -64,5 +62,6 @@
 
     {% endblock %}
 
-  <script src="{% static 'navbar_script.js'%}"></script>
+    <script src="{% static 'navbar_script.js'%}"></script>
+
 </html>

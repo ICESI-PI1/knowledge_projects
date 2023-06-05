@@ -9,7 +9,7 @@
 
 
 {% block content %}
-<section id="flip" class="mb3">
+<section id="flip">
   <div class="flip-carousel">
     <script src="{% static 'carousel.js' %}"></script>
     <!-- Slideshow container -->
@@ -57,9 +57,9 @@
 
     <progress class="progress is-primary mb2" value="30" max="100">25%</progress>
 
-    <div class="rw">
-      <a style="width: 30%;" class="button is-primary" href="{% url 'core:donation_methods' %}?lang={{project.project_id}}">Donar</a>
-      <a style="width: 20%;" class="button is-secondary"
+    <div class="flip-btn">
+      <a class="button is-primary" href="{% url 'core:donation_methods' %}?lang={{project.project_id}}">Donar</a>
+      <a class="button is-secondary"
         href="{% url 'core:donation_methods' %}?lang={{project.project_id}}">Inscribirse</a>
     </div>
   </div>
