@@ -3,29 +3,34 @@
 {% load static %}
 
 {% block htmlhead %}
-    <link rel="stylesheet" href="{% static 'gallery_style.css' %}">
+<link rel="stylesheet" href="{% static 'gallery_style.css' %}">
 {% endblock htmlhead %}
 
 {% block content %}
 
 <div class="d-flex flex-column align-items-center ps-4 pe-4">
-  <h4 class="c1">Galería</h4>
-  <h2 class="cblack" style="margin-bottom: 2rem;"><strong><center>Conoce nuestras causas</center></strong></h2>
+  <center class="mb3">
+    <h3 class="title is-family-primary" style="margin-bottom: 0;">Galería</h3>
+    <h2 class="title is-family-primary">Conoce nuestras causas</h2>
+  </center>
+
   <div id="grid">
     {%for x in card%}
-      <div class="card card-g">
-        <img src="{{x.img.url}}" class="card-image">  
-        <div class="d-flex flex-column expanded align-items-flex-start p-3"> 
-          <div class="d-flex flex-column expanded">
-            <a class="category-tag" href="#">{{x.category.category_name}}</a>
-            <h5 class="card-title mt-3"><strong>{{x.project_name}}</strong></h5>
-            <p class="card-text pb-3">{{x.project_description}}</p>
-          </div>
-          <a class="c1"  href="{% url 'core:project' %}?lang={{x.project_id}}">Conocer más</a>
+    <div class="box is-raised">
+      <img src="{{x.img.url}}" class="card-image mb-05">
+      <div style="height: 12rem;">
+        <div class="ex-v mb1">
+          <span class="tag mb1">{{x.category.category_name}}</span>
+          <h4 class="title is-family-primary" style="margin-bottom: 0.5rem !important;">{{x.project_name}}</h4>
+          <p class="mb1 text-limiter">{{x.project_description}}</p>
         </div>
+        <a class="button is-small is-primary" href="{% url 'core:project' %}?lang={{x.project_id}}">
+          Conocer más
+        </a>
       </div>
+    </div>
     {%endfor%}
   </div>
-</div> 
+</div>
 
-{% endblock %} 
+{% endblock %}

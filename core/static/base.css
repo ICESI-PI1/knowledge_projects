@@ -222,10 +222,6 @@
     width: .625em
 }
 
-.block:not(:last-child),.box:not(:last-child),.level:not(:last-child),.progress:not(:last-child),.subtitle:not(:last-child),.table-container:not(:last-child),.table:not(:last-child),.tabs:not(:last-child),.title:not(:last-child) {
-    margin-bottom: 1rem
-}
-
 .delete,.modal-close {
     -webkit-touch-callout: none;
     -webkit-user-select: none;

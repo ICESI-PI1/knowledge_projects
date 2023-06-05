@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'auth_base.html' %}
 
 {% block content%}
 
@@ -16,49 +16,20 @@
       height: 100vh;
     }
 
-    .rw {
-      display: flex;
-      flex-direction: row;
-    }
-
     .col {
       display: flex;
       flex-direction: column;
+    }
+    
+    .g05 {
+      gap: 0.5rem;
     }
 
     .center {
       justify-content: center;
       align-items: center;
     }
-
-    .mb-05 {
-      margin-bottom: 0.5rem;
-    }
-
-    .mb1 {
-      margin-bottom: 1rem;
-    }
-
-    .mb2 {
-      margin-bottom: 2rem;
-    }
-
-    .mb3 {
-      margin-bottom: 3rem;
-    }
-
-    .rw .expanded {
-      width: max-content;
-    }
-
-    .col .expanded {
-      height: max-content;
-    }
-
-    .g05 {
-      gap: 0.5rem;
-    }
-
+    
     .responsive {
       padding: 4rem;
       width: 30vw;
