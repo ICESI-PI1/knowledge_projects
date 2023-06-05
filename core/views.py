@@ -98,10 +98,11 @@ class Project_view(View):
         card_id= self.request.GET.get("lang")
         p = Project.objects.get(project_id = card_id)
         if card_id:
-            obj= obj.filter(project_id=card_id)
+            obj= obj.filter(project_id=card_id)[0]
             obj1=obj1.filter(category = p.category.category_id)
             obj1=obj1.exclude(project_id= card_id)
-        return HttpResponse(render(request,'project.html',{'card':obj, 'card1':obj1})) 
+        print({'card':obj, 'card1':obj1})
+        return HttpResponse(render(request,'project.html',{'project':obj, 'related':obj1})) 
 
 class Employee_tools(View):   
     def get(self, request):

@@ -18,10 +18,23 @@
     margin-bottom: 1.5rem;
 }
 
+.mt1 {
+    margin-top: 1rem;
+}
+
 .mb3 {
     margin-bottom: 3rem;
 }
 
 .ex-v {
     height: 74%;
+}
+
+.col {
+    display: flex;
+    flex-direction: column;
+}
+
+g05 {
+    gap: 0.5rem;
 }
