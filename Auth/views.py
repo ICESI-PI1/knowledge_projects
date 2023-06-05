@@ -24,6 +24,9 @@ class User_login_view(LoginView):
                 return reverse('core:home')
             elif user.is_employee:
                 return reverse('core:employee_home')
+            elif user.is_admin:
+                return reverse('core:employee_home')
+
         else:
             return reverse('login')
 

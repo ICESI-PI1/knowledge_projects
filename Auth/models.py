@@ -7,6 +7,8 @@ class User(AbstractUser):
 
     is_client = models.BooleanField(default=False)
     is_employee = models.BooleanField(default=False)
+    is_admin = models.BooleanField(default=False)
+
   
     def save(self,*args, **kwargs):
         if not self.pk and not  self.is_superuser:
@@ -28,7 +30,8 @@ class Client(models.Model):
 class Employee(models.Model):
     user = models.OneToOneField(User,on_delete=models.CASCADE,primary_key=True,related_name='Employee')
 
+    img=models.FileField(upload_to="pic/%y/",default="")
+
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
-    picture = models.ImageField()
     birth_date = models.DateField()

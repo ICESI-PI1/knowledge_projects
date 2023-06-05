@@ -35,6 +35,7 @@ urlpatterns = [
     path(base_url_employee+'states/edit/<state_id>',views.Edit_state.as_view(),name='edit_state_ehome'),
     path(base_url_employee+'states/delete/<state_id>',views.Delete_state.delete_state,name='delete_state_ehome'),
     path(base_url_employee+'states/save',views.Save_state.as_view(),name='save_state_ehome'),
+    path(base_url_employee+'tools/save',views.Save_employee.as_view(),name='save_employee_ehome'),
     path(base_url_employee+'projects/edit/<project_id>',views.Edit_project.as_view(),name='edit_project_ehome'),
     path(base_url_employee+'projects/save',views.Save_project.as_view(),name='save_project_ehome'),
     path(base_url_employee+'projects/delete/<project_id>',views.Delete_project.delete_project,name='delete_project_ehome'),
@@ -42,6 +43,8 @@ urlpatterns = [
     path(base_url_employee+'convocatories/save',views.Save_convocatories.as_view(),name='save_convocatory_ehome'),
     path(base_url_employee+'convocatories/edit/<convocatory_id>',views.Edit_convocatory.as_view(),name='edit_convocatory_ehome'),
     path(base_url_employee+'convocatories/delete/<convocatory_id>',views.Delete_convocatory.delete_convocatory,name='delete_convocatory_ehome'),
+    path(base_url_employee+'tools/edit/<username>',views.Edit_employee.as_view(),name='edit_employee_ehome'),
+    path(base_url_employee+'tools/delete/<username>',views.Delete_employe.delete_employee,name='delete_employee_ehome'),
     
 ]
 
