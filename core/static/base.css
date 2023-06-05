@@ -14,7 +14,13 @@
 }
 
 #body-container {
-    padding-top: 110px;
+    padding: 110px 3% 0rem 3%;
+}
+
+@media screen and (max-width: 1200px) {
+    #body-container {
+        padding: 90px 4% 0rem 4%;
+    }
 }
 
 
@@ -357,11 +363,6 @@ html {
     box-sizing: inherit
 }
 
-img,video {
-    height: auto;
-    max-width: 100%
-}
-
 iframe {
     border: 0
 }
@@ -442,11 +443,6 @@ hr {
     display: block;
     height: 1px;
     margin: 1em 0
-}
-
-img {
-    height: auto;
-    max-width: 100%
 }
 
 input[type=checkbox],input[type=radio] {
