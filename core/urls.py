@@ -46,3 +46,4 @@ urlpatterns = [
 ]
 
 urlpatterns += staticfiles_urlpatterns()
+print(urlpatterns)

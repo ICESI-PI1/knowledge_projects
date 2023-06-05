@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.views import View
 from core.models import Category,Project,State,Convocatory,Donation
-from .forms import Edit_category_form,State_form,Project_form,Convocatory_form,,Donation_form
+from .forms import Edit_category_form,State_form,Project_form,Convocatory_form,Donation_form
 from Auth.models import Client
 from django.urls import reverse_lazy,reverse
 

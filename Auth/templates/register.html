@@ -1,64 +1,163 @@
-{% extends 'layouts/base.html' %}
+{% extends 'base.html' %}
 
 {% block content%}
-<section class="vh-100 gradient-custom">
-    <div class="container py-5 h-100">
-        <div class="row d-flex justify-content-center align-items-center h-100">
 
-            <h1>Registro</h1>
-            <div class="col-md-6">
+<div class="main has-background-radial-t" style="overflow-y: scroll;">
+    <style>
+        .center {
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
 
-                <form method="post">
-                    {% csrf_token %}
+        .main {
+            width: 100vw;
+            height: 100vh;
+        }
 
-                    <div class="form-group">
-                        <label for="{{ form.nit.id_for_label }}">Nit:</label>
-                        {{ form.username }}
-                    </div>
-                    <div class="form-group">
-                        <label for="{{ form.name.id_for_label }}">Nombre:</label>
-                        {{ form.name }}
-                    </div>
-                    <div class="form-group">
-                        <label for="{{ form.phoneNumber.id_for_label }}">Telefono:</label>
-                        {{ form.phone_number }}
-                    </div>
-                    <div class="form-group">
-                        <label for="{{ form.adress.id_for_label }}">Dirección:</label>
-                        {{ form.address }}
-                    </div>
+        .rw {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .col {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .mb-05 {
+            margin-bottom: 0.5rem;
+        }
+
+        .mb1 {
+            margin-bottom: 1rem;
+        }
+
+        .mb2 {
+            margin-bottom: 2rem;
+        }
+
+        .mb3 {
+            margin-bottom: 3rem;
+        }
+
+        .rw .expanded {
+            width: max-content;
+        }
+
+        .col .expanded {
+            height: max-content;
+        }
+
+        .g05 {
+            gap: 0.5rem;
+        }
+
+        .responsive {
+            padding: 4rem;
+            width: 45vw;
+        }
+
+        @media only screen and (max-width: 1400px) {
+            .responsive {
+                width: 75vw;
+            }
+
+            .center {
+                display: flex;
+                flex-direction: column;
+                position: relative;
+                top: 0;
+                left: 0;
+                transform: translate(0%, 0%);
+            }
+
+            .main {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                padding: 1rem 0rem;
+            }
+        }
+
+        @media only screen and (max-width: 900px) {
+            .responsive {
+                padding: 2rem;
+                width: 95vw;
+            }
+        }
+    </style>
+    <div class="center box is-raised responsive">
+        <center class="mb2">
+            <h3 class="title is-family-primary">Sé parte de Knowledge Projects</h3>
+        </center>
+
+        <form method="post" class="resp columns is-multiline">
+            {% csrf_token %}
+
+            <div class="column is-4">
+                <div class="field">
+                    <label for="username" class="label">Nit</label>
+                    <input name="username" class="input" type="text">
+                </div>
             </div>
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label for="{{ form.representativeName.id_for_label }}">Nombre representante:</label>
-                    {{ form.representative_name }}
-                </div>
-                <div class="form-group">
-                    <label for="{{ form.phoneNumberRepresentative.id_for_label }}">Telefono representante:</label>
-                    {{ form.phone_number_representative }}
-                </div>
-                <div class="form-group">
-                    <label for="{{ form.password.id_for_label }}">Contraseña:</label>
-                    {{ form.password }}
-                </div>
-                <div class="form-group">
-                    <label for="{{ form.password_confirmation.id_for_label }}">Confirmar contraseña:</label>
-                    {{ form.password_confirmation }}
 
+            <div class="column is-8">
+                <div class="field">
+                    <label for="address" class="label">Dirección</label>
+                    <input name="address" class="input" type="text">
                 </div>
             </div>
-            <center>
-                <button type="submit" class="btn btn-primary" style="background-color:#087F8C;color:white">Crear
-                    cuenta</button>
-            </center>
-            </form>
 
-            <div class="d-flex justify-content-center">
-                <p class="mb-0">Ya tienes cuenta? <a href="{% url 'auth:login' %}" style="color:#087F8C"
-                        class="text-black-20 fw-bold">Inicia sesión</a>
-                </p>
+            <div class="column is-8">
+                <div class="field">
+                    <label for="name" class="label">Nombre</label>
+                    <input name="name" class="input" type="text">
+                </div>
             </div>
-        </div>
+            <div class="column is-4">
+                <div class="field">
+                    <label for="phone_number" class="label">Teléfono</label>
+                    <input name="phone_number" class="input" type="text">
+                </div>
+            </div>
+
+            <div class="column is-8">
+                <div class="field">
+                    <label for="representative_name" class="label">Nombre representante</label>
+                    <input name="representative_name" class="input" type="text">
+                </div>
+            </div>
+            <div class="column is-4">
+                <div class="field">
+                    <label for="phone_number_representative" class="label">Tel. representante</label>
+                    <input name="phone_number_representative" class="input" type="text">
+                </div>
+            </div>
+
+            <div class="column is-6">
+                <div class="field">
+                    <label for="password" class="label">Contraseña</label>
+                    <input type="password" name="password" class="input" type="text">
+                </div>
+            </div>
+            <div class="column is-6">
+                <div class="field">
+                    <label for="password" class="label">Confirmar Contraseña</label>
+                    <input type="password" name="password_confirmation" class="input" type="text">
+                </div>
+            </div>
+
+        </form>
+
+        <button type="submit" class="button is-primary mb1" style="width: 100%;">Registrarse</button>
+
+        <center>
+            <p class="mb-0">Ya tienes cuenta? <a href="{% url 'auth:login' %}">Inicia sesión</a></p>
+        </center>
     </div>
-    </div </section>
-    {% endblock %}
+</div>
+
+
+{% endblock %}

@@ -1,41 +1,119 @@
-{% extends 'layouts/base.html' %}
-
-{% load static %}
+{% extends 'base.html' %}
 
 {% block content%}
 
-<div class="main-container">
-  <div class="login-options">
-    <h3 class="my-5 display-5 fw-bold ls-tight" style="color: #011627">¡Bienvenido<br />
-      <span>de vuelta!</span>
-    </h3>
-    <form method="post">
+<div class="main has-background-radial-t">
+  <style>
+    .center {
+      position: fixed;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .main {
+      width: 100vw;
+      height: 100vh;
+    }
+
+    .rw {
+      display: flex;
+      flex-direction: row;
+    }
+
+    .col {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .center {
+      justify-content: center;
+      align-items: center;
+    }
+
+    .mb-05 {
+      margin-bottom: 0.5rem;
+    }
+
+    .mb1 {
+      margin-bottom: 1rem;
+    }
+
+    .mb2 {
+      margin-bottom: 2rem;
+    }
+
+    .mb3 {
+      margin-bottom: 3rem;
+    }
+
+    .rw .expanded {
+      width: max-content;
+    }
+
+    .col .expanded {
+      height: max-content;
+    }
+
+    .g05 {
+      gap: 0.5rem;
+    }
+
+    .responsive {
+      padding: 4rem;
+      width: 30vw;
+    }
+
+    @media only screen and (max-width: 1200px) {
+      .responsive {
+        width: 75vw;
+      }
+
+      .center {
+        width: 100vw;
+        flex-direction: column;
+        align-content: center;
+        position: relative;
+      }
+
+      .main {
+        padding: 1rem 0;
+      }
+    }
+
+    @media only screen and (max-width: 650px) {
+      .responsive {
+        padding: 2rem;
+        width: 95vw;
+      }
+    }
+  </style>
+  <div class="center box is-raised responsive">
+    <center class="mb2">
+      <h3 class="title is-family-primary">Entrar a Knowledge Projects</h3>
+    </center>
+
+    <form class="mb3" method="post">
       {% csrf_token %}
-      <div class="inputs">
-        <div class="form-group d-flex flex-column" style="width: 100%;">
-          <label class="form-label" for="form2Example22">Nombre de usuario:</label>
-          {{ form.username }}
-        </div>
-        <div class="form-outline d-flex flex-column" style="width: 100%;">
-          <label class="form-label" for="form2Example22">Password:</label>
-          {{ form.password }}
-        </div>
+
+      <div class="col g05 mb1">
+        <label class="has-text-weight-medium" for="username">Usuario</label>
+        <input name="username" class="input"></input>
       </div>
-    
-      <div class="buttons">
-        <button class="btn btn-info btn-lg btn-block" type="submit" style="background-color:#087F8C;color:white">Iniciar sesión</button>
-        <p class="small mb-5 pb-lg-2"><a class="text-muted" href="#!">Olvidé mi contraseña</a></p>
+
+      <div class="col g05 mb2">
+        <label class="has-text-weight-medium" for="password">Contraseña</label>
+        <input name="password" class="input" type="password"></input>
+        <a href="#!">Olvidé mi contraseña</a>
       </div>
-    
+
+      <button type="submit" class="button is-primary is-medium" style="width: 100%;">Iniciar sesión</button>
     </form>
 
-    <p class="mb-0">No tienes cuenta? <a href="{% url 'auth:register' %}" style="color:#087F8C" class="text-black-20 fw-bold">Registrarse</a></p>
-
+    <center>
+      <p class="mb-0">¿No tienes cuenta? <a href="{% url 'auth:register' %}">Crea una</a></p>
+    </center>
   </div>
-
-  <img id="login-image" src="{% static 'login.jpg' %}">
-
 </div>
-
 
 {% endblock %}
