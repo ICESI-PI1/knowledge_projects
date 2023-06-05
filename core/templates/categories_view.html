@@ -3,32 +3,41 @@
 {% load static %}
 
 {% block htmlhead %}
-    <link rel="stylesheet" href="{% static 'categories_view_style.css' %}">
+<link rel="stylesheet" href="{% static 'categories_view_style.css' %}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
 {% endblock htmlhead %}
 
 {% block content %}
-    <div class="d-flex flex-column align-items-center ps-4 pe-4">
-        <h4 class="c1">Categorías</h4>
-        <h2 style="margin-bottom: 2rem;" class="cblack"><strong><center>Innovación en todos los campos</center></strong></h2>
-        <div id="grid">
-            {% for x in data %}
-            
-            <div class="card">
-                <div class="d-flex flex-column align-items-center p-4" style="height: 100%;">
-                    <div class="circle">
-                        <i class="fa-solid {% autoescape off %}{{ x.icon_src }}{% endautoescape %}" style="font-size:50px;color:#FFBF00"></i>
+
+<div>
+    <center class="mb3">
+        <h3 class="title is-family-primary" style="margin-bottom: 0;">Categorías</h3>
+        <h2 class="title is-family-primary">Innovación en todos los campos</h2>
+    </center>
+    <div id="grid">
+        {% for x in data %}
+        <div class="box is-raised">
+            <center>
+                <div class="circle mb1">
+                    <i class="fa-solid {% autoescape off %}{{ x.icon_src }}{% endautoescape %}"
+                        style="font-size:50px;color:#FFBF00"></i>
+                </div>
+                <div style="height: 10.5rem;">
+                    <div class="mb2">
+                        <h4 class="title is-family-primary" style="margin-bottom: 0.5rem !important;">
+                            {{x.category_name}}</h4>
+                        <p class="mb1 text-limiter">{{x.description}}</p>
                     </div>
-                    <div style="height: 100%;">
-                        <h5 class="card-title mt-3"><strong>{{x.category_name}}</strong></h5>
-                        <p class="card-text pb-3">{{x.description}}</p>
-                    </div>
-                    <a class="c1"  href="{% url 'core:gallery' %}?lang={{x.category_id}}">
-                        Conocer más
+                    <a class="is-regular is-underlined" href="{% url 'core:gallery' %}?lang={{x.category_id}}">
+                        Conocer proyectos
                     </a>
                 </div>
-            </div>
-            
-            {% endfor %}
+            </center>
         </div>
-    </div> 
-{% endblock %} 
+
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
