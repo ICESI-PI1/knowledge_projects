@@ -1,3 +1,4 @@
+from django.utils import timezone
 from django.db import models
 from Auth.models import User
 
@@ -79,3 +80,9 @@ class Suggestion(models.Model):
     suggestion_work_plan = models.TextField()
     suggestion_budget = models.DecimalField(max_digits=10,decimal_places=0)
 
+class Comments(models.Model):
+    comment_id = models.AutoField(primary_key=True)
+    author= models.ForeignKey(User,on_delete=models.CASCADE)
+    text = models.TextField()
+    date = models.DateTimeField(default=timezone.now())
+    project = models.ForeignKey(Project,on_delete=models.CASCADE)

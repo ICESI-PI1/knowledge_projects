@@ -2,9 +2,9 @@ from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.views import View
-from core.models import Category,Project,State,Convocatory,Donation, Suggestion
+from core.models import Category,Project,State,Convocatory,Donation, Suggestion, Comments
 from Auth.forms import Employee_register_form,Employee_edit_form,Employee_change_password
-from .forms import Edit_category_form,State_form,Project_form,Convocatory_form,Donation_form,Suggestion_form
+from .forms import Edit_category_form,State_form,Project_form,Convocatory_form,Donation_form,Suggestion_form, Comment_form
 from Auth.models import Client,Employee,User
 from django.urls import reverse_lazy,reverse
 from django.contrib.auth.hashers import check_password,make_password
@@ -38,7 +38,35 @@ class detailed_info(View):
         card_id= self.request.GET.get("lang")
         if card_id:
             obj= obj.filter(project_id=card_id)
-        return HttpResponse(render(request,'detailedinfo.html',{'card':obj,}))
+        comment = Comments.objects.filter(project = card_id)
+        context={
+            'form': Comment_form,
+            'card':obj,
+            'com':comment
+        }
+        return HttpResponse(render(request,'detailedinfo.html',context))
+    
+    def post(self, request):
+        obj = Project.objects.all()
+        com = Comments.objects.all()
+        card_id= self.request.GET.get("lang")
+        obj1 = obj.get(project_id=card_id)
+        if card_id:
+            obj= obj.filter(project_id=card_id)
+        comment1 = com.filter(project = card_id)
+        form = Comment_form(request.POST)
+        if form.is_valid():
+            comment = Comments()
+            comment.author = request.user
+            comment.text = form.cleaned_data['text']
+            comment.project = obj1
+            comment.save()
+        context={
+            'form': Comment_form,
+            'card':obj,
+            'com':comment1
+        }
+        return render(request, 'detailedinfo.html', context)
 
 class binnacle(View):
     def get(self,request):

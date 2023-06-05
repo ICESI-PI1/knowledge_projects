@@ -1,5 +1,5 @@
 from django import forms
-from .models import Category,State,Project,Convocatory,Donation, Suggestion
+from .models import Category,State,Project,Convocatory,Donation, Suggestion, Comments
 
 
 
@@ -105,4 +105,14 @@ class Suggestion_form(forms.ModelForm):
             'suggestion_description':forms.TextInput(attrs={'class': 'form-control mb-1', 'placeholder': 'Descripción'}),
             'suggestion_work_plan':forms.TextInput(attrs={'class': 'form-control mb-1', 'placeholder': 'Plan de trabajo'}),
             'suggestion_budget':forms.NumberInput(attrs={'class': 'form-control mb-1', 'placeholder': 'Presupuesto'}),
+        }
+
+class Comment_form(forms.ModelForm):
+     class Meta :
+        model = Comments
+        fields = [
+            'text',
+        ]
+        widgets = {
+            'text':forms.TextInput(attrs={'class': 'form-control mb-1', 'placeholder': 'Comenta'}),
         }
