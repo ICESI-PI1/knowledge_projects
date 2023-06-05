@@ -17,7 +17,7 @@
         <img src="{{x.img.url}}" class="card-image">  
         <div class="d-flex flex-column expanded align-items-flex-start p-3"> 
           <div class="d-flex flex-column expanded">
-            <a class="category-tag" href="#">{{x.category.category_name}}</a>
+            <a class="category-tag" href="{% url 'core:gallery' %}?lang={{x.category_id}}">{{x.category.category_name}}</a>
             <h5 class="card-title mt-3"><strong>{{x.project_name}}</strong></h5>
             <p class="card-text pb-3">{{x.project_description}}</p>
           </div>

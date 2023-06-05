@@ -8,6 +8,7 @@ from core.views import Gallery
 from core.views import Donation_methods
 from core.views import Successful_donation
 from core.views import Convocatory_inscription
+from core.views import Suggestion_view
 app_name = 'core'
 base_url_employee = 'ehome/'
 
@@ -45,7 +46,7 @@ urlpatterns = [
     path(base_url_employee+'convocatories/delete/<convocatory_id>',views.Delete_convocatory.delete_convocatory,name='delete_convocatory_ehome'),
     path(base_url_employee+'tools/edit/<username>',views.Edit_employee.as_view(),name='edit_employee_ehome'),
     path(base_url_employee+'tools/delete/<username>',views.Delete_employe.delete_employee,name='delete_employee_ehome'),
-    
+    path('suggestions/',Suggestion_view.as_view(),name='suggestions'),
 ]
 
 urlpatterns += staticfiles_urlpatterns()

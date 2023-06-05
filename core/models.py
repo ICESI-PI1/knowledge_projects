@@ -72,4 +72,10 @@ class Donation(models.Model):
     user = models.ForeignKey(User,on_delete=models.CASCADE)
     project = models.ForeignKey(Project,on_delete=models.CASCADE)
 
+class Suggestion(models.Model):
+    suggestion_id = models.AutoField(primary_key=True)
+    suggestion_name = models.CharField(max_length=50)
+    suggestion_description = models.TextField()
+    suggestion_work_plan = models.TextField()
+    suggestion_budget = models.DecimalField(max_digits=10,decimal_places=0)
 

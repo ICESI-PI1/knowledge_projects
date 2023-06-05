@@ -2,14 +2,12 @@ from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.views import View
-from core.models import Category,Project,State,Convocatory,Donation
+from core.models import Category,Project,State,Convocatory,Donation, Suggestion
 from Auth.forms import Employee_register_form,Employee_edit_form,Employee_change_password
-from .forms import Edit_category_form,State_form,Project_form,Convocatory_form,Donation_form
+from .forms import Edit_category_form,State_form,Project_form,Convocatory_form,Donation_form,Suggestion_form
 from Auth.models import Client,Employee,User
-from django.urls import reverse
+from django.urls import reverse_lazy,reverse
 from django.contrib.auth.hashers import check_password,make_password
-
-
 
 
 # Create your views here.
@@ -594,3 +592,25 @@ class Convocatory_inscription(View):
         if card_id:
             obj= obj.filter(project_id=card_id)
         return HttpResponse(render(request,'convocatory_inscription.html',{'card':obj}))
+
+class Suggestion_view(View):
+    def get(self,request):
+        context={
+            'form': Suggestion_form,
+        }
+        return HttpResponse(render(request,'suggestions.html',context))
+    
+    def post(self, request):
+        form = Suggestion_form(request.POST)
+        if form.is_valid():
+            suggestion = Suggestion()
+            suggestion.suggestion_name = form.cleaned_data['suggestion_name']
+            suggestion.suggestion_description = form.cleaned_data['suggestion_description']
+            suggestion.suggestion_work_plan = form.cleaned_data['suggestion_work_plan']
+            suggestion.suggestion_budget = form.cleaned_data['suggestion_budget']
+            suggestion.save()
+            return redirect('core:home')  
+        context={
+            'form': Suggestion_form,
+        }
+        return render(request, 'suggestions.html', context)
