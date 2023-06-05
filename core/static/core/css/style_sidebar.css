@@ -2,10 +2,24 @@
     --primary:#ffd862;
     --secondary: #087F8C;
 }
-body{
+
+#side_nav_div{
     overflow: hidden;
+}   
+
+#content_body{
+    position: absolute;
+
+    overflow: visible;
+}
+  
+
+body{
     background: #eee;
 }
+
+  
+  
 
 #side_nav{
 
@@ -61,4 +75,11 @@ a{
     #side_nav.active{
         margin-left: 0;
     }
+}
+
+.list-group{
+    max-height: 300px;
+    margin-bottom: 10px;
+    overflow:scroll;
+    -webkit-overflow-scrolling: touch;
 }

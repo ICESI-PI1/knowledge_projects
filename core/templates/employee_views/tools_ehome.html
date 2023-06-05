@@ -1,0 +1,55 @@
+{% extends "layouts/core/base_employee_view.html" %}
+{% block content%}
+
+{% if user.is_admin %}
+<div class="container">
+  <div class="row">
+      <h1 class="font-weight-bold mb-0">Bienvenido</h1>
+      <p class="lead text-muted">Revisa la última información de los empleados</p>
+      <a href="save">
+          <button class="btn btn-succes" style="background-color:#087F8C;color:white">Añadir</button>
+      </a>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <div class="list-container overflow-auto" style="max-height: 360px;">
+        <ul class="list-group" style="margin-top:10px;">
+          {% for e in employees %}
+          <li class="list-group-item">
+            <div class="row">
+              <div class="col-md-2">
+                <img src="{{ e.img.url }}" alt="Imagen 100" style="width:100px; height:100px; border-radius: 10px;">
+              </div>
+              <div class="col-md-8">
+                <h5>{{ e.first_name }} {{ e.last_name }}</h5>
+                <p>C.C {{ e.user.username }}</p>
+                <p>{{ e.birth_date }}</p>
+              </div>
+              <div class="col-md-2">
+                <div class="btn-group-vertical">
+                  <td><a href="edit/{{ e.user.username }}" class="btn btn-info mb-4" style="background-color: #087F8C;color: white;border-radius: 8px;">Editar</a></td>
+                  <td><a href="delete/{{ e.user.username }}" class="btn btn-danger" style="border-radius: 8px">Borrar</a></td>
+                </div>
+              </div>
+            </div>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+  
+  
+  
+{% else %}
+    <div class="alert alert-danger" role="alert">
+        ¡Necesitas permisos de administrador!
+    </div>
+{% endif %}
+
+
+
+{% endblock %}

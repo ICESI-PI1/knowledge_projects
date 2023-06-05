@@ -3,12 +3,16 @@ from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.views import View
 from core.models import Category,Project,State,Convocatory,Donation, Suggestion
+from Auth.forms import Employee_register_form,Employee_edit_form,Employee_change_password
 from .forms import Edit_category_form,State_form,Project_form,Convocatory_form,Donation_form,Suggestion_form
-from Auth.models import Client
+from Auth.models import Client,Employee,User
 from django.urls import reverse_lazy,reverse
+from django.contrib.auth.hashers import check_password,make_password
 
 
 # Create your views here.
+
+
 
 class Home_view(View):   
     def get(self, request):
@@ -69,8 +73,13 @@ class Employee_clients(View):
     
 class Employee_tools(View):   
     def get(self, request):
+        employees = Employee.objects.all()
+        print(employees.count)
+
         context={
             'active': 'tools',
+            'user':request.user,
+            'employees':employees,
         }
         return HttpResponse(render(request,'tools_ehome.html',context))
     
@@ -94,8 +103,177 @@ class Project_view(View):
             obj1=obj1.exclude(project_id= card_id)
         return HttpResponse(render(request,'project.html',{'card':obj, 'card1':obj1})) 
 
-#Convocatory CRUD
+class Employee_tools(View):   
+    def get(self, request):
+        employees = Employee.objects.all()
+        context={
+            'active': 'tools',
+            'user':request.user,
+            'employees':employees,
+        }
+        return HttpResponse(render(request,'employee_views/tools_ehome.html',context))
+
+#Employee CRUD
+
+class Save_employee(View):
+    def get(self,request):
+        context={
+            'title' : 'Guardar empleado',
+            'active': 'tools',
+            'form': Employee_register_form(),
+        }
+        return HttpResponse(render(request,'employee_views/crud_employee_ehome.html',context))
     
+    def post(self, request):
+        form = Employee_register_form(request.POST,request.FILES)
+        if form.is_valid():
+
+            user = User()
+            user.username = form.cleaned_data['username']
+            user.password = form.cleaned_data['password']
+            user.is_client = False  
+            user.is_employee = True  
+            user.save()
+            
+            employee = Employee.objects.create(
+                user=user,
+                first_name=form.cleaned_data['first_name'],
+                last_name=form.cleaned_data['last_name'],
+                birth_date=form.cleaned_data['birth_date'],
+                img=form.cleaned_data['img']    
+            )
+
+            order = form.save(commit=False) 
+            order.user = user 
+            order.save() 
+
+            return redirect('core:etools')
+        
+        context = {
+            'title': 'Guardar Empleados',
+            'active': 'tools',
+            'form': form,
+        }
+        return render(request, 'employee_views/crud_employee_ehome.html', context)
+    
+class Delete_employe(View):
+    def delete_employee(request,username):
+        user = User.objects.get(username=username)
+        user.delete()
+        return redirect('core:etools')
+    
+class Change_employee_password(View):
+    def get(self,request,username):
+
+
+        context={
+            'user':username,
+            'form':Employee_change_password(),
+            'active': 'tools',
+
+        }
+        
+        return HttpResponse(render(request,'employee_views/change_password_employee_ehome.html',context))
+    
+    def post(self, request,username):
+        form = Employee_change_password(request.POST)
+        if form.is_valid():
+
+
+
+            password = form.cleaned_data['password']
+            new_password = form.cleaned_data['new_password']
+            new_password_confirmation = form.cleaned_data['new_password_confirmation']
+            user = User.objects.get(username=username)
+
+            if check_password(password, user.password):
+                if(new_password==new_password_confirmation):
+                    print('cambio contraseña')
+                    print(user.username)
+                    print(new_password)
+                    user.set_password(make_password(new_password))
+                    user.save()
+                    form.save()
+                else:
+                    context={
+                        'user':username,
+                        'form':Employee_change_password(),
+                        'active': 'tools',
+
+                    }
+        
+                    return HttpResponse(render(request,'employee_views/change_password_employee_ehome.html',context))
+            else:
+                context={
+                    'user':username,
+                    'form':Employee_change_password(),
+                    'active': 'tools',
+
+                }
+        
+                return HttpResponse(render(request,'employee_views/change_password_employee_ehome.html',context))
+
+    
+
+            return redirect(reverse('core:edit_employee_ehome', kwargs={'username': user.username}))
+        
+        context={
+            'user':username,
+            'form':Employee_change_password(),
+        }
+        
+        return HttpResponse(render(request,'employee_views/change_password_employee_ehome.html',context))
+
+
+
+class Edit_employee(View):
+    def get(self,request,username):
+
+        user = User.objects.get(username=username)
+        employee = Employee.objects.get(user=user)
+
+        form = Employee_edit_form(instance=employee)
+        form.fields['username'].initial = username
+        form.fields['img'].initial = employee.img 
+
+        context={
+            'title' : 'Editar Empleado',
+            'active': 'tools',
+            'form': form,
+            'img': employee.img, 
+            'username':employee.user.username,
+        }
+        return HttpResponse(render(request,'employee_views/edit_employee_ehome.html',context))
+    
+    def post(self, request, username):
+
+        user = User.objects.get(username=username)
+        employee = Employee.objects.get(user=user)
+
+        form = Employee_edit_form(request.POST, request.FILES, instance=employee)
+
+        if form.is_valid():
+
+            employee = Employee.objects.get(user=user)
+            form = Employee_edit_form(request.POST, request.FILES, instance=employee)
+            if form.is_valid():
+                form.save()
+                return redirect('core:etools')  
+
+
+        form.fields['username'].initial = username
+        form.fields['img'].initial = employee.img 
+
+        context={
+            'title' : 'Editar Empleado',
+            'active': 'tools',
+            'form': form,
+            'img': employee.img, 
+        }
+
+        return render(request, 'employee_views/edit_employee_ehome.html', context)
+
+#Convocatory CRUD 
 
 class Employee_convocatories(View):   
     def get(self, request):
@@ -271,7 +449,6 @@ class Save_project(View):
 
 class Edit_project(View):
     def get(self,request,project_id):
-        print('entra get')
         project = Project.objects.get(project_id=project_id)
 
         context={
