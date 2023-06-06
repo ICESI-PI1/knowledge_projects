@@ -87,8 +87,13 @@ class Comments(models.Model):
     project = models.ForeignKey(Project,on_delete=models.CASCADE)
 
 class Beneficiary(models.Model):
+    beneficiary_id = models.AutoField(primary_key=True)
     user = models.ForeignKey(Client,on_delete=models.CASCADE)
     email = models.CharField(max_length=40)
     phone_number = models.CharField(max_length=20)
     representative_name = models.CharField(max_length=30)
     phone_number_representative = models.CharField(max_length=20)
+    is_approved = models.BooleanField(null=True,blank=True)
+    project = models.ForeignKey(Project,on_delete=models.CASCADE)
+
+

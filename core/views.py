@@ -43,7 +43,6 @@ class Donation_methods(View):
         card_id= self.request.GET.get("lang")
         obj = obj.filter(project_id=card_id)
         context={
-            'form': Donation_form,
             'card': obj
         }
         return HttpResponse(render(request,'donation_methods.html',context))
@@ -549,7 +548,59 @@ class Delete_category(View):
         category.delete()
 
         return redirect('core:ecategories')
-    
+#Beneficiary CRUd
+@method_decorator(login_required, name='dispatch')
+class Edit_beneficiaries(View):
+    def get(self, request,beneficiary_id):
+
+        val = self.request.GET.get("lang")
+
+        setval = self.request.GET.get("lang")
+        
+        beneficiaries = Beneficiary.objects.get(beneficiary_id=beneficiary_id)
+        beneficiaries.is_approved = setval
+        beneficiaries.save()
+
+        all_beneficiaries = Beneficiary.objects.all() 
+
+
+        if (val):
+            all_beneficiaries = all_beneficiaries.filter(is_approved=val)
+        
+        
+        context={
+            'active': 'beneficiaries',
+            'beneficiaries':all_beneficiaries,
+        }
+
+        return HttpResponse(render(request,'employee_views/beneficiaries_ehome.html',context))
+
+        
+
+
+        
+
+class Employee_beneficiaries(View):  
+    def get(self, request):
+
+        val = self.request.GET.get("lang")
+        
+        beneficiaries = Beneficiary.objects.all() 
+
+
+        if (val):
+            beneficiaries = beneficiaries.filter(is_approved=val)
+        
+            
+
+
+
+        context={
+            'active': 'beneficiaries',
+            'beneficiaries':beneficiaries,
+        }
+        return HttpResponse(render(request,'employee_views/beneficiaries_ehome.html',context))
+
 #Project CRUD
 @method_decorator(login_required, name='dispatch')
 class Employee_projects(View):   
