@@ -38,7 +38,7 @@
     </div>
 
     <div id="nav-right">
-      {% if request.user.username == None %}
+      {% if request.user.username == '' %}
       <a href={% url 'auth:register' %}>Registrarse</a>
       <a href={% url 'auth:login' %}>Iniciar sesión</a>
       {% else %}
