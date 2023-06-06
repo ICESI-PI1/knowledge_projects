@@ -9,8 +9,74 @@ from Auth.models import Client,Employee,User
 from django.urls import reverse_lazy,reverse
 from django.contrib.auth.hashers import check_password,make_password
 
+import stripe
+
+
+SECRET_KEY = "sk_test_51NFiTZLtn7velaE9MPVYsbbL1R9yZ57rWnyR8RLW9mE8SvoFy9Unvf0WQq81vugXUj2ZPH8ccfBIzYJ3GPKPrG6d00nalYbtJf"
+
+stripe.api_key=SECRET_KEY
+
 
 # Create your views here.
+
+
+class Project_view(View):
+    def get(self,request):
+        obj = Project.objects.all()
+        obj1 = Project.objects.all()
+        card_id= self.request.GET.get("lang")
+        p = Project.objects.get(project_id = card_id)
+        if card_id:
+            obj= obj.filter(project_id=card_id)[0]
+            obj1=obj1.filter(category = p.category.category_id)
+            obj1=obj1.exclude(project_id= card_id)
+        return HttpResponse(render(request,'project.html',{'project':obj, 'related':obj1})) 
+
+
+class Stripe_donation(View):
+
+    def get(self, request,project_id):
+
+        project = Project.objects.get(project_id=project_id)
+        amount = project.budget
+
+        context={
+            'project':project,
+            'amount': amount,
+        }
+
+        return HttpResponse(render(request,'donation_views/stripe_donation_view.html',context))
+
+        
+
+    def post(self, request,project_id):
+        token = request.POST.get('stripeToken')
+  
+
+        project = Project.objects.get(project_id=project_id)  
+        amount = project.budget
+
+        try:
+
+            charge = stripe.Charge.create(
+                amount=amount,  # Monto en centavos de la moneda especificada
+                currency='usd',  # Moneda
+                source=token,
+                description='Ejemplo de pago con Stripe',
+            )
+            context={
+                'project':project,
+            }
+
+            return HttpResponse(render(request,'successful_donation.html',context))
+
+
+
+            return redirect('core:successful_donation',context)
+        
+        except stripe.error.CardError as e:
+            error = e.error.message
+            return render(request, 'donation_views/stripe_donation_view.html', {'error': error})
 
 
 
@@ -102,7 +168,6 @@ class Employee_clients(View):
 class Employee_tools(View):   
     def get(self, request):
         employees = Employee.objects.all()
-        print(employees.count)
 
         context={
             'active': 'tools',
@@ -119,18 +184,7 @@ class Gallery(View):
             obj= obj.filter(category = category_id)
         return HttpResponse(render(request,'gallery.html',{'card':obj}))
      
-class Project_view(View):
-    def get(self,request):
-        obj = Project.objects.all()
-        obj1 = Project.objects.all()
-        card_id= self.request.GET.get("lang")
-        p = Project.objects.get(project_id = card_id)
-        if card_id:
-            obj= obj.filter(project_id=card_id)[0]
-            obj1=obj1.filter(category = p.category.category_id)
-            obj1=obj1.exclude(project_id= card_id)
-        print({'card':obj, 'card1':obj1})
-        return HttpResponse(render(request,'project.html',{'project':obj, 'related':obj1})) 
+
 
 class Employee_tools(View):   
     def get(self, request):
@@ -217,9 +271,7 @@ class Change_employee_password(View):
 
             if check_password(password, user.password):
                 if(new_password==new_password_confirmation):
-                    print('cambio contraseña')
-                    print(user.username)
-                    print(new_password)
+
                     user.set_password(make_password(new_password))
                     user.save()
                     form.save()
