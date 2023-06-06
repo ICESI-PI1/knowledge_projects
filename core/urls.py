@@ -23,7 +23,6 @@ urlpatterns = [
     path('gallery/', Gallery.as_view(), name ='gallery'),
     path('project/', Project_view.as_view(), name ='project'),
     path('donation_methods/', Donation_methods.as_view(), name='donation_methods'),
-    path('successful_donation/', Successful_donation.as_view(), name='successful_donation'),
     path('ehome/categories/',views.Employee_categories.as_view(),name='ecategories'),
     path('ehome/projects/',views.Employee_projects.as_view(),name='eprojects'),
     path(base_url_employee+'categories/',views.Employee_categories.as_view(),name='ecategories'),
