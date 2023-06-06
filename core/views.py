@@ -2,9 +2,9 @@ from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.views import View
-from core.models import Category,Project,State,Convocatory,Donation, Suggestion, Comments
+from core.models import Category,Project,State,Convocatory,Donation, Suggestion, Comments, Beneficiary
 from Auth.forms import Employee_register_form,Employee_edit_form,Employee_change_password
-from .forms import Edit_category_form,State_form,Project_form,Convocatory_form,Suggestion_form, Comment_form
+from .forms import Edit_category_form,State_form,Project_form,Convocatory_form,Suggestion_form, Comment_form,Beneficiary_form
 from Auth.models import Client,Employee,User
 from django.urls import reverse
 from django.contrib.auth.hashers import check_password,make_password
@@ -702,7 +702,30 @@ class Convocatory_inscription(View):
         card_id= self.request.GET.get("lang")
         if card_id:
             obj= obj.filter(project_id=card_id)
-        return HttpResponse(render(request,'convocatory_inscription.html',{'card':obj}))
+        context={
+            'form': Beneficiary_form,
+            'card':obj,
+        }
+        return HttpResponse(render(request,'convocatory_inscription.html',context))
+    
+    def post(self, request):
+        form = Beneficiary_form(request.POST)
+        if form.is_valid():
+            beneficiary = Beneficiary()
+            user = request.user
+            client = Client.objects.all()
+            client = client.get(user=user)
+            beneficiary.user = client
+            beneficiary.email = form.cleaned_data['email']
+            beneficiary.phone_number = client.phone_number
+            beneficiary.representative_name = client.representative_name
+            beneficiary.phone_number_representative = client.phone_number_representative
+            beneficiary.save()
+            return redirect('core:home')  
+        context={
+            'form': Beneficiary_form,
+        }
+        return render(request, 'convocatory_inscription.html', context)
 
 class Suggestion_view(View):
     def get(self,request):

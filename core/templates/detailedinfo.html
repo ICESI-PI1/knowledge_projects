@@ -124,15 +124,12 @@
                     </form>
           </div>
           {%for c in com%}
-          <div class="container d-flex justify-content-center align-items-center height-vh">
-            <div class="row d-flex justify-content-center">
-              <div class="col-md-8">
-                <div class="d-flex flex-column" id="comment-container">
+                <div class="d-flex flex-column" id="comment-container" style="margin-top: 1rem;">
                   <div class="bg-white">
                     <div class="flex-row d-flex">
-                      <img src="dp.jpg" width="40" class="rounded-circle">
+                      <img src="https://i.pinimg.com/280x280_RS/42/03/a5/4203a57a78f6f1b1cc8ce5750f614656.jpg" width="40" class="rounded-circle">
                       <div class="d-flex flex-column justify-content-start ml-2">
-                        <span class="d-block font-weight-bold name">{{c.author.name}}/span>
+                        <span class="d-block font-weight-bold name">{{c.author}}</span>
                         <span class="date text-black-50">Public - {{c.date}}</span>
                       </div>
                     </div>
@@ -148,9 +145,6 @@
                     </div>
                   </div>
                 </div>
-              </div>
-            </div>
-          </div>
           {%endfor%}
           </section>
       <aside>

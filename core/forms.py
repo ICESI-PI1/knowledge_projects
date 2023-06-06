@@ -1,5 +1,5 @@
 from django import forms
-from .models import Category,State,Project,Convocatory,Donation, Suggestion, Comments
+from .models import Category,State,Project,Convocatory,Donation, Suggestion, Comments,Beneficiary
 
 
 
@@ -105,4 +105,14 @@ class Comment_form(forms.ModelForm):
         ]
         widgets = {
             'text':forms.TextInput(attrs={'class': 'form-control mb-1', 'placeholder': 'Comenta'}),
+        }
+
+class Beneficiary_form(forms.ModelForm):
+     class Meta :
+        model = Beneficiary
+        fields = [
+            'email',
+        ]
+        widgets = {
+            'email':forms.TextInput(attrs={'class': 'form-control mb-1', 'placeholder': 'Email'}),
         }
