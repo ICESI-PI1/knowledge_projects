@@ -107,7 +107,15 @@
             <img id="p-image" src="{% static 'projects.png'%}" alt="">
         </div>
         <footer>
-        </footer>
+            <div class="footer-content">
+                <h3>Knowledge projects</h3>
+        
+                <a style="margin-bottom: 2rem;" href={% url 'core:employee_home' %}>Portal de administrador</a>
+            </div>
+            <div class="footer-bottom">
+                <p>copyright &copy;2023 Structum. designed by <span>Grupo 1</span></p>
+            </div>
+          </footer>
         <script src="{% static 'navbar_script.js' %}"></script>
     </div>
 

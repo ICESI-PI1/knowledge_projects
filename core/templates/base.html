@@ -1,7 +1,7 @@
 <!doctype html>
 {% load static %}
 
-<html lang="en">
+<html lang="en" style="height: 100%;">
 
 <head>
   <meta charset="UTF-8">
@@ -19,7 +19,7 @@
   {% endblock htmlhead %}
 </head>
 
-<body style="margin-bottom: 2rem;">
+<body style="height: 100%;display: flex;flex-direction: column;">
   <nav id="navbar">
     <!-- <img src="logo-db.png" alt="" width="55"> -->
     <span class="menu-icon" id="toggler">
@@ -57,11 +57,20 @@
     </section>
   </nav>
 
-  <div id="body-container">
+  <div id="body-container" style="flex: 1 0 auto;  margin-bottom: 4rem;">
     {% block content%}
 
     {% endblock %}
-
     <script src="{% static 'navbar_script.js'%}"></script>
+  </div>
+  <footer>
+    <div class="footer-content">
+        <h3>Knowledge projects</h3>
 
+        <a style="margin-bottom: 2rem;" href={% url 'core:employee_home' %}>Portal de administrador</a>
+    </div>
+    <div class="footer-bottom">
+        <p>copyright &copy;2023 Structum. designed by <span>Grupo 1</span></p>
+    </div>
+  </footer>
 </html>
