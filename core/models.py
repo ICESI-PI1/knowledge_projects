@@ -86,3 +86,9 @@ class Comments(models.Model):
     text = models.TextField()
     date = models.DateTimeField(default=timezone.now())
     project = models.ForeignKey(Project,on_delete=models.CASCADE)
+
+class Beneficiary(models.Model):
+    user = models.ForeignKey(User,on_delete=models.CASCADE)
+    phone_number = models.CharField(max_length=20)
+    representative_name = models.CharField(max_length=30)
+    phone_number_representative = models.CharField(max_length=20)
