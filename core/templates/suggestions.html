@@ -77,27 +77,27 @@
             <div class="column is-12">
                 <div class="field">
                     <label for="{{form.suggestion_name.id_for_label}}" class="label">Nombre del proyecto</label>
-                    <input name="suggestion_name" class="input" type="text">
+                    <input name="suggestion_name" class="input" type="text" required>
                 </div>
             </div>
 
             <div class="column is-12">
                 <div class="field">
                     <label for="{{ form.suggestion_description.id_for_label }}" class="label">Descripción</label>
-                    <input name="suggestion_description" class="input" type="text">
+                    <input name="suggestion_description" class="input" type="text" required>
                 </div>
             </div>
 
             <div class="column is-12">
                 <div class="field">
                     <label for="{{ form.suggestion_work_plan.id_for_label }}" class="label">Plan de trabajo</label>
-                    <input name="suggestion_work_plan" class="input" type="text">
+                    <input name="suggestion_work_plan" class="input" type="text" required>
                 </div>
             </div>
             <div class="column is-12">
                 <div class="field">
                     <label for="{{ form.suggestion_budget.id_for_label }}" class="label">Posible presupuesto</label>
-                    <input name="suggestion_budget" class="input" type="text">
+                    {{form.suggestion_budget}}
                 </div>
             </div>
             
