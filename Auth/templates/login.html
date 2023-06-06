@@ -67,18 +67,21 @@
     <form class="mb3" method="post">
       {% csrf_token %}
 
-      <div class="col g05 mb2">
-        <label class="has-text-weight-medium" for="username">Usuario</label>
-        <input name="username" class="input"></input>
-        {{form.username}}
-      </div>
+    <div class="column is-12" style="padding: 0.75em 0rem !important;">
+        <div class="field">
+            {{form.username.errors}}
+            <label for="username" class="label">Usuario</label>
+            {{ form.username}}
+        </div>
+    </div>
 
-      <div class="col g05 mb2">
-        <label class="has-text-weight-medium" for="password">Contraseña</label>
-        <input name="password" class="input" type="password"></input>
-        {{form.password}}
-        <a href="#!">Olvidé mi contraseña</a>
+    <div class="column is-12 mb1" style="padding: 0.75em 0rem !important;">
+      <div class="field">
+          {{form.password.errors}}
+          <label for="username" class="label">Contraseña</label>
+          {{ form.password}}
       </div>
+    </div>
 
       <button type="submit" class="button is-primary is-medium" style="width: 100%;">Iniciar sesión</button>
     </form>
