@@ -19,7 +19,7 @@ class Home_view(View):
         username = None
         if request.user.is_authenticated:
             username = request.user.username
-            context = {"username" : 'Hola, ' + username.capitalize(),}
+            context = {"username" : 'Hola, ' + username,}
             return HttpResponse(render(request,'home_view.html',context))
         
         return HttpResponse(render(request,'home_view.html'))
@@ -37,11 +37,11 @@ class detailed_info(View):
         obj = Project.objects.all()
         card_id= self.request.GET.get("lang")
         if card_id:
-            obj= obj.filter(project_id=card_id)
+            obj= obj.filter(project_id=card_id)[0]
         comment = Comments.objects.filter(project = card_id)
         context={
             'form': Comment_form,
-            'card':obj,
+            'project':obj,
             'com':comment
         }
         return HttpResponse(render(request,'detailedinfo.html',context))

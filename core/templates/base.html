@@ -38,11 +38,11 @@
     </div>
 
     <div id="nav-right">
-      {% if username == None %}
+      {% if request.user.username == None %}
       <a href={% url 'auth:register' %}>Registrarse</a>
       <a href={% url 'auth:login' %}>Iniciar sesión</a>
       {% else %}
-      <a href="#">{{username}}</a>
+      <a href="#">Hola, {{request.user.username}}</a>
       <a href={% url 'core:home' %}>Cerrar sesion</a>
       {% endif %}
     </div>
