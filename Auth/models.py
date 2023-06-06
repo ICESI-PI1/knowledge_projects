@@ -26,6 +26,8 @@ class Client(models.Model):
     address = models.CharField(max_length=20)
     representative_name = models.CharField(max_length=30)
     phone_number_representative = models.CharField(max_length=20)
+    def __str__(self):
+        return self.name
 
 class Employee(models.Model):
     user = models.OneToOneField(User,on_delete=models.CASCADE,primary_key=True,related_name='Employee')
@@ -35,3 +37,5 @@ class Employee(models.Model):
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
     birth_date = models.DateField()
+    def __str__(self):
+        return self.user

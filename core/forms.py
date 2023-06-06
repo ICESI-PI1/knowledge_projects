@@ -121,6 +121,8 @@ class Beneficiary_form(forms.ModelForm):
      class Meta :
         model = Beneficiary
         fields = [
+            'email',
         ]
         widgets = {
+            'email':forms.TextInput(attrs={'class': 'form-control mb-1', 'placeholder': 'Email'}),
         }
