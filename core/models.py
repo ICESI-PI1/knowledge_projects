@@ -2,8 +2,6 @@ from django.utils import timezone
 from django.db import models
 from Auth.models import User, Client
 
-
-
 class State(models.Model):
     state_id=models.AutoField(primary_key=True)
     state_name = models.CharField(max_length=30)

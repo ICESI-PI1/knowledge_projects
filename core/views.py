@@ -32,11 +32,19 @@ class Project_view(View):
         obj1 = Project.objects.all()
         card_id= self.request.GET.get("lang")
         p = Project.objects.get(project_id = card_id)
+        convocatory = None
+        donations = Donation.objects.all()
+
+        if (donations):
+            donations = donations.get(project = card_id)
+        if (p.convocatory):
+            convocatory = p.convocatory
+
         if card_id:
             obj= obj.filter(project_id=card_id)[0]
             obj1=obj1.filter(category = p.category.category_id)
             obj1=obj1.exclude(project_id= card_id)
-        return HttpResponse(render(request,'project.html',{'project':obj, 'related':obj1})) 
+        return HttpResponse(render(request,'project.html',{'project':obj, 'related':obj1, 'don':donations, 'conv': convocatory})) 
 class Donation_methods(View):
     def get(self,request):
         obj = Project.objects.all()

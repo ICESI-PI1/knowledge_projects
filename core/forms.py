@@ -109,11 +109,13 @@ class Comment_form(forms.ModelForm):
         }
 
 class Beneficiary_form(forms.ModelForm):
-     class Meta :
+    email = forms.CharField(widget=forms.TextInput(attrs={'class': 'input', 'placeholder': ''}),required=True),
+
+    class Meta :
         model = Beneficiary
         fields = [
             'email',
         ]
         widgets = {
-            'email':forms.TextInput(attrs={'class': 'form-control mb-1', 'placeholder': 'Email'}),
+            'email':forms.TextInput(attrs={'class': 'input', 'placeholder': ''}),
         }
