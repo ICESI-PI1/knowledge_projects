@@ -36,7 +36,7 @@ STRIPE_SECRET_KEY = 'sk_test_51NFiTZLtn7velaE9MPVYsbbL1R9yZ57rWnyR8RLW9mE8SvoFy9
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['.vercel.app','localhost']
 
 
 
