@@ -64,17 +64,7 @@ class Project_form(forms.ModelForm):
             
         }
 
-class Donation_form(forms.ModelForm):
-  class Meta :
-        model = Donation
-        fields = [
-            'payment_method',
-            'amount',
-        ]
-        widgets = {
-            'payment_method':forms.TextInput(attrs={'class': 'form-control mb-3', 'placeholder': 'Método de pago:'}),
-            'amount':forms.NumberInput(attrs={'class': 'form-control mb-3', 'placeholder': 'Monto:'}),
-        }
+
 
 
 

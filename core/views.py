@@ -4,10 +4,16 @@ from django.contrib.auth.decorators import login_required
 from django.views import View
 from core.models import Category,Project,State,Convocatory,Donation, Suggestion, Comments, Beneficiary
 from Auth.forms import Employee_register_form,Employee_edit_form,Employee_change_password
-from .forms import Edit_category_form,State_form,Project_form,Convocatory_form,Donation_form,Suggestion_form, Comment_form, Beneficiary_form
+from .forms import Edit_category_form,State_form,Project_form,Convocatory_form,Suggestion_form, Comment_form,Beneficiary_form
 from Auth.models import Client,Employee,User
-from django.urls import reverse_lazy,reverse
+from django.urls import reverse
 from django.contrib.auth.hashers import check_password,make_password
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
+
+
+
+
 
 import stripe
 
@@ -31,10 +37,38 @@ class Project_view(View):
             obj1=obj1.filter(category = p.category.category_id)
             obj1=obj1.exclude(project_id= card_id)
         return HttpResponse(render(request,'project.html',{'project':obj, 'related':obj1})) 
-
-
+class Donation_methods(View):
+    def get(self,request):
+        obj = Project.objects.all()
+        card_id= self.request.GET.get("lang")
+        obj = obj.filter(project_id=card_id)
+        context={
+            'form': Donation_form,
+            'card': obj
+        }
+        return HttpResponse(render(request,'donation_methods.html',context))
+    
+    def post(self, request):
+        obj = Project.objects.all()
+        card_id= self.request.GET.get("lang")
+        obj = obj.get(project_id=card_id)
+        form = Donation_form(request.POST)
+        if form.is_valid():
+            donation = Donation()
+            donation.payment_method = form.cleaned_data['payment_method']
+            donation.amount = form.cleaned_data['amount']
+            donation.user = request.user
+            donation.project = obj
+            donation.save()
+            return redirect('core:successful_donation')  
+        context={
+            'form': Donation_form,
+            'card': obj
+        }
+        return render(request, 'donation_methods.html', context)
+    
+@method_decorator(login_required, name='dispatch')
 class Stripe_donation(View):
-
     def get(self, request,project_id):
 
         project = Project.objects.get(project_id=project_id)
@@ -47,10 +81,10 @@ class Stripe_donation(View):
 
         return HttpResponse(render(request,'donation_views/stripe_donation_view.html',context))
 
-        
-
     def post(self, request,project_id):
         token = request.POST.get('stripeToken')
+        email = request.POST.get('email')
+
   
 
         project = Project.objects.get(project_id=project_id)  
@@ -59,24 +93,39 @@ class Stripe_donation(View):
         try:
 
             charge = stripe.Charge.create(
-                amount=amount,  # Monto en centavos de la moneda especificada
+                amount=amount*100,  # Monto en centavos de la moneda especificada
                 currency='usd',  # Moneda
                 source=token,
                 description='Ejemplo de pago con Stripe',
             )
+
+
+
             context={
                 'project':project,
             }
 
+            print('aqui')
+
+            donation = Donation()
+            donation.amount = project.budget
+            donation.user = request.user
+            donation.project = project
+            donation.save()
+
+
             return HttpResponse(render(request,'successful_donation.html',context))
 
-
-
-            return redirect('core:successful_donation',context)
         
         except stripe.error.CardError as e:
             error = e.error.message
-            return render(request, 'donation_views/stripe_donation_view.html', {'error': error})
+            context={
+                'project':project,
+                'amount': amount,
+                'error':error,
+            }
+
+            return HttpResponse(render(request,'donation_views/stripe_donation_view.html',context))
 
 
 
@@ -197,7 +246,7 @@ class Employee_tools(View):
         return HttpResponse(render(request,'employee_views/tools_ehome.html',context))
 
 #Employee CRUD
-
+@method_decorator(login_required, name='dispatch')
 class Save_employee(View):
     def get(self,request):
         context={
@@ -355,7 +404,7 @@ class Edit_employee(View):
         return render(request, 'employee_views/edit_employee_ehome.html', context)
 
 #Convocatory CRUD 
-
+@method_decorator(login_required, name='dispatch')
 class Employee_convocatories(View):   
     def get(self, request):
         context={
@@ -363,7 +412,8 @@ class Employee_convocatories(View):
             'active': 'convocatories',
         }
         return HttpResponse(render(request,'employee_views/convocatories_ehome.html',context))
-    
+
+@method_decorator(login_required, name='dispatch')
 class Save_convocatories(View):
     def get(self,request):
 
@@ -387,7 +437,8 @@ class Save_convocatories(View):
             'form': form,
         }
         return render(request, 'employee_views/crud_convocatory_ehome.html', context)
-    
+
+@method_decorator(login_required, name='dispatch')
 class Edit_convocatory(View):
     def get(self,request,convocatory_id):
         convocatory = Convocatory.objects.get(convocatory_id=convocatory_id)
@@ -414,6 +465,7 @@ class Edit_convocatory(View):
         }
         return render(request, 'employee_views/crud_convocatory_ehome.html', context)
     
+@method_decorator(login_required, name='dispatch')
 
 class Delete_convocatory(View):
     def delete_convocatory(request,convocatory_id):
@@ -422,7 +474,7 @@ class Delete_convocatory(View):
         return redirect('core:econvocatories')
 
 #Category CRUD
-
+@method_decorator(login_required, name='dispatch')
 class Employee_categories(View):   
     def get(self, request):
         context={
@@ -430,7 +482,7 @@ class Employee_categories(View):
             'categories':Category.objects.all
         }
         return HttpResponse(render(request,'employee_views/categories_ehome.html',context))
-
+@method_decorator(login_required, name='dispatch')
 class Save_Category(View):
     def get(self,request):
 
@@ -456,7 +508,7 @@ class Save_Category(View):
         return render(request, 'employee_views/edit_category.html', context)
 
 
-    
+@method_decorator(login_required, name='dispatch') 
 class Edit_category(View):
     def get(self,request,category_id):
         category = Category.objects.get(category_id=category_id)
@@ -483,6 +535,7 @@ class Edit_category(View):
         }
         return render(request, 'employee_views/edit_category.html', context)
     
+@method_decorator(login_required, name='dispatch')
 
 class Delete_category(View):
     def delete_category(request,category_id):
@@ -492,6 +545,7 @@ class Delete_category(View):
         return redirect('core:ecategories')
     
 #Project CRUD
+@method_decorator(login_required, name='dispatch')
 class Employee_projects(View):   
     def get(self, request):
         context={
@@ -500,7 +554,7 @@ class Employee_projects(View):
         }
         return HttpResponse(render(request,'employee_views/projects_ehome.html',context))
 
-    
+@method_decorator(login_required, name='dispatch')
 class Save_project(View):
     def get(self,request):
 
@@ -528,6 +582,7 @@ class Save_project(View):
         }
         return render(request, 'employee_views/crud_project_ehome.html', context)
 
+@method_decorator(login_required, name='dispatch')
 class Edit_project(View):
     def get(self,request,project_id):
         project = Project.objects.get(project_id=project_id)
@@ -554,6 +609,7 @@ class Edit_project(View):
         }
         return render(request, 'employee_views/crud_project_ehome.html', context)
 
+@method_decorator(login_required, name='dispatch')
 class Delete_project(View):
     def delete_project(request,project_id):
         project = Project.objects.get(project_id=project_id)
@@ -562,6 +618,7 @@ class Delete_project(View):
         return redirect('core:eprojects')
 
 #State CRUD
+@method_decorator(login_required, name='dispatch')
 class Employee_states(View):   
     def get(self, request):
         context={
@@ -569,7 +626,8 @@ class Employee_states(View):
             'states':State.objects.all
         }
         return HttpResponse(render(request,'employee_views/states_ehome.html',context))
-    
+
+@method_decorator(login_required, name='dispatch')
 class Save_state(View):
     def get(self,request):
         context={
@@ -591,7 +649,8 @@ class Save_state(View):
             'form': form,
         }
         return render(request, 'employee_views/crud_states_ehome.html', context)
-    
+
+@method_decorator(login_required, name='dispatch')
 class Edit_state(View):
     def get(self,request,state_id):
         state = State.objects.get(state_id=state_id)
@@ -618,6 +677,7 @@ class Edit_state(View):
         }
         return render(request, 'employee_views/crud_states_ehome.html', context)
 
+@method_decorator(login_required, name='dispatch')
 class Delete_state(View):
     def delete_state(request,state_id):
         state = State.objects.get(state_id=state_id)
@@ -626,36 +686,6 @@ class Delete_state(View):
         return redirect('core:estates')
     
 
-class Donation_methods(View):
-    def get(self,request):
-        obj = Project.objects.all()
-        card_id= self.request.GET.get("lang")
-        obj = obj.filter(project_id=card_id)
-        context={
-            'form': Donation_form,
-            'card': obj
-        }
-        return HttpResponse(render(request,'donation_methods.html',context))
-    
-    def post(self, request):
-        obj = Project.objects.all()
-        card_id= self.request.GET.get("lang")
-        obj = obj.get(project_id=card_id)
-        form = Donation_form(request.POST)
-        if form.is_valid():
-            donation = Donation()
-            donation.payment_method = form.cleaned_data['payment_method']
-            donation.amount = form.cleaned_data['amount']
-            donation.user = request.user
-            donation.project = obj
-            donation.save()
-            return redirect('core:successful_donation')  
-        context={
-            'form': Donation_form,
-            'card': obj
-        }
-        return render(request, 'donation_methods.html', context)
-    
     
 class Successful_donation(View):
     def get(self,request):
