@@ -41,26 +41,27 @@ class Client_register_view(CreateView):
 
 
     def form_valid(self, form):
-        user = User()
-        user.username = form.cleaned_data['username']
-        user.password = form.cleaned_data['password']
-        user.is_client = True  
-        user.is_employee = False  
-        user.save()
-   
-        client = Client.objects.create(
-            user=user,
-            name=form.cleaned_data['name'],
-            phone_number=form.cleaned_data['phone_number'],
-            address=form.cleaned_data['address'],
-            representative_name=form.cleaned_data['representative_name'],
-            phone_number_representative=form.cleaned_data['phone_number_representative']
-        )
+        if form.is_valid():
+            user = User()
+            user.username = form.cleaned_data['username']
+            user.password = form.cleaned_data['password']
+            user.is_client = True  
+            user.is_employee = False  
+            user.save()
+    
+            client = Client.objects.create(
+                user=user,
+                name=form.cleaned_data['name'],
+                phone_number=form.cleaned_data['phone_number'],
+                address=form.cleaned_data['address'],
+                representative_name=form.cleaned_data['representative_name'],
+                phone_number_representative=form.cleaned_data['phone_number_representative']
+            )
 
-        
-        order = form.save(commit=False) 
-        order.user = user 
-        order.save() 
+            
+            order = form.save(commit=False) 
+            order.user = user 
+            order.save() 
 
         return super().form_valid(form)
 

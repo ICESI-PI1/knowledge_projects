@@ -57,7 +57,7 @@
     <progress class="progress is-primary mb2" value="30" max="100">25%</progress>
 
     <div class="flip-btn">
-      <a class="button is-primary" href="{% url 'core:donation_methods' %}?lang={{project.project_id}}">Donar</a>
+      <a class="button is-primary" href="{% url 'core:donation' project.project_id %}">Donar</a>
       <a class="button is-secondary"
         href="{% url 'core:donation_methods' %}?lang={{project.project_id}}">Inscribirse</a>
     </div>

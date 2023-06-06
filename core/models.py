@@ -1,6 +1,6 @@
 from django.utils import timezone
 from django.db import models
-from Auth.models import User
+from Auth.models import User, Client
 
 
 
@@ -88,7 +88,8 @@ class Comments(models.Model):
     project = models.ForeignKey(Project,on_delete=models.CASCADE)
 
 class Beneficiary(models.Model):
-    user = models.ForeignKey(User,on_delete=models.CASCADE)
+    user = models.ForeignKey(Client,on_delete=models.CASCADE)
+    email = models.CharField(max_length=40)
     phone_number = models.CharField(max_length=20)
     representative_name = models.CharField(max_length=30)
     phone_number_representative = models.CharField(max_length=20)
