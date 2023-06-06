@@ -134,7 +134,7 @@ class Home_view(View):
         username = None
         if request.user.is_authenticated:
             username = request.user.username
-            context = {"username" : 'Hola, ' + username.capitalize(),}
+            context = {"username" : 'Hola, ' + username,}
             return HttpResponse(render(request,'home_view.html',context))
         
         return HttpResponse(render(request,'home_view.html'))
@@ -152,35 +152,41 @@ class detailed_info(View):
         obj = Project.objects.all()
         card_id= self.request.GET.get("lang")
         if card_id:
-            obj= obj.filter(project_id=card_id)
+            obj= obj.filter(project_id=card_id)[0]
         comment = Comments.objects.filter(project = card_id)
+        donations = Donation.objects.filter(project = card_id)
+
         context={
             'form': Comment_form,
-            'card':obj,
-            'com':comment
+            'project':obj,
+            'com':comment,
+            'don':donations
         }
         return HttpResponse(render(request,'detailedinfo.html',context))
     
     def post(self, request):
         obj = Project.objects.all()
-        com = Comments.objects.all()
         card_id= self.request.GET.get("lang")
-        obj1 = obj.get(project_id=card_id)
         if card_id:
-            obj= obj.filter(project_id=card_id)
-        comment1 = com.filter(project = card_id)
+            obj= obj.filter(project_id=card_id)[0]
+        comment = Comments.objects.filter(project = card_id)
+        donations = Donation.objects.filter(project = card_id)
+
+        context={
+            'form': Comment_form,
+            'project':obj,
+            'com':comment,
+            'don':donations
+        }
+        
         form = Comment_form(request.POST)
         if form.is_valid():
             comment = Comments()
             comment.author = request.user
             comment.text = form.cleaned_data['text']
-            comment.project = obj1
+            comment.project = obj
             comment.save()
-        context={
-            'form': Comment_form,
-            'card':obj,
-            'com':comment1
-        }
+
         return render(request, 'detailedinfo.html', context)
 
 class binnacle(View):
