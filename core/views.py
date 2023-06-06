@@ -153,7 +153,9 @@ class Categories_view(View):
         'data': data
         }
         return HttpResponse(render(request,'categories_view.html',context))
-    
+
+
+@method_decorator(login_required, name='dispatch')
 class detailed_info(View):
     def get(self,request):
         obj = Project.objects.all()
@@ -200,7 +202,7 @@ class binnacle(View):
     def get(self,request):
       return render(request,'binnacle.html')
 
-
+@method_decorator(login_required, name='dispatch')
 class Home_view_employee(View):   
     def get(self, request):
         n_projects =Project.objects.count()
@@ -368,7 +370,7 @@ class Change_employee_password(View):
         return HttpResponse(render(request,'employee_views/change_password_employee_ehome.html',context))
 
 
-
+@method_decorator(login_required, name='dispatch')
 class Edit_employee(View):
     def get(self,request,username):
 
@@ -583,11 +585,8 @@ class Edit_beneficiaries(View):
 
         return HttpResponse(render(request,'employee_views/beneficiaries_ehome.html',context))
 
-        
-
-
-        
-
+            
+@method_decorator(login_required, name='dispatch')
 class Employee_beneficiaries(View):  
     def get(self, request):
 
@@ -761,6 +760,7 @@ class Successful_donation(View):
 
         return HttpResponse(render(request,'successful_donation.html',{'card':obj}))
 
+@method_decorator(login_required, name='dispatch')
 class Convocatory_inscription(View):
     def get(self,request):
         obj = Project.objects.all()
@@ -775,6 +775,7 @@ class Convocatory_inscription(View):
     
     def post(self, request):
         form = Beneficiary_form(request.POST)
+        card_id= self.request.GET.get("lang")
         if form.is_valid():
             beneficiary = Beneficiary()
             user = request.user
@@ -785,6 +786,7 @@ class Convocatory_inscription(View):
             beneficiary.phone_number = client.phone_number
             beneficiary.representative_name = client.representative_name
             beneficiary.phone_number_representative = client.phone_number_representative
+            beneficiary.project = Project.objects.get(project_id=card_id)
             beneficiary.save()
             return redirect('core:home')  
         context={
@@ -792,6 +794,7 @@ class Convocatory_inscription(View):
         }
         return render(request, 'convocatory_inscription.html', context)
 
+@method_decorator(login_required, name='dispatch')
 class Suggestion_view(View):
     def get(self,request):
         context={

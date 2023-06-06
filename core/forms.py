@@ -95,7 +95,7 @@ class Suggestion_form(forms.ModelForm):
             'suggestion_name':forms.TextInput(attrs={'class': 'form-control mb-1', 'placeholder': 'Nombre'}),
             'suggestion_description':forms.TextInput(attrs={'class': 'form-control mb-1', 'placeholder': 'Descripción'}),
             'suggestion_work_plan':forms.TextInput(attrs={'class': 'form-control mb-1', 'placeholder': 'Plan de trabajo'}),
-            'suggestion_budget':forms.NumberInput(attrs={'class': 'form-control mb-1', 'placeholder': 'Presupuesto'}),
+            'suggestion_budget':forms.NumberInput(attrs={'class': 'input', 'placeholder': ''}),
         }
 
 class Comment_form(forms.ModelForm):
