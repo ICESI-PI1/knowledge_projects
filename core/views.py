@@ -634,6 +634,7 @@ class Convocatory_inscription(View):
             client = Client.objects.all()
             client = client.get(user=user)
             beneficiary.user = client
+            beneficiary.email = form.cleaned_data['email']
             beneficiary.phone_number = client.phone_number
             beneficiary.representative_name = client.representative_name
             beneficiary.phone_number_representative = client.phone_number_representative

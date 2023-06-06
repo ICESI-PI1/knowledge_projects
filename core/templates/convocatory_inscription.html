@@ -15,6 +15,11 @@
                 {% csrf_token %}
                 <h3>Estás a punto de convertirte en beneficiario de</h3>
                 <h2 class="green">{{x.project_name}}</h2>
+
+                <div class="form-group">
+                    <label for="{{ form.email.id_for_label }}">Correo Electronico:</label>
+                    {{ form.email}}
+                </div>
                 
                 <button type="submit" class="btn btn-primary" style="background-color:#087F8C;color:white">Inscribirme</button>
                 <!---->
