@@ -13,6 +13,7 @@ app_name = 'core'
 base_url_employee = 'ehome/'
 
 urlpatterns = [
+    path('donation/<project_id>', views.Stripe_donation.as_view(), name='donation'),
     path('', views.Home_view.as_view(), name='home'),
     path('home/', views.Home_view.as_view(), name='home'),
     path('categories/', views.Categories_view.as_view(), name='categories'),
