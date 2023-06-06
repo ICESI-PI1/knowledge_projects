@@ -82,54 +82,60 @@
 
             <div class="column is-4">
                 <div class="field">
+                    {{form.username.errors}}
                     <label for="username" class="label">Nit</label>
-                    <input name="username" class="input" type="text">
+                    {{ form.username}}
                 </div>
             </div>
 
             <div class="column is-8">
                 <div class="field">
+                    {{form.address.errors}}
                     <label for="address" class="label">Dirección</label>
-                    <input name="address" class="input" type="text">
+                    {{ form.address}}
                 </div>
             </div>
 
             <div class="column is-8">
                 <div class="field">
+                    {{form.name.errors}}
                     <label for="name" class="label">Nombre</label>
-                    <input name="name" class="input" type="text">
+                    {{ form.name}}
                 </div>
             </div>
             <div class="column is-4">
                 <div class="field">
                     <label for="phone_number" class="label">Teléfono</label>
-                    <input name="phone_number" class="input" type="text">
+                    {{ form.phone_number}}
                 </div>
             </div>
 
             <div class="column is-8">
                 <div class="field">
+                    {{form.representative_name.errors}}
                     <label for="representative_name" class="label">Nombre representante</label>
-                    <input name="representative_name" class="input" type="text">
+                    {{ form.representative_name}}
                 </div>
             </div>
             <div class="column is-4">
                 <div class="field">
                     <label for="phone_number_representative" class="label">Tel. representante</label>
-                    <input name="phone_number_representative" class="input" type="text">
+                    {{ form.phone_number_representative}}
                 </div>
             </div>
 
             <div class="column is-6">
                 <div class="field">
+                    {{form.password.errors}}
                     <label for="password" class="label">Contraseña</label>
-                    <input type="password" name="password" class="input" type="text">
+                    {{ form.password}}
                 </div>
             </div>
             <div class="column is-6">
                 <div class="field">
+                    {{form.password.errors}}
                     <label for="password" class="label">Confirmar Contraseña</label>
-                    <input type="password" name="password_confirmation" class="input" type="text">
+                    {{ form.password_confirmation}}
                 </div>
             </div>
 

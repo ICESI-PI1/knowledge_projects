@@ -67,14 +67,16 @@
     <form class="mb3" method="post">
       {% csrf_token %}
 
-      <div class="col g05 mb1">
+      <div class="col g05 mb2">
         <label class="has-text-weight-medium" for="username">Usuario</label>
         <input name="username" class="input"></input>
+        {{form.username}}
       </div>
 
       <div class="col g05 mb2">
         <label class="has-text-weight-medium" for="password">Contraseña</label>
         <input name="password" class="input" type="password"></input>
+        {{form.password}}
         <a href="#!">Olvidé mi contraseña</a>
       </div>
 

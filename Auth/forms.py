@@ -12,8 +12,8 @@ class User_login_form(AuthenticationForm):
             'password'
         ]
         widgets = {
-            'username' : forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control form-control-lg','type':'text'})),
-            'password': forms.CharField(widget=forms.PasswordInput(attrs={'class': 'form-control mb-3', 'placeholder': 'Confirmar contraseña'})),
+            'username' : forms.CharField(widget=forms.TextInput(attrs={'class': 'input', 'placeholder': ''}),required=True),
+            'password': forms.CharField(widget=forms.PasswordInput(attrs={'class': 'input', 'type':'password','placeholder': ''}),required=True),
         }
 
 
@@ -90,11 +90,11 @@ class Employee_edit_form(forms.ModelForm):
 
 
 class Client_register_form(forms.ModelForm):
-    password = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'form-control mb-3', 'placeholder': 'Contraseña'}))
+    password = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'input', 'placeholder': ''}),required=True)
 
-    password_confirmation = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'form-control mb-3', 'placeholder': 'Confirmar contraseña'}))
+    password_confirmation = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'input', 'placeholder': ' '}),required=True)
 
-    username = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control mb-3', 'placeholder': 'Nit'}))
+    username = forms.CharField(widget=forms.TextInput(attrs={'class': 'input', 'placeholder': ''}),required=True)
     class Meta:
         model = Client
         
@@ -105,12 +105,12 @@ class Client_register_form(forms.ModelForm):
             'representative_name',
             'phone_number_representative'
         ]
-        widgets = {
-            'name':  forms.TextInput(attrs={'class': 'form-control mb-3', 'placeholder': 'Nombre'}),
-            'phone_number':forms.TextInput(attrs={'class': 'form-control mb-3', 'placeholder': 'Telefono'}),
-            'address':forms.TextInput(attrs={'class': 'form-control mb-3', 'placeholder': 'Dirección'}),
-            'representative_name':forms.TextInput(attrs={'class': 'form-control mb-3', 'placeholder': 'Nombre representante'}),
-            'phone_number_representative':forms.TextInput(attrs={'class': 'form-control mb-3', 'placeholder': 'Telefono representante'}), 
+        widgets = { 
+            'name':  forms.TextInput(attrs={'class': 'input', 'placeholder': ''}),
+            'phone_number':forms.NumberInput(attrs={'class': 'input', 'placeholder': ''}),
+            'address':forms.TextInput(attrs={'class': 'input', 'placeholder': ''}),
+            'representative_name':forms.TextInput(attrs={'class': 'input', 'placeholder': ' '}),
+            'phone_number_representative':forms.NumberInput(attrs={'class': 'input', 'placeholder': ''}),
         }
 
         
