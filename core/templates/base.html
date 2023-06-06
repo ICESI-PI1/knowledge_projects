@@ -43,7 +43,7 @@
       <a href={% url 'auth:login' %}>Iniciar sesión</a>
       {% else %}
       <a href="#">Hola, {{request.user.username}}</a>
-      <a href={% url 'core:home' %}>Cerrar sesion</a>
+      <a href={% url 'auth:logout' %}>Cerrar sesion</a>
       {% endif %}
     </div>
 

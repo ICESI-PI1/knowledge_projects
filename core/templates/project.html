@@ -49,7 +49,7 @@
         href="{% url 'core:detailedinfo' %}?lang={{project.project_id}}">Ver bitácora</a></p>
 
     <p class="has-text-weight-medium mb1">
-      Presupuesto ${{project.budget}}
+      Presupuesto USD ${{project.budget}}
       <br>
       Progreso (implementación) 50%
     </p>
@@ -57,9 +57,15 @@
     <progress class="progress is-primary mb2" value="30" max="100">25%</progress>
 
     <div class="flip-btn">
+      {% if not don %}
       <a class="button is-primary" href="{% url 'core:donation' project.project_id %}">Donar</a>
+      {% endif %}
+
+      {% if conv %}
       <a class="button is-secondary"
-        href="{% url 'core:donation_methods' %}?lang={{project.project_id}}">Inscribirse</a>
+        href="{% url 'core:convocatory' %}?lang={{project.project_id}}">Inscribirse</a>
+      {% endif %}
+
     </div>
   </div>
 </section>

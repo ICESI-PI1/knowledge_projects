@@ -16,7 +16,7 @@
       <span class="tag is-medium mb-05">{{project.category.category_name}}</span>
     </div>
     <p class="has-text-weight-medium mb-05">
-      Presupuesto ${{project.budget}}
+      Presupuesto USD ${{project.budget}}
       <br>
       Progreso (implementación) 50%
     </p>
@@ -55,9 +55,14 @@
     </div>
 
     <div class="flip-btn mb2">
-      <a class="button is-primary" href="{% url 'core:donation_methods' %}?lang={{project.project_id}}">Donar</a>
+      {% if not don %}
+      <a class="button is-primary" href="{% url 'core:donation' project.project_id %}">Donar</a>
+      {% endif %}
+
+      {% if conv %}
       <a class="button is-secondary"
-        href="{% url 'core:donation_methods' %}?lang={{project.project_id}}">Inscribirse</a>
+        href="{% url 'core:convocatory' %}?lang={{project.project_id}}">Inscribirse</a>
+      {% endif %}
     </div>
 
     <div class="mb2">
