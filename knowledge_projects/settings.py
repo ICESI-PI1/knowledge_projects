@@ -36,8 +36,7 @@ STRIPE_SECRET_KEY = 'sk_test_51NFiTZLtn7velaE9MPVYsbbL1R9yZ57rWnyR8RLW9mE8SvoFy9
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['.vercel.app','localhost','.now.sh']
-
+ALLOWED_HOSTS = ['198.211.99.20', 'localhost', '127.0.0.1']
 
 
 # Application definition
@@ -96,12 +95,8 @@ WSGI_APPLICATION = 'knowledge_projects.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'postgres',
-        'USER': 'postgres',
-        'PASSWORD': 'VamosPorUn5',
-        'HOST': 'db.stblwjzxyffsbzmjdeko.supabase.co',
-        'PORT': 5432,
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
